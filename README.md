@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ![](https://images.gitee.com/uploads/images/2020/0210/172236_e5b19fa6_1163529.png) 
 
 ThinkPHP 5.1.39（LTS版本） —— RBAC权限管理系统
@@ -118,3 +119,7 @@ www  WEB部署目录（或者子目录）
 4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
 5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
 6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+=======
+# jindu
+项目进度管理系统
+>>>>>>> 6a42eadbee5186ec1fe70592ea2059a9dc994355
