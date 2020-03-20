@@ -1,0 +1,98 @@
+{include file="public/header"}
+
+{include file="public/nav"}
+<div class="main">
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">提交项目</h3>
+                </div>
+                <div class="panel-body">
+                    <form class="layui-form" action="">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">项目名称</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="proName" required  lay-verify="required" placeholder="请输入项目名称" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">简单描述</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="description" required lay-verify="required" placeholder="请输入项目简单描述" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">单选框</label>
+                            <div class="layui-input-block">
+                                <input type="radio" name="protype" value="1" title="网站">
+                                <input type="radio" name="protype" value="2" title="APP" checked>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">联系方式</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="contact" required lay-verify="required" value="{$contact}" autocomplete="off" class="layui-input"><div class="layui-form-mid layui-word-aux">该联系方式是您默认的联系的方式，如有需要请修改</div>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+            {include file='public/footer'}
+            <script>
+                layui.use(['form','upload','jquery'],function(){
+                    var form = layui.form, //只有执行了这一步，部分表单元素才会自动修饰成功
+                        $=layui.jquery,
+                        upload = layui.upload;
+
+
+                    form.on('submit(formDemo)', function (data) {
+                        console.log(data);
+                        $.ajax({
+                            type: "POST",
+                            url: "{:url('project/save')}",
+                            data: data.field,
+                            dataType: "json",
+                            success: function(data){
+                                switch (data.status)
+                                {
+                                    case 1:
+                                        layer.msg(data.message, {
+                                            offset: '300px',
+                                            icon: 1,
+                                            time: 1500
+                                        },function(){
+                                            location.href = data.url;
+                                        });
+                                        break;
+                                    case 0:
+                                    case -1:
+                                    case -2:
+                                        layer.msg(data.message, {
+                                            offset: '300px',
+                                            icon: 0,
+                                            time: 1500
+                                        }, function() {
+                                            location.href = data.url;
+                                        });
+                                }
+                            }
+                        });
+                        return false;
+                    });
+
+                });
+            </script>

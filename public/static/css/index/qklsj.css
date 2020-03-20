@@ -1,0 +1,749 @@
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.more:hover {
+    color: #fff;
+}
+
+.qklsj-title {
+    text-align: center;
+}
+
+.qklsj-title h2 {
+    display: inline-block;
+    margin-bottom: .75rem;
+    padding: .5rem 2.4rem;
+    border-radius: 2.4rem;
+    background: #f1f0ff;
+    font-size: 1.75rem;
+    color: #2241fd;
+}
+
+.qklsj-title p {
+    font-size: 1.125rem;
+    line-height: 1.125rem;
+    color: #616161;
+}
+
+.qklsj-banner-img {
+    display: none;
+}
+
+
+/* 核心功能 */
+
+.qklsj-hxgn {
+    padding-top: 5.5rem;
+    background: url("../img/qklsj-hxgn.png")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/qklsj/qklsj-hxgn.png*/ no-repeat left 75%;
+}
+
+.qklsj-hxgn ul li {
+    padding-top: 2.375rem;
+}
+
+
+/* .qklsj-hxgn ul li dl dt {
+    background: url(../images/qklsj/qklsj-hxgn-ul-li.png) no-repeat left;
+    width: 5rem;
+    height: 5rem;
+} */
+
+.qklsj-hxgn ul li dl dd h3 {
+    padding-top: 1.9375rem;
+    padding-bottom: .5rem;
+    font-size: 1.5rem;
+    color: #474747;
+}
+
+.qklsj-hxgn ul li dl dd p {
+    width: 80%;
+    font-size: 1rem;
+    line-height: 1.875rem;
+    color: #999;
+}
+
+
+/* 区块链社交聊天系统 */
+
+.qkl-content {
+    background: url("../img/qkl-content.png")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/qklsj/qkl-content.png*/ no-repeat right 35rem;
+}
+
+.qklsj-qkl {
+    margin-top: 6.6875rem;
+}
+
+.qklsj-qkl-t {
+    margin-top: 3rem;
+    height: 667px;
+    background: url("../img/qklsj-qkl-b.png")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/qklsj/qklsj-qkl-b.png*/ no-repeat left;
+}
+
+.qklsj-qkl .qklsj-qkl-b h3 {
+    padding-top: 6.8125rem;
+    padding-bottom: 2.5rem;
+    font-size: 2.625rem;
+    color: #474747;
+}
+
+.qklsj-qkl .qklsj-qkl-b p {
+    font-size: 1rem;
+    color: #999;
+}
+
+.qklsj-qkl .qklsj-qkl-b a {
+    box-shadow: 0 5px 16px rgba(0, 67, 255, .34);
+}
+
+.more {
+    display: flex;
+    width: 9rem;
+    height: 3rem;
+    margin-top: 2rem;
+    border-radius: 2rem;
+    background: #286efb;
+    font-size: 1.25rem;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* 特色功能 */
+
+.qklsj-tsgn li:nth-child(1),
+.qklsj-tsgn li:nth-child(3) {
+    margin-top: 14.9625rem;
+}
+
+.qklsj-tsgn ul {
+    padding-top: 2.625rem;
+}
+
+.qklsj-tsgn dl {
+    height: 28rem;
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: 0 12px 50px rgba(0, 67, 255, .06);
+    text-align: center;
+}
+
+.qklsj-tsgn dl dt {
+    padding-top: 3.5rem;
+}
+
+.qklsj-tsgn dl dd h3 {
+    padding-top: 1.6875rem;
+    padding-bottom: 1.25rem;
+    font-size: 1.5rem;
+    color: #474747;
+}
+
+.qklsj-tsgn dl dd p {
+    padding: 0 1.875rem;
+    font-size: 1rem;
+    color: #999;
+}
+
+.qklsj-tsgn ul li .qklsj-tsgn-b {
+    padding-top: 1.875rem;
+}
+
+.qklsj-tsgn-b1 {
+    display: none;
+}
+
+
+/* 产品优势 */
+
+.qklsj-cpys {
+    padding-top: 9rem;
+}
+
+.qklsj-tsgn-l {
+    padding-top: 6.5rem;
+}
+
+.qklsj-tsgn-t .qklsj-tsgn-l {
+    padding-top: 10rem;
+}
+
+.qklsj-tsgn {
+    padding-top: .975rem;
+}
+
+.qklsj-tsgn-b {
+    padding-top: 2.625rem;
+}
+
+.qklsj-tsgn-t {
+    padding-top: 1.875rem;
+}
+
+.qklsj-tsgn-t:nth-child(1) {
+    padding-top: 0;
+}
+
+.qklsj-tsgn-b h3 {
+    padding-bottom: 1.625rem;
+    font-size: 1.5rem;
+    color: #474747;
+}
+
+.qklsj-tsgn-b p {
+    display: flex;
+    padding-top: .875rem;
+    font-size: 1rem;
+    color: #999;
+}
+
+.qklsj-tsgn-b p i {
+    width: 4%;
+}
+
+.qklsj-tsgn-b p span {
+    width: 96%;
+}
+
+
+/* 案例优势 */
+
+.qklsj-jsys.qklsj-alzs {
+    padding-top: 10rem;
+}
+
+.swiper-container {
+    height: 100%;
+    padding-top: 1.5rem !important;
+}
+
+.swiper-slide {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    overflow: hidden;
+    height: 100%;
+    text-align: center;
+    font-size: 18px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    transition: 300ms;
+    transform: scale(1);
+}
+
+.swiper-slide-active,
+.swiper-slide-duplicate-active {
+    transform: scale(1) !important;
+    z-index: 999;
+}
+
+.swiper-slide img {
+    max-width: 100%;
+}
+
+.swiper-container-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+    bottom: 10px !important;
+}
+
+.swiper-pagination-bullet {
+    background: #007aff;
+}
+
+
+/* 技术优势 */
+
+.qklsj-jsys-b {
+    padding-top: 2.5rem;
+}
+
+.qklsj-jsys {
+    padding-top: 4rem;
+}
+
+.qklsj-jsys ul li {
+    padding-bottom: 7.125rem;
+}
+
+.qklsj-jsys ul li dl dt {
+    padding-bottom: 1.5rem;
+}
+
+.qklsj-jsys ul li dl dd h3 {
+    padding-bottom: .625rem;
+    font-size: 1.5rem;
+    color: #474747;
+}
+
+.qklsj-jsys ul li dl dd p {
+    font-size: 1rem;
+    color: #999;
+}
+
+@media (max-width:1650px) {
+    .qklsj-qkl-t {
+        height: 533px;
+        background-size: 40%;
+    }
+}
+
+@media (max-width:1550px) {
+    .qklsj-qkl-t {
+        background-size: 44%;
+    }
+}
+
+@media (max-width:1450px) {
+    .qklsj-qkl-t {
+        padding-top: 2rem;
+        background-size: 45%;
+    }
+}
+
+@media (max-width:1350px) {
+    .qklsj-qkl-t {
+        padding-top: 1rem;
+        background-size: 50%;
+    }
+}
+
+@media (max-width:1199px) {
+    /* 核心功能 */
+    .qklsj-hxgn ul li dl dd p {
+        width: 90%;
+    }
+    /* 区块链社交聊天系统 */
+    .qkl-content {
+        background-position: right 19rem;
+    }
+    /* 特色功能 */
+    .qklsj-tsgn ul li .qklsj-tsgn-b dl {
+        height: 25rem;
+    }
+    .qklsj-tsgn dl dt {
+        padding-top: 2.5rem;
+    }
+    .qklsj-tsgn dl dd h3 {
+        padding-top: 1rem;
+    }
+    .qklsj-tsgn dl dd p {
+        padding: 0 1.5rem;
+    }
+    /* 产品优势 */
+    .qklsj-cpys {
+        padding-top: 4rem;
+    }
+    .qklsj-tsgn-b {
+        padding-top: 1rem;
+    }
+    .qklsj-hxgn {
+        padding-top: 4rem;
+    }
+    .qklsj-tsgn-l {
+        padding: 0;
+    }
+    .qklsj-tsgn-b h3 {
+        padding-bottom: .75rem;
+    }
+    .qklsj-tsgn-t .qklsj-tsgn-l {
+        padding-top: 3rem;
+    }
+    .qklsj-tsgn-b p {
+        padding-top: .6rem;
+    }
+    /* 区块链社交聊天系统 */
+    .qklsj-qkl-t {
+        height: 440px;
+        background-size: 45%;
+    }
+    .qklsj-qkl .qklsj-qkl-b h3 {
+        padding-top: 4rem;
+        padding-bottom: 1.5rem;
+    }
+    /* 案例展示 */
+    .qklsj-jsys.qklsj-alzs {
+        padding-top: 2rem;
+    }
+    /* 技术优势 */
+    .qklsj-jsys {
+        padding-top: 3rem;
+    }
+    .qklsj-jsys ul li {
+        padding-bottom: 3rem;
+    }
+    .qklsj-jsys ul li dl dt {
+        padding-bottom: 1rem;
+    }
+}
+
+@media (max-width:1120px) {
+    .qklsj-qkl-t {
+        background-size: 49%;
+    }
+}
+
+@media (max-width:1050px) {
+    .qklsj-qkl-t {
+        background-size: 51%;
+    }
+}
+
+@media (max-width:991px) {
+    .qkl-content {
+        background-position: right 15rem;
+    }
+    /* 核心功能 */
+    .qklsj-hxgn ul li {
+        padding-top: 1.7rem;
+    }
+    .qklsj-hxgn ul li dl dd p {
+        width: auto;
+    }
+    .qklsj-hxgn ul li dl dd h3 {
+        padding-top: 1.5rem;
+        font-size: 1.25rem;
+    }
+    /* 区块链社交聊天系统 */
+    .qklsj-qkl {
+        margin-top: 4rem;
+    }
+    .qklsj-qkl-t {
+        margin-top: 1rem;
+    }
+    .qklsj-qkl .qklsj-qkl-b h3 {
+        padding-top: 5.5rem;
+        padding-bottom: 1rem;
+        font-size: 2rem;
+    }
+    /* 特色功能 */
+    .qklsj-tsgn {
+        padding: 0;
+    }
+    .qklsj-tsgn ul {
+        padding-top: 2rem;
+    }
+    .qklsj-tsgn dl dd h3 {
+        padding-bottom: 1rem;
+        font-size: 1.25rem;
+    }
+    .qklsj-tsgn-t dl {
+        height: 24rem;
+    }
+    .qklsj-tsgn li:nth-child(1),
+    .qklsj-tsgn li:nth-child(3) {
+        margin-top: 12rem;
+    }
+    .qklsj-tsgn dl dd p {
+        padding: 0 1rem;
+        font-size: .875rem;
+        line-height: 1.5rem;
+    }
+    /* 产品优势 */
+    .qklsj-cpys {
+        padding-top: 3rem;
+    }
+    .qklsj-tsgn-l {
+        padding: 0 .875rem;
+    }
+    .qklsj-tsgn-b h3 {
+        padding-bottom: .5rem;
+        font-size: 1.25rem;
+    }
+    .qklsj-tsgn-b p {
+        padding-top: .5rem;
+        font-size: .875rem;
+        line-height: 1.6rem;
+    }
+    .more {
+        width: 10rem;
+        height: 3rem;
+        margin-top: 1rem;
+    }
+    .qklsj-tsgn-t .qklsj-tsgn-l {
+        padding-top: 1rem;
+    }
+    /* 技术优势 */
+    .qklsj-jsys ul li {
+        padding-bottom: 2rem;
+    }
+    .qklsj-jsys ul li dl dd h3 {
+        font-size: 1.25rem;
+    }
+    .qklsj-jsys ul li dl dd p {
+        font-size: .875rem;
+        line-height: 1.5rem;
+    }
+}
+
+@media (max-width:900px) {
+    .qklsj-qkl-t {
+        margin-top: 0;
+        background-size: 51%;
+    }
+}
+
+@media (max-width:767px) {
+    .qklsj-banner img {
+        display: none;
+    }
+    .qklsj-banner .qklsj-banner-img {
+        display: block;
+    }
+    .qklsj-title h2 {
+        font-size: 1.125rem;
+        margin-bottom: .5rem;
+    }
+    .qklsj-title p {
+        font-size: .75rem;
+    }
+    /* 核心功能 */
+    .qklsj-hxgn {
+        padding-top: 2.5rem;
+        background: none;
+    }
+    .qklsj-hxgn ul li {
+        width: 33%;
+        padding: 0 .75rem;
+        padding-top: 1.25rem;
+    }
+    .qklsj-hxgn ul li dl dt img {
+        max-width: 40%;
+    }
+    .qklsj-hxgn ul li dl dd h3 {
+        padding-top: .8rem;
+        padding-bottom: .3rem;
+        font-size: 1rem;
+    }
+    .qklsj-hxgn ul li dl dd p {
+        font-size: .75rem;
+        line-height: 1.5rem;
+    }
+    /* 区块链社交聊天系统 */
+    .qkl-content {
+        background: none;
+    }
+    .qklsj-qkl {
+        display: none;
+        margin-top: 2.5rem;
+    }
+    .qklsj-qkl-t {
+        height: auto;
+        background: none;
+    }
+    .qklsj-qkl-t .col-md-6 {
+        text-align: center;
+    }
+    .qklsj-qkl-b img {
+        max-width: 50%;
+    }
+    .qklsj-qkl .qklsj-qkl-b h3 {
+        padding-top: 0;
+        padding-bottom: .5rem;
+        font-size: 1.8rem;
+    }
+    .qklsj-qkl .qklsj-qkl-b p {
+        font-size: .75rem;
+        line-height: 1.5rem;
+    }
+    .qklsj-qkl .qklsj-qkl-b a {
+        margin: .5rem auto;
+    }
+    /* 特色功能 */
+    .qklsj-tsgn-b1 {
+        display: block;
+    }
+    .qklsj-tsgn-b2 {
+        display: none;
+    }
+    .qklsj-tsgn {
+        padding-top: 2.5rem;
+    }
+    .qklsj-tsgn ul {
+        padding-top: 1rem;
+    }
+    .qklsj-tsgn ul li .qklsj-tsgn-b dl {
+        height: 16rem;
+    }
+    .qklsj-tsgn ul li .qklsj-tsgn-b {
+        padding-top: 1.5rem;
+    }
+    .qklsj-tsgn dl dt img {
+        max-width: 20%;
+    }
+    .qklsj-tsgn dl dd h3 {
+        padding: .5rem 0;
+        font-size: 1rem;
+    }
+    .qklsj-tsgn dl dd p {
+        font-size: .75rem;
+        line-height: 1.4rem;
+    }
+    .qklsj-tsgn li:nth-child(1),
+    .qklsj-tsgn li:nth-child(3) {
+        margin-top: 0;
+    }
+    .qklsj-tsgn li {
+        width: 50%;
+        padding: 0 .75rem;
+    }
+    .qklsj-tsgn dl dt {
+        padding-top: 1.5rem;
+    }
+    .qklsj-tsgn dl {
+        height: 13rem;
+    }
+    /*产品优势 */
+    .qklsj-cpys {
+        padding-top: 2.5rem;
+    }
+    .qklsj-tsgn-r {
+        padding: 0;
+    }
+    /* .qklsj-tsgn-b {
+        padding-top: 0;
+    } */
+    .qklsj-tsgn-b h3 {
+        padding-bottom: .2rem;
+        font-size: 1rem;
+    }
+    .qklsj-tsgn-r img {
+        display: none;
+    }
+    .qklsj-tsgn-b p {
+        padding-top: .2rem;
+        font-size: .75rem;
+        line-height: 1.5rem;
+    }
+    .qklsj-tsgn-b p i {
+        width: 2%;
+    }
+    .qklsj-tsgn-b p i img {
+        max-width: 60%;
+    }
+    .more {
+        width: 6rem;
+        height: 2rem;
+        margin-top: .75rem;
+        font-size: .75rem;
+    }
+    /* 案例展示 */
+    .swiper-container {
+        padding-top: 1rem !important;
+    }
+    /* 技术优势 */
+    .qklsj-jsys {
+        padding-top: 2rem;
+    }
+    .qklsj-jsys-b {
+        padding-top: 1.5rem;
+        padding-left: .75rem;
+    }
+    .qklsj-jsys ul li {
+        width: 50%;
+        padding: 0 .75rem 1rem 0;
+    }
+    .qklsj-jsys ul li dl dt {
+        padding-bottom: .7rem;
+    }
+    .qklsj-jsys ul li dl dt img {
+        max-width: 12%;
+    }
+    .qklsj-jsys ul li dl dd h3 {
+        padding-bottom: .5rem;
+        font-size: 1rem;
+    }
+    .qklsj-jsys ul li dl dd p {
+        font-size: .75rem;
+    }
+    .qklsj-jsys-r {
+        text-align: center;
+    }
+    .qklsj-jsys-r img {
+        display: none;
+    }
+}
+
+@media (max-width:540px) {
+    /* 核心功能 */
+    .qklsj-hxgn {
+        padding-top: 2rem;
+    }
+    .qklsj-hxgn ul {
+        padding-right: .75rem;
+    }
+    .qklsj-hxgn ul li {
+        padding: 1rem 0 0 .75rem;
+        width: 50%;
+    }
+    .qklsj-hxgn ul li dl dt img {
+        max-width: 26%;
+    }
+    /* 特色功能 */
+    .qklsj-tsgn {
+        padding-top: 2rem;
+    }
+    .qklsj-tsgn ul {
+        padding-right: .75rem;
+    }
+    .qklsj-tsgn li {
+        padding-right: 0;
+    }
+    .qklsj-tsgn ul li .qklsj-tsgn-b dl {
+        height: 15.5rem;
+    }
+    .qklsj-tsgn ul li .qklsj-tsgn-b {
+        padding-top: .75rem;
+    }
+    .qklsj-tsgn dl dt img {
+        max-width: 22%;
+    }
+    .qklsj-jsys ul li dl dt img {
+        max-width: 14%;
+    }
+}
+
+@media (max-width:459px) {
+    .qklsj-tsgn ul li .qklsj-tsgn-b dl {
+        height: 17rem;
+    }
+    .qklsj-tsgn dl dd p {
+        padding: 0 .75rem;
+    }
+}
+
+@media (max-width:399px) {
+    /* 特色功能 */
+    .qklsj-tsgn dl dt {
+        padding-top: 1rem;
+    }
+    .qklsj-tsgn ul li .qklsj-tsgn-b dl {
+        height: 17rem;
+    }
+    .qklsj-tsgn dl dd p {
+        line-height: 1.3rem;
+    }
+    .qklsj-tsgn dl {
+        height: 13rem;
+    }
+}
+
+
+/* @media (max-width:767px) {
+    .qklsj-tsgn dl {
+        background: #ddd;
+        ;
+    }
+} */

@@ -1,0 +1,428 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+.dui-kf-box {
+    text-decoration: none;
+    background: no-repeat;
+    border-radius: 3px;
+    overflow: hidden;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    bottom: auto;
+    right: auto;
+    margin: -80px 0 0 -230px;
+    z-index: 99999;
+}
+
+.dui-kf-closebt {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 30px;
+}
+
+.dui-kf-box .kf-btn {
+    position: absolute;
+    top: 256px;
+    left: 100px;
+    width: inherit;
+}
+
+
+/*浮动*/
+
+.dui-kf-list {
+    background: #005bac;
+    width: 140px;
+    position: fixed;
+    height: 440px;
+    top: 100px;
+    bottom: auto;
+    right: 0;
+    z-index: 99999;
+}
+
+
+/*main css*/
+
+.dui-kf-main {
+    /*position: fixed;*/
+    POSITION: absolute;
+    z-index: 100;
+    width: 140px;
+    height: auto;
+}
+
+.dui-kf-main .open-im {
+    cursor: pointer;
+    margin-left: 100px;
+    width: 40px;
+    height: 133px;
+    background: url("../img/open_im.png")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/css/kf/open_im.png*/ no-repeat right top;
+    display: none;
+}
+
+.dui-kf-main .im_main {
+    background: #005bac;
+    border-radius: 8px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.dui-kf-main .close-im {
+    position: absolute;
+    right: 10px;
+    top: -12px;
+    z-index: 100;
+    width: 25px;
+    height: 25px;
+}
+
+.dui-kf-main .close-im img {
+    width: 100%;
+}
+
+.dui-kf-ul {
+    width: 130px;
+    margin: 0 auto;
+    padding: 0;
+    padding-top: 20px;
+}
+
+.dui-kf-ul li {
+    margin-bottom: 6px;
+}
+
+.dui-kf-ul li a {
+    display: block;
+    height: 50px;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    -ms-transition: all 0.4s;
+}
+
+.zx-hover {
+    background: url("../img/kf_1s.jpg")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/css/kf/kf_1s.jpg*/ no-repeat center top;
+    background-position: 0 -50px;
+}
+
+.zx-hover:hover {
+    background-position: 0 -50px;
+}
+
+.qq-hover {
+    background: url("../img/kf_2s.jpg")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/css/kf/kf_2s.jpg*/ no-repeat center top;
+}
+
+.qq-hover:hover {
+    background-position: 0 0px;
+}
+
+.sh-hover {
+    background: url("../img/kf_3s.jpg")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/css/kf/kf_3s.jpg*/ no-repeat center top;
+}
+
+.sh-hover:hover {
+    background-position: 0 -50px;
+}
+
+.dui-kf-d {
+    position: relative;
+    top: 4px;
+    left: 28px;
+    background: #f74c31;
+    animation: dot 1s infinite;
+    -moz-animation: dot 0.5s infinite;
+    /* Firefox */
+    -webkit-animation: dot 0.5s infinite;
+    /* Safari 和 Chrome */
+    -o-animation: dot 0.5s infinite;
+    /* Opera */
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    font-size: 0.4rem;
+    line-height: 18px;
+}
+
+@keyframes dot {
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes dot
+/* Firefox */
+
+{
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes dot
+/* Safari 和 Chrome */
+
+{
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-o-keyframes dot
+/* Opera */
+
+{
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/*手机版*/
+
+
+/* #LR_User_TextLink0,#LR_User_Icon0{
+	display: none !important;
+} */
+
+
+/*  */
+
+.bottom_fix {
+    display: none;
+}
+
+#M-LR_User_Icon0 {
+    display: block !important;
+}
+
+@media (max-width: 767px) {
+    #LR_User_TextLink0 {
+        display: none !important;
+    }
+    #LR_User_Icon0 {
+        display: block !important;
+    }
+    #M-LR_User_Icon0 {
+        display: none !important;
+    }
+    .bottom_fix {
+        display: block;
+    }
+}
+
+.bottom_fix {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    padding-top: 0.6rem;
+    background: #3298ee;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999999;
+}
+.bottom_left {
+    float: left;
+    width: 50%;
+}
+.bottom_fix li {
+    width: 28%;
+    margin: 0 10%;
+    float: left;
+    text-align: center;
+    color: #fff;
+    font-size: 13px;
+    list-style: none;
+    line-height: 0.9rem;
+}
+
+.bottom_fix a {
+    color: #fff;
+}
+
+.bottom_fix img {
+    width: 100%;
+    max-width: 640px;
+}
+
+.xuanfu_mi {
+    width: 16%;
+    position: absolute;
+    margin: -8% 0 0 42%;
+    display: -webkit-box;
+}
+
+.bottom_fix a {
+    color: #fff;
+    padding-bottom: 5px;
+    display: block;
+}
+
+.bottom_fix img {
+    width: 100%;
+    max-width: 640px;
+}
+
+.xuanfu_mi sup {
+    width: 20px;
+    height: 20px;
+    background: #fc0300;
+    border-radius: 50%;
+    position: absolute;
+    text-align: center;
+    color: #fff;
+    margin-left: -1.4rem;
+    font-size: 1rem;
+    line-height: 20px;
+    animation: dot 1s infinite;
+    -webkit-animation: dot 1s infinite;
+}
+
+.bottom_right {
+    float: right;
+    width: 50%;
+}
+
+@keyframes dot {
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes dot
+/* Firefox */
+
+{
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes dot
+/* Safari 和 Chrome */
+
+{
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-o-keyframes dot
+/* Opera */
+
+{
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .dui-kf-box {
+        display: none !important;
+    }
+}

@@ -1,0 +1,134 @@
+.app-swiper-img {
+    display: none;
+}
+
+.j-contact {
+    max-width: 960px;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.j-contact .j-tit {
+    font-size: 24px;
+    color: #999;
+    border-bottom: 1px #e3e3e3 solid;
+    position: relative;
+    line-height: 44px;
+}
+
+.j-contact .j-tit p {
+    color: #007bff;
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding-bottom: 1rem;
+}
+
+.j-contact .j-tit em {
+    display: block;
+    font-size: 22px;
+    color: #2c93e8;
+    line-height: 38px;
+    font-style: normal
+}
+
+.j-contact .j-conp {
+    padding-top: 13px
+}
+
+.j-contact .j-p {
+    font-size: 14px;
+    color: #999;
+    line-height: 34px
+}
+
+.j-contact .j-p b.b2 {
+    background-position: 0 -21px
+}
+
+.j-contact .j-p b.b3 {
+    background-position: 0 -42px
+}
+
+.j-contact .j-p b.b4 {
+    background-position: 0 -63px
+}
+
+.j-contact .j-p b.b5 {
+    background-position: 0 -84px
+}
+
+.j-contact .j-p b {
+    width: 21px;
+    height: 21px;
+    display: inline-block;
+    background: url("../img/j2-1.png")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/lxwm/j2.png*/ 0 0 no-repeat;
+    vertical-align: middle
+}
+
+.j-contact .j-p span {
+    padding-left: 10px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 40px;
+    padding-right: 10px;
+    color: #333;
+}
+
+.j-contact .j-right {
+    width: 80%;
+    border: 1px #dedede solid;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    margin-top: 0.6rem
+}
+
+.j-contact .j-right img {
+    width: 100%;
+}
+@media (min-width:992px) {
+    .app-swiper .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+    }
+    .app-swiper .swiper-pagination-bullet-active {
+        width: 20px;
+        border-radius: 5px;
+    }
+    .swiper-pagination {
+        bottom: 30px !important;
+    }
+}
+.app-swiper-img {
+    display: none;
+}
+.app-swiper img {
+    width: 100%;
+}
+@media (max-width:767px) {
+    .j-contact .j-tit p {
+        font-size: 18px;
+        padding-bottom: 0.5rem;
+    }
+ 
+    .j-contact .j-p span {
+        font-size: 15px;
+        padding-right: 0;
+    }
+    .app-swiper img {
+        display: none;
+    }
+    .app-swiper .app-swiper-img {
+        display: block;
+    }
+}
+
+#dituContent{
+    height: 550px;
+}
+@media (max-width: 768px) {
+    #dituContent{
+        height: 350px !important;
+    }
+}

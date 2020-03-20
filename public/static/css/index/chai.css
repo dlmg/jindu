@@ -1,0 +1,983 @@
+h2,
+h3,
+h4 {
+    color: #333;
+    line-height: 1;
+}
+
+.font-18 {
+    font-size: 1.125rem;
+}
+
+.font-14 {
+    font-size: .875rem;
+}
+
+.font-16 {
+    font-size: 1rem;
+}
+
+.font-20 {
+    font-size: 1.25rem;
+}
+
+.szzc-16 em {
+    font-size: 1rem !important;
+}
+
+.szzc-20 em {
+    font-size: 1.25rem !important;
+}
+
+.szzc-18 em {
+    font-size: 1.125rem;
+}
+
+.szzc-18 p {
+    font-size: .875rem;
+}
+
+.szzc-16 p {
+    font-size: 1rem;
+}
+
+.szzc-14 p {
+    font-size: .875rem;
+}
+
+
+/*banner*/
+
+.szzc-banner {
+    width: 100%;
+    height: 565px;
+    background: #1d0156 linear-gradient(to right, #1d0156, #2e0b52);
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.szzc-banner-img {
+    display: none;
+}
+
+
+/* 数字资产交易系统     */
+
+.szzc-szzc {
+    padding-top: 2.25rem;
+}
+
+.szzc-szzc ul {
+    padding-top: 1.25rem;
+}
+
+.szzc-szzc ul li {
+    text-align: center;
+}
+
+.szzc-szzc ul li dl dd {
+    padding-top: .875rem;
+}
+
+.szzc-szzc ul li dl dd h3 {
+    font-size: 1.25rem;
+    padding-bottom: .625rem;
+}
+
+.szzc-szzc ul li dl dd p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.szzc-title {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.szzc-title h2 {
+    display: block;
+    padding-bottom: 1rem;
+    font-size: 1.875rem;
+    background: linear-gradient(to bottom, #001357 0%, #0448b1 100%);
+    /* background-clip: text; */
+    -webkit-background-clip: text;
+    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.szzc-title p {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    color: #696969;
+}
+
+
+/* 特色功能 */
+
+.szzc-tsgn-b {
+    display: inline-block;
+    padding: 2.125rem 0 3.125rem;
+}
+
+.szzc-tsgn-b1 {
+    width: 100%;
+}
+
+.szzc-tsgn-b1-left {
+    display: inline-block;
+    float: left;
+    padding: 0 4rem 2.625rem 1.875rem;
+    background: url("../img/szzc-tsgn-b.png")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/szzc/szzc-tsgn-b.png*/ no-repeat;
+}
+
+.szzc-tsgn-b1-left h3 {
+    padding-top: 1.6875rem;
+    font-size: 1.875rem;
+    color: #fff;
+}
+
+.szzc-tsgn-b1-left h3 em {
+    padding-left: .5rem;
+    font-size: 1.375rem;
+    color: #fff;
+}
+
+.szzc-tsgn-b1-left img {
+    padding-top: 2rem;
+    padding-left: 1rem;
+}
+
+.szzc-tsgn .szzc-tsgn-b1-right {
+    display: inline-block;
+    padding-top: 5.75rem;
+}
+
+.szzc-tsgn .szzc-tsgn-b1-right ul li {
+    display: flex;
+    width: 100%;
+    padding-bottom: 1.375rem;
+    text-align: left;
+    align-items: center;
+}
+
+.szzc-tsgn .szzc-tsgn-b1-right ul li i img {
+    max-width: 1.875rem;
+}
+
+.szzc-tsgn .szzc-tsgn-b1-right ul li span {
+    padding-left: 1rem;
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.szzc-tsgn .szzc-tsgn-b2 {
+    clear: both;
+    padding-top: 3.125rem;
+}
+
+.szzc-tsgn .szzc-tsgn-b2 .szzc-tsgn-b1-left {
+    float: right;
+    padding: 0 1.875rem 2.625rem 4rem;
+    background-position: right;
+    text-align: right;
+}
+
+.szzc-tsgn .szzc-tsgn-b2 .szzc-tsgn-b1-left img {
+    padding-left: 0;
+    padding-right: 1rem;
+}
+
+.szzc-tsgn .szzc-tsgn-b2 .szzc-tsgn-b1-right {
+    padding-top: 8.5rem;
+}
+
+
+/*定制功能*/
+
+.szzc-dzgn {
+    clear: both;
+    background: url("../img/szzc-dzgn.png")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/szzc/szzc-dzgn.png*/ no-repeat;
+}
+
+.szzc-dzgn .szzc-title h2 {
+    padding: 2rem 0 1.8125rem;
+}
+
+.szzc-title2 h2 {
+    background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+    -webkit-background-clip: text;
+    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.szzc-dzgn ul {
+    height: 18.25rem;
+    /* background: #fff; */
+    box-shadow: 0 6px 12px rgba(1, 41, 106, .2);
+}
+
+.szzc-dzgn ul li {
+    padding-top: 1.875rem;
+    background: #fff;
+}
+
+.szzc-dzgn ul li dl dd h3 {
+    padding: 1.5rem 0 .8rem;
+    font-size: 1.375rem;
+    color: #333;
+}
+
+.szzc-dzgn ul li dl dd p {
+    padding: 0 1.5rem;
+    font-size: .875rem;
+    line-height: 1.375rem;
+    color: #666;
+}
+
+.szzc-dzgn ul li {
+    width: 19.8%;
+    text-align: center;
+    transition: all .3s;
+}
+
+.szzc-dzgn ul li.active {
+    position: relative;
+    z-index: 99;
+    top: -.4625rem;
+    width: 20.8%;
+    height: 19.2rem;
+    /* background: rgba(4, 72, 177, .5); */
+    background: #0448b1;
+}
+
+.szzc-dzgn ul li.active dl dd h3 {
+    color: #fff;
+}
+
+.szzc-dzgn ul li.active dl dd p {
+    color: #e5e5e5;
+}
+
+
+/* 非凡主题    */
+
+.aui-nav-content-box {
+    padding-top: 2rem;
+}
+
+
+/* .aui-nav-content-box .aui-nav-list-box {
+    padding-top: 10rem;
+} */
+
+.aui-nav-list-box ul li {
+    margin-bottom: 1rem;
+}
+
+.aui-nav-list-box ul li a {
+    font-size: 1.40rem;
+    color: #bbb;
+}
+
+.aui-nav-list-tab {
+    padding-top: 3.7rem;
+}
+
+.aui-nav-list-tab p {
+    font-size: 1.125rem;
+    color: #666;
+    text-indent: 2rem;
+    line-height: 2.4rem;
+}
+
+
+/*     
+    .aui-nav-list-box ul .aui-current a {
+        background: linear-gradient(to bottom, #001357 0%, #0448b1 100%);
+        -webkit-background-clip: text;
+        text-fill-color: transparent;
+        -webkit-text-fill-color: transparent;
+    } */
+
+.szzc-ffzt {
+    padding-top: 3.625rem;
+}
+
+
+/*交易系统7.0版介绍*/
+
+.szzc-zcgg {
+    padding-top: 3.125rem;
+}
+
+
+/*支持杠杆交易*/
+
+.szzc-zcgg-b {
+    padding-top: 1.5rem;
+    text-align: center;
+}
+
+.szzc-title2 h2 {
+    color: #fff;
+}
+
+.szzc-title2 p {
+    color: #fff;
+}
+
+
+/*选择金博*/
+
+.szzc-title i {
+    padding: 0 .2rem;
+    font-size: .875rem;
+}
+
+.szzc-title img {
+    padding: .25rem 0 .875rem 0;
+}
+
+
+/* 移动端全新改版 */
+
+.szzc-zcgg-b-img {
+    display: none;
+}
+
+
+/*产品优势*/
+
+.szzc-cpys ul {
+    padding-top: .875rem;
+}
+
+.szzc-cpys ul li {
+    margin-bottom: 1.3125rem;
+    padding: 0 .6875rem;
+}
+
+.szzc-cpys ul li dl {
+    position: relative;
+    height: 20rem;
+    border-radius: .1875rem;
+    background: url("../img/szzc-cpys.png")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/szzc/szzc-cpys.png*/ no-repeat -.5625rem -.125rem;
+    text-align: center;
+}
+
+.szzc-cpys ul li:nth-of-type(2) dl {
+    background-position: -18.625rem -.125rem;
+}
+
+.szzc-cpys ul li:nth-of-type(3) dl {
+    background-position: -36.875rem -.125rem;
+}
+
+.szzc-cpys ul li:nth-of-type(4) dl {
+    background-position: -55.1875rem -.125rem;
+}
+
+.szzc-cpys ul li:nth-of-type(5) dl {
+    background-position: -73.4375rem -.125rem;
+}
+
+.szzc-cpys ul li:nth-of-type(6) dl {
+    background-position: -91.6875rem -.125rem;
+}
+
+.szzc-cpys ul li:nth-of-type(7) dl {
+    background-position: -109.9375rem -.125rem;
+}
+
+.szzc-cpys ul li:nth-of-type(8) dl {
+    background-position: -128.125rem -.125rem;
+}
+
+.szzc-cpys ul li dl dt {
+    position: relative;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: rgba(67, 99, 236, 0.4);
+    border-radius: .1875rem;
+}
+
+.szzc-cpys ul li dl dd {
+    position: absolute;
+    top: 5.125rem;
+    padding: 0 1rem;
+}
+
+.szzc-cpys ul li dl dd em {
+    color: #fff;
+}
+
+.szzc-cpys ul li dl dd i {
+    display: block;
+    width: 2rem;
+    height: .1875rem;
+    margin: .875rem auto;
+    background: #fff;
+}
+
+.szzc-cpys ul li dl dd p {
+    line-height: 1.5rem;
+    color: #fff;
+}
+
+.szzc-cpys ul li:hover dl dt {
+    display: block;
+}
+
+
+/*技术优势*/
+
+.szzc-jyss {
+    margin-top: 1.8125rem;
+    padding-bottom: 3.125rem;
+    background: url("../img/szzc-jyss.jpg")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/szzc/szzc-jyss.jpg*/;
+}
+
+.szzc-jyss .szzc-title2 h2 {
+    padding-bottom: 0;
+}
+
+.szzc-jyss ul li {
+    padding-top: 4rem;
+}
+
+.szzc-jyss ul li dl {
+    height: 6.25rem;
+    background: #fff;
+    text-align: center;
+}
+
+.szzc-jyss ul li dl dt {
+    display: inline-flex;
+    margin-top: -2.125rem;
+}
+
+.szzc-zcsz {
+    padding-top: 2.8125rem;
+}
+
+
+/*百余人团队为您提供VIP级服务*/
+
+.szzc-bry {
+    padding-bottom: 3.125rem;
+}
+
+.szzc-bry-b {
+    padding-top: 1.25rem;
+}
+
+.swiper-container {
+    height: 100%;
+}
+
+.swiper-slide {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    height: 370px;
+    text-align: center;
+    font-size: 18px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    transition: 300ms;
+    transform: scale(1);
+}
+
+.swiper-slide-active,
+.swiper-slide-duplicate-active {
+    transform: scale(1.8) !important;
+    z-index: 999;
+}
+
+.swiper-slide img {
+    max-width: 100%;
+}
+
+.swiper-container-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+    bottom: 10px !important;
+}
+
+.swiper-pagination-bullet {
+    background: #007aff;
+}
+
+@media (max-width: 1199px) {
+    .szzc-title h2 {
+        font-size: 1.5rem;
+    }
+    /* 特色功能 */
+    .szzc-tsgn .szzc-tsgn-b1-right {
+        padding-top: 5.5rem;
+    }
+    .szzc-tsgn .szzc-tsgn-b1-right ul li {
+        padding-bottom: 1rem;
+    }
+    .szzc-tsgn .szzc-tsgn-b1-right ul li span {
+        font-size: 1rem;
+    }
+    .szzc-tsgn .szzc-tsgn-b2 .szzc-tsgn-b1-right {
+        padding-top: 6rem;
+        padding-left: 4rem;
+    }
+    /* 定制功能    */
+    .szzc-dzgn ul li dl dd h3 {
+        padding-top: 1rem;
+        font-size: 1.25rem;
+    }
+    .szzc-dzgn ul li dl dd p {
+        padding: 0 1rem;
+    }
+    /*产品优势*/
+    .szzc-cpys ul li dl dd {
+        top: 4.5rem;
+    }
+    /*非凡主题*/
+    .aui-nav-list-box ul li {
+        margin-bottom: .5rem;
+    }
+    .aui-nav-list-box ul li a {
+        font-size: 1.125rem;
+    }
+    /* 产品案例 */
+    .swiper-slide {
+        height: 294px;
+    }
+}
+
+
+/* @media (min-width:992px) {
+    .foot-info {
+        padding-top: 1px;
+    }
+} */
+
+@media (max-width: 991px) {
+    .szzc-title h2 {
+        font-size: 1.5rem;
+    }
+    /* 特色功能 */
+    .szzc-tsgn-b1-left {
+        padding: 0 1rem 1.5rem 1rem;
+    }
+    .szzc-tsgn-b1-left h3 {
+        font-size: 1.5rem;
+    }
+    .szzc-tsgn-b1-left h3 em {
+        padding-left: .3rem;
+        font-size: 1.125rem;
+    }
+    .szzc-tsgn-b1-left img {
+        padding-top: 1rem;
+        padding-left: 0;
+    }
+    .szzc-tsgn .szzc-tsgn-b1-right {
+        padding-top: 0;
+    }
+    .szzc-tsgn .szzc-tsgn-b1-right ul li {
+        display: inline-block;
+        padding-bottom: .8rem;
+    }
+    .szzc-tsgn .szzc-tsgn-b1-right ul li i img {
+        max-width: 1.25rem;
+    }
+    .szzc-tsgn .szzc-tsgn-b1-right ul li span {
+        display: inline-flex;
+        width: 90%;
+        padding-left: .5rem;
+        line-height: 1.5rem;
+    }
+    .szzc-tsgn .szzc-tsgn-b2 .szzc-tsgn-b1-right {
+        padding-top: 1rem;
+    }
+    .szzc-tsgn .szzc-tsgn-b2 .szzc-tsgn-b1-left {
+        padding: 0 1rem 1.5em 1rem;
+    }
+    .szzc-tsgn .szzc-tsgn-b2 .szzc-tsgn-b1-left img {
+        padding-right: 0;
+    }
+    /*产品优势*/
+    .szzc-cpys ul li {
+        padding: 0 .75rem;
+    }
+    .szzc-cpys ul li dl {
+        height: 19.5rem;
+    }
+    .szzc-cpys ul li dl dd em {
+        font-size: 1rem !important
+    }
+    .szzc-cpys ul li dl dd {
+        top: 2.5rem;
+        padding: 0;
+    }
+    .szzc-cpys ul li dl dd p {
+        padding: 0 .5rem;
+    }
+    /*数字资产交易系统*/
+    .szzc-szzc ul li dl dd {
+        width: auto;
+        padding: .875rem .75rem 0;
+    }
+    .szzc-szzc ul li dl dd h3 {
+        font-size: 1.125rem;
+    }
+    .szzc-szzc ul li dl dd p {
+        font-size: .875rem;
+    }
+    /* 定制功能 */
+    .szzc-dzgn ul li dl dd h3 {
+        padding: .875rem 0 .5rem;
+        font-size: 1rem;
+    }
+    .szzc-dzgn ul li dl dd p {
+        padding: 0 .75rem;
+        font-size: .75rem;
+    }
+    .szzc-dzgn ul {
+        height: 19.5rem;
+    }
+    .szzc-dzgn ul li.active {
+        top: -.4rem;
+        height: 20.5rem;
+        background: #0448b1;
+    }
+    .szzc-jyss ul li {
+        padding: 4rem .75rem 0;
+    }
+    /* 非凡主题 */
+    .aui-nav-list-box ul li a {
+        font-size: 1rem;
+    }
+    .aui-nav-list-tab {
+        padding-top: 0;
+        padding-left: 0;
+    }
+    .aui-nav-list-tab p {
+        font-size: 1rem;
+        line-height: 1.75rem;
+    }
+    /* 技术优势 */
+    .szzc-jyss ul li dl dd {
+        line-height: 1.5;
+        padding: 0 .75rem;
+    }
+    .szzc-jyss ul li dl {
+        height: 6.5rem;
+    }
+    /* 产品案例 */
+    .swiper-slide {
+        height: 218px;
+    }
+}
+
+@media (max-width: 767px) {
+    .szzc-title p {
+        font-size: .75rem;
+    }
+    .szzc-banner {
+        padding-bottom: .75rem;
+        max-width: 100%;
+    }
+    .szzc-zcgg {
+        padding-top: 2.5rem;
+    }
+    p {
+        line-height: 1.375rem !important;
+    }
+    .szzc-zcgg-b {
+        padding-top: .875rem;
+    }
+    /* banner轮播图 */
+    .szzc-banner img {
+        display: none;
+    }
+    .szzc-banner .szzc-banner-img {
+        display: block;
+    }
+    /* 数字资产交易系统 */
+    .szzc-szzc ul {
+        padding-top: .3rem;
+    }
+    .szzc-szzc ul li {
+        width: 50%;
+        padding-bottom: 1rem;
+    }
+    .szzc-szzc ul li dl dt img {
+        max-width: 25%;
+    }
+    .szzc-szzc ul li:nth-child(5) {
+        display: none;
+    }
+    .szzc-szzc ul li dl dd {
+        padding-top: .5rem;
+    }
+    .szzc-szzc ul li dl dd h3 {
+        padding-bottom: .2rem;
+        font-size: 1rem;
+    }
+    .szzc-szzc ul li dl dd p {
+        font-size: .75rem;
+    }
+    /* 特色功能 */
+    .szzc-tsgn-b1 {
+        padding: 0;
+        margin: 0;
+    }
+    .szzc-tsgn-b1-left {
+        padding: 0 0 1.5rem 1rem;
+    }
+    .szzc-tsgn-b1-left h3 {
+        font-size: 1.25rem;
+    }
+    .szzc-tsgn-b1-left h3 em {
+        font-size: 1rem;
+    }
+    .szzc-tsgn .szzc-tsgn-b2 {
+        padding: 0;
+        margin: 0;
+    }
+    .szzc-tsgn .szzc-tsgn-b1-right {
+        padding: 0;
+    }
+    .szzc-tsgn .szzc-tsgn-b1-right ul {
+        padding: 1rem 0
+    }
+    .szzc-tsgn .szzc-tsgn-b1-right ul li {
+        padding-bottom: 0;
+    }
+    .szzc-tsgn .szzc-tsgn-b1-right ul li i img {
+        max-width: 1rem;
+    }
+    .szzc-tsgn .szzc-tsgn-b1-right ul li span {
+        padding-left: .3rem;
+        font-size: .75rem;
+        line-height: 1.3rem;
+    }
+    .szzc-tsgn .szzc-tsgn-b2 .szzc-tsgn-b1-right {
+        padding: 0;
+    }
+    .szzc-tsgn .szzc-tsgn-b2 .szzc-tsgn-b1-left {
+        padding: 0 1rem 1.5em 0;
+    }
+    .szzc-title h2 {
+        font-size: 1.25rem;
+        padding-bottom: .81rem;
+    }
+    .szzc-tsgn {
+        padding-top: 1.125rem;
+    }
+    .szzc-szzc {
+        padding-top: 1.5rem;
+    }
+    .szzc-tsgn-b {
+        padding-top: .5rem;
+        padding-bottom: 1rem;
+    }
+    /* 定制功能 */
+    .szzc-dzgn ul {
+        height: auto;
+    }
+    .szzc-dzgn ul li {
+        width: 50%;
+        padding: 1.25rem 0;
+    }
+    .szzc-dzgn ul li dl dt img {
+        max-width: 25%;
+    }
+    .szzc-dzgn ul li:nth-child(5) {
+        display: none;
+    }
+    .szzc-dzgn .szzc-title h2 {
+        padding: 1.25rem 0 1.5rem;
+        font-size: 1.25rem;
+    }
+    .szzc-title {
+        width: auto;
+        padding: 0 .9375rem;
+    }
+    .szzc-dzgn ul li.active {
+        top: 0;
+        width: 50%;
+        height: auto;
+    }
+    /* 非法主题 */
+    .aui-nav-list-tab p {
+        display: none;
+    }
+    .szzc-ffzt {
+        padding-top: 1rem;
+    }
+    .aui-nav-content-box {
+        padding-top: 0;
+    }
+    .aui-nav-content-box .aui-nav-list-box {
+        padding-top: .5rem;
+    }
+    .aui-nav-list-box ul li {
+        float: left;
+        width: 50%;
+        margin-bottom: .3rem;
+        text-align: center;
+    }
+    /*移动端全新改版*/
+    .szzc-ydd .szzc-title h2 {
+        padding-bottom: 0;
+    }
+    .szzc-ydd .szzc-title p {
+        display: none;
+    }
+    .szzc-zcgg-b .szzc-zcgg-b-img {
+        display: block;
+    }
+    /*产品优势*/
+    .szzc-cpys {
+        padding-top: 2rem;
+    }
+    .szzc-jyss {
+        margin-top: 1.125rem;
+        padding-bottom: 2rem;
+    }
+    .szzc-jyss .szzc-title2 h2 {
+        padding-bottom: .6875rem;
+    }
+    .szzc-jyss ul li dl dt img {
+        width: 85%;
+        height: 85%;
+        margin: 0 auto;
+    }
+    .szzc-jyss ul li dl dt {
+        margin-top: -1.65rem;
+    }
+    .szzc-cpys ul {
+        padding-top: .25rem;
+        padding-left: .75rem;
+    }
+    .szzc-cpys ul li {
+        width: 50%;
+        margin-bottom: .75rem;
+        padding: 0 .75rem 0 0;
+    }
+    .szzc-cpys ul li dl {
+        height: 12.5rem;
+    }
+    .szzc-cpys ul li dl dd {
+        top: 2rem;
+        padding: 0 .75rem;
+    }
+    .szzc-cpys ul li dl dd p {
+        padding: 0;
+        font-size: .75rem;
+    }
+    .szzc-cpys ul li dl dd i {
+        margin: .5rem auto;
+    }
+    /*产品优势*/
+    .szzc-jyss ul {
+        padding-left: .75rem;
+    }
+    .szzc-jyss ul li {
+        width: 33%;
+        padding: 2.25rem .75rem 0 0;
+    }
+    .szzc-jyss ul li dl dd {
+        line-height: 1.375rem;
+    }
+    .szzc-jyss ul li dl dd em {
+        font-size: .875rem !important;
+    }
+    /* 上百人团队 */
+    .szzc-zcsz {
+        padding-top: 2.1rem;
+    }
+    .szzc-bry {
+        padding-bottom: 2.5rem;
+    }
+    .szzc-bry-b {
+        padding-top: 1.25rem;
+    }
+    /* 产品案例 */
+    .swiper-slide {
+        height: 161px;
+    }
+}
+
+@media (max-width: 539px) {
+    /* 产品案例 */
+    .szzc-bry-b {
+        padding-top: 1rem;
+    }
+    .swiper-slide {
+        height: 156px;
+    }
+}
+
+@media (max-width: 499px) {
+    .szzc-cpys ul li dl {
+        height: 15.5rem;
+    }
+    /* 技术优势 */
+    .szzc-jyss ul li dl {
+        height: 6.2rem;
+    }
+    .szzc-jyss ul li dl dd {
+        padding: 0 .6rem;
+    }
+}
+
+@media (max-width: 499px) {
+    .szzc-bry-b {
+        padding-top: .8rem;
+    }
+    .swiper-slide {
+        height: 148px;
+    }
+}
+
+@media (max-width: 449px) {
+    .szzc-bry-b {
+        padding-top: .6rem;
+    }
+    .swiper-slide {
+        height: 132px;
+    }
+}
+
+@media (max-width: 399px) {
+    .szzc-cpys ul li dl dd {
+        top: 1.25rem;
+    }
+    /* 产品优势 */
+    /* .szzc-cpys ul li {
+        width: 283px;
+    } */
+    .szzc-cpys ul li dl {
+        height: 13.5rem;
+    }
+    /* 技术优势 */
+    .szzc-jyss ul li {
+        width: 50%;
+    }
+    /* 产品案例 */
+    .swiper-slide {
+        height: 114px;
+    }
+}

@@ -1,0 +1,112 @@
+
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: normal;
+  vertical-align: baseline;
+  /*font-family: "Microsoft Sans Serif";*/
+  font-family: "pingFang-Sc-Medium";
+}
+/*清除浮动  自适应高度*/
+.clearfix:after {
+  content: "";
+  display: block;
+  height: 0;
+  line-height: 0;
+  clear: both;
+  visibility: hidden;
+}
+  li {
+    list-style: none;
+  }
+  #app{
+      padding: 30px;
+  
+  }
+  #app .box{
+      width: 100%;
+      height: auto;
+      background: #fff;
+  }
+  #app .box>ul{
+    position: relative;
+    background: #eee;
+    width: 2px;
+    left: 96px;
+    padding-top: 35px;
+  }
+  #app li{
+    position: relative;
+    left: -80px;
+    width: 100vw;
+    min-height: 50px;
+    margin-bottom: 25px;
+    line-height: 50px;
+  }
+  #app li .buZhouNumber{
+    float: left;
+    width: 65px;
+  }
+  #app li span{
+    width: 12px;
+    border: 3px solid #00c6e2;
+    height: 12px;
+    display: block;
+    box-sizing: border-box;
+    border-radius: 50%;
+    left: 75px;
+    float: left;
+    background: #fff;
+    top: 21px;
+    position: absolute;
+  }
+  #app  .conBox{
+    width: 766px;
+    min-height: 50px;
+    float: left;
+    padding-left: 46px;
+    margin-left: 47px;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid #eee;
+  }
+  #app .buZhouNumber {
+    color: #25cee6;
+    position: relative;
+    font-size: 16px;
+  }
+  #app  .conBox img{
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    position: absolute;
+    top: 18px;
+    left: 17px;
+  }
+  #app .title{
+    float: left;
+    color: #595959;
+  }
+  #app  time{
+    float: right;
+    color: #595959;
+    padding-right: 20px;
+    font-size: 12px;
+  }

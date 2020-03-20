@@ -1,0 +1,36 @@
+{load href="__JS__/jquery-3.4.1.min.js"/}
+<script src="__STATIC__/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="__STATIC__/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="__STATIC__/assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="__STATIC__/assets/vendor/chartist/js/chartist.min.js"></script>
+<script src="__STATIC__/assets/scripts/klorofil-common.js"></script>
+
+{load href="__LAYUI__/layui.js"/}
+{load href="__JS__/admin/layout.js"/}
+<script>
+    layui.use([ 'layer'], function () {
+        var $ = layui.jquery,
+            layer = layui.layer;
+        layuimini.init('');
+    });
+    // 修改密码
+function editPassword() {
+var index = layer.open({
+type: 2,
+title: '<i class=iconfont>&#xe7c7;</i> 修改密码',
+area: ['550px', '650px'],
+content: ['{:url("user/edit")}', 'no'],
+skin: 'layui-layer-molv',
+btn: ['保存', '取消'],
+btnAlign: 'c',
+yes: function(index, layero){
+var submit = layero.find('iframe').contents().find("#submit");// #subBtn为页面层提交按钮ID
+submit.click();// 触发提交监听
+return false;
+},
+btn2:function (index,layero) {
+layer.close(index);
+}
+});
+}
+</script>

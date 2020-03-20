@@ -1,0 +1,55 @@
+{include file="public/header"}
+
+{include file="public/nav"}
+
+<div class="main">
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="panel">
+                {if condition="$count neq null"}
+                <div class="panel-heading">
+                    <h3 class="panel-title">当前您有{$count}个项目</h3>
+                </div>
+                {else}
+                <div class="panel-heading">
+                    <h3 class="panel-title">当前您还没有项目</h3>
+                </div>
+                {/if}
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>项目名称</th>
+                            <th>提交时间</th>
+                            <th>项目状态</th>
+                            <th>查看</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name='data' id='data' key='kkk'}
+                        <tr>
+                            <td>{$kkk}</td>
+                            <td>{$data.proName}</td>
+                            <td>{$data.create_time}</td>
+                            {if $data.status==0}
+                            <td>正在进行</td>
+                            {else}
+                            <td>已完成</td>
+                            {/if}
+                            <td><a href="{:url('project/detail',array('id'=>$data.id))}">查看详情</a></td>
+                        </tr>
+                        {/volist}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- END MAIN CONTENT -->
+</div>
+
+
+{include file='public/footer'}

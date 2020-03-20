@@ -1,0 +1,13 @@
+/*企业荣誉*/
+img {
+  max-width: 100%;
+}
+
+body {
+  font-size: 1rem;
+}
+
+p,
+em {
+  color: #2b343f;
+}

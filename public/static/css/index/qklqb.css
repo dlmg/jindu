@@ -1,0 +1,572 @@
+.qklqb-title {
+    text-align: center;
+}
+
+.qklqb-title h2 {
+    font-size: 2rem;
+    color: #2c2c2c;
+}
+
+.qklqb-title h2 em {
+    padding: 0 1.25rem;
+}
+
+.qklqb-title2 h2 em {
+    color: #fff;
+}
+
+.qklqb-banner-img {
+    display: none;
+}
+
+
+/* 产品介绍 */
+
+.qklqb-content {
+    margin-top: 2rem;
+    background: url("../img/qklqb-content.png")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/qklqb/qklqb-content.png*/ no-repeat;
+}
+
+.qklqb-cpjs {
+    padding: 3.625rem 0;
+    background: #f7f9ff;
+}
+
+.qklqb-cpjs-b {
+    padding-top: 3rem;
+}
+
+.qklqb-cpjs-b-l {
+    padding-top: 3.56rem;
+}
+
+.qklqb-cpjs-b-l h3 {
+    padding-bottom: 1.375rem;
+    font-size: 1.875rem;
+    color: #2c2c2c;
+}
+
+.qklqb-cpjs-b-l p {
+    font-size: 1.125rem;
+    line-height: 2rem;
+    color: #505050;
+}
+
+.more {
+    display: flex;
+    width: 8.75rem;
+    height: 2.8125rem;
+    margin-top: 1.25rem;
+    border-radius: 1.375rem;
+    font-size: 1.125rem;
+    color: #fff;
+    background: linear-gradient(to right, #00f1ff, #4c4bfe);
+    box-shadow: 0 3px 8px rgba(64, 100, 254, .3);
+    justify-content: center;
+    align-items: center;
+}
+
+.more:hover {
+    color: #fff;
+}
+
+
+/* 核心板块 */
+
+.qklqb-hxbk {
+    padding-top: 5rem;
+}
+
+.qklqb-hxbk-b {
+    display: flex;
+    order: 1;
+    padding-top: 0;
+}
+
+.qklqb-hxbk-b .qklqb-cpjs-b-l {
+    padding-top: 5.5rem;
+}
+
+
+/* 产品优势 */
+
+.qklqb-cpys {
+    padding-top: 3.75rem;
+}
+
+.qklqb-cpys-b {
+    padding-top: 2rem;
+}
+
+
+/* 应用场景 */
+
+.qklqb-tsgn {
+    margin-top: 2.625rem;
+    padding: 2.875rem 0;
+    background: url("../img/img-01.png")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/qklqb/img-01.png*/;
+}
+
+.qklqb-tsgn ul {
+    padding-top: 2rem;
+}
+
+.qklqb-tsgn ul li {
+    padding: 0.625rem;
+}
+
+.qklqb-tsgn ul li dl {
+    height: 18.125rem;
+    border-radius: .375rem;
+    background: #fff;
+    text-align: center;
+}
+
+.qklqb-tsgn ul li dl dt {
+    padding-top: 1.625rem;
+}
+
+.qklqb-tsgn ul li dl dd {
+    padding-top: 1.375rem;
+}
+
+.qklqb-tsgn ul li dl dd h3 {
+    padding-bottom: .75rem;
+    font-size: 1.5rem;
+    color: #2c2c2c;
+}
+
+.qklqb-tsgn ul li dl dd p {
+    padding: 0 1.25rem;
+    font-size: .9375rem;
+    line-height: 1.5rem;
+    color: #505050;
+}
+
+
+/* 案例展示 */
+
+.qklqb-alzs {
+    padding-top: 3.55rem;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-wrapper {
+    padding-top: 2rem;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+}
+
+.swiper-slide dl dd {
+    padding-top: 1.125rem;
+    font-size: 1.25rem;
+    color: #2c2c2c;
+}
+
+.swiper-pagination {
+    display: none;
+}
+
+.swiper-button-prev {
+    background: url("../img/icon-17.png")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/qklqb/icon-17.png*/ no-repeat !important;
+}
+
+.swiper-button-next {
+    background: url("../img/icon-16.png")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/qklqb/icon-16.png*/ no-repeat !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    width: 22px;
+    height: 37px;
+}
+
+
+/* 技术优势 */
+
+.qklqb-jsys {
+    padding-top: 5rem;
+    padding-bottom: 3.75rem;
+}
+
+.qklqb-jsys-b {
+    margin-top: 2.5rem;
+    background: url("../img/qklqb-jsys-dl.png")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/qklqb/qklqb-jsys-dl.png*/ no-repeat left 13px;
+}
+
+.qklqb-jsys ul li dl {
+    display: flex;
+    width: 100%;
+    height: 4.375rem;
+    margin-bottom: 1.25rem;
+}
+
+.qklqb-jsys ul li dl dt {
+    flex: 13%;
+    display: flex;
+    font-size: 2.625rem;
+    font-weight: 700;
+    color: rgba(32, 171, 255, .3);
+    justify-content: center;
+    align-items: center;
+}
+
+.qklqb-jsys ul li dl dd {
+    flex: 87%;
+    display: flex;
+    padding-left: 3.5rem;
+    background: url("../img/chang.png")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/qklqb/img-17.png*/ no-repeat;
+    color: #505050;
+    align-items: center;
+}
+
+.qklqb-jsys ul li:hover dl dt {
+    color: #20abff;
+}
+
+.qklqb-jsys ul li:hover dl dd {
+    background: url("../img/img-06.png")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/qklqb/img-06.png*/ no-repeat;
+    color: #fff;
+}
+
+@media (max-width:1199px) {
+    .qklqb-title h2 {
+        font-size: 1.75rem;
+    }
+    .qklqb-title h2 em {
+        padding: 0 1rem;
+    }
+    /* 产品介绍 */
+    .qklqb-cpjs-b {
+        padding-top: 2rem;
+    }
+    .qklqb-cpjs-b-l h3 {
+        padding-bottom: 1rem;
+        font-size: 1.75rem;
+    }
+    .qklqb-cpjs-b-l {
+        padding-top: 2.5rem;
+    }
+    .qklqb-cpjs-b-l p {
+        font-size: 1rem;
+    }
+    /* 核心板块 */
+    .qklqb-hxbk {
+        padding-top: 4rem;
+    }
+    .qklqb-content {
+        margin: 0;
+    }
+    .qklqb-cpjs-b:nth-of-type(1) {
+        padding-top: 1.5rem;
+    }
+    /* 产品优势 */
+    .qklqb-cpys {
+        padding-top: 3rem;
+    }
+    .qklqb-cpys-b {
+        padding-top: 1.5rem;
+    }
+    /* 应用场景 */
+    .qklqb-tsgn ul li dl dt {
+        padding-top: 1.5rem;
+    }
+    .qklqb-tsgn ul li dl dt img {
+        max-width: 48%;
+    }
+    .qklqb-tsgn ul li dl dd {
+        padding-top: 1rem;
+    }
+    .qklqb-tsgn ul li dl dd h3 {
+        font-size: 1.25rem;
+    }
+    .qklqb-tsgn ul li dl dd p {
+        padding: 0 1rem;
+        font-size: .875rem;
+    }
+    /* 案例展示 */
+    .swiper-wrapper {
+        padding-top: 1rem;
+    }
+    .swiper-slide dl dd {
+        padding-top: 1rem;
+        font-size: 1.125rem;
+    }
+    /* 技术优势 */
+    .qklqb-jsys {
+        padding-top: 3.75rem;
+    }
+    .qklqb-jsys-b {
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width:991px) {
+    /* 产品介绍 */
+    .qklqb-cpjs {
+        padding: 3rem 0;
+    }
+    .qklqb-cpjs-b {
+        padding-top: 1.5rem;
+    }
+    .qklqb-title h2 {
+        font-size: 1.5rem;
+    }
+    .qklqb-cpjs-b-l h3 {
+        padding-bottom: .875rem;
+        font-size: 1.25rem;
+    }
+    .qklqb-cpjs-b-l {
+        padding: 1rem 0 0 0;
+    }
+    .qklqb-cpjs-b-l p {
+        font-size: .875rem;
+        line-height: 1.5rem;
+    }
+    .more {
+        width: 8rem;
+        height: 2.5rem;
+        margin-top: 1.5rem;
+        font-size: 1rem;
+    }
+    /* 核心板块 */
+    .qklqb-hxbk {
+        padding-top: 3rem;
+    }
+    .qklqb-hxbk-b .qklqb-cpjs-b-l {
+        padding-top: 3.5rem;
+    }
+    .qklqb-hxbk-b .qklqb-cpjs-b-tx {
+        padding-top: 5rem;
+        padding-left: 2.5rem;
+        flex: 0 0 40%;
+        max-width: 40%;
+    }
+    /* 应用场景 */
+    .qklqb-tsgn {
+        margin-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    .qklqb-tsgn ul {
+        padding-top: 1rem;
+    }
+    /* 案例展示 */
+    .swiper-wrapper {
+        padding-top: 1rem;
+    }
+    .swiper-slide dl dd {
+        font-size: 1rem;
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+        background-size: 100% !important;
+        outline: none;
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 17px !important;
+    }
+    /* 技术优势、 */
+    .qklqb-jsys {
+        padding-bottom: 2rem;
+    }
+    .qklqb-jsys ul li dl dt {
+        flex: 18%;
+    }
+    .qklqb-jsys ul li dl dd {
+        flex: 82%;
+        padding-left: 2.5rem;
+        padding-right: 1rem;
+        font-size: .875rem;
+        line-height: 1.5rem;
+    }
+}
+
+@media (max-width:767px) {
+    .qklqb-banner img {
+        display: none;
+    }
+    .qklqb-banner .qklqb-banner-img {
+        display: block;
+    }
+    /* 产品介绍、 */
+    .qklqb-title h2 {
+        font-size: 1.125rem;
+    }
+    .qklqb-title h2 em {
+        padding: 0 .5rem;
+    }
+    .qklqb-title h2 img {
+        max-width: 20%;
+    }
+    .qklqb-cpjs {
+        padding: 2rem 0;
+        text-align: center;
+    }
+    .qklqb-cpjs-b-l h3 {
+        padding-bottom: 0.5rem;
+        font-size: 1rem;
+    }
+    .qklqb-cpjs-b-l p {
+        font-size: .75rem;
+    }
+    .qklqb-cpjs-b {
+        padding-top: 1.25rem;
+    }
+    .qklqb-cpjs-b,
+    .qklqb-hxbk-b {
+        display: flex;
+        order: 1;
+    }
+    .qklqb-cpjs-b-l {
+        padding-top: 1.5rem;
+    }
+    .qklqb-cpjs-b-r {
+        padding: 0;
+        order: -2;
+    }
+    .qklqb-cpjs-b-r img {
+        max-width: 50%;
+    }
+    .more {
+        width: 7rem;
+        margin: 1rem auto 0;
+        font-size: .875rem;
+    }
+    .offset-1 {
+        margin-left: 0;
+    }
+    /* 核心板块 */
+    .qklqb-hxbk {
+        padding-top: 2rem;
+        text-align: center;
+    }
+    .qklqb-hxbk-b {
+        padding-top: 1.5rem;
+    }
+    .qklqb-cpjs-b-r4 {
+        order: 1;
+        padding-top: 2rem;
+    }
+    .qklqb-hxbk-b .qklqb-cpjs-b-tx {
+        padding-left: 0;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .qklqb-hxbk-b .qklqb-cpjs-b-l {
+        padding-top: 1.5rem;
+    }
+    /* 产品优势 */
+    .qklqb-cpys {
+        padding-top: 2.5rem;
+    }
+    .qklqb-cpys-b {
+        padding-top: 1rem;
+    }
+    /* 应用场景 */
+    .qklqb-tsgn {
+        padding-top: 2rem;
+        padding-bottom: 1.5rem;
+    }
+    .qklqb-tsgn ul {
+        padding-top: 1.25rem;
+        padding-right: .75rem;
+    }
+    .qklqb-tsgn ul li {
+        width: 50%;
+        padding: 0 0 .75rem .75rem;
+    }
+    .qklqb-tsgn ul li dl {
+        height: auto;
+        padding-bottom: 1.3rem;
+    }
+    .qklqb-tsgn ul li dl dt img {
+        max-width: 25%;
+    }
+    .qklqb-tsgn ul li dl dd {
+        padding-top: 0.875rem;
+    }
+    .qklqb-tsgn ul li dl dd h3 {
+        padding: 0;
+        font-size: 1rem;
+    }
+    .qklqb-tsgn ul li dl dd p {
+        display: none;
+    }
+    .swiper-slide dl dd {
+        padding-top: .5rem;
+        font-size: .75rem;
+    }
+    .qklqb-jsys {
+        padding-top: 2rem;
+    }
+    .qklqb-jsys-b {
+        margin-top: 1rem;
+    }
+    /* 案例展示 */
+    .qklqb-alzs {
+        padding-top: 2rem;
+    }
+    /* 技术优势 */
+    .qklqb-jsys-b {
+        background: none;
+    }
+    .qklqb-jsys ul li dl {
+        margin-bottom: 0.75rem;
+    }
+    .qklqb-jsys ul li dl dt {
+        flex: 10%;
+        font-size: 1.25rem;
+    }
+    .qklqb-jsys ul li dl dd {
+        flex: 90%;
+        font-size: .75rem;
+        line-height: 1.375rem;
+        text-align: left;
+    }
+}
+
+@media (max-width:575px) {
+    /* 产品介绍 */
+    .qklqb-cpjs-b-l p {
+        padding: 0 .75rem;
+    }
+    /* 技术优势 */
+    .qklqb-jsys-b {
+        padding: 0 .75rem;
+    }
+}
+
+@media (max-width:399px) {
+    .qklqb-jsys ul li dl dd {
+        padding-left: 2rem;
+        padding-right: .75rem;
+    }
+}

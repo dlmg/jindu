@@ -1,0 +1,908 @@
+.swiper-container-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+    bottom: 10px !important
+}
+
+
+/*特色服务*/
+
+.home-tsfw {
+    padding-top: 3.43rem;
+}
+
+.home-title1 h2 {
+    display: block;
+    padding-bottom: .6rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #35242a;
+}
+.home-alzs img{
+    width:100%;
+}
+.home-title1 p {
+    font-size: 1rem;
+    line-height: 1.68rem;
+    color: #715c63;
+}
+
+.home-title2 h2 {
+    color: #ffffff;
+}
+
+.home-tsfw .home-tsfw-t {
+    padding-top: 1.5rem;
+}
+
+.home-tsfw .home-tsfw-t ul li {
+    text-align: center;
+}
+
+.home-tsfw .home-tsfw-t ul li p {
+    color: #715c63;
+}
+
+.home-tsfw .home-tsfw-t ul li img {
+    padding-bottom: .6rem;
+}
+
+.home-tsfw .home-tsfw-t ul li em {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f13a2e;
+}
+
+.home-tsfw .home-tsfw-b {
+    padding-top: 2.37rem;
+}
+
+.home-tsfw .home-tsfw-b tr.home-tsfw-b-tr {
+    width: 100%;
+    background: #5351f2;
+}
+
+.home-tsfw .home-tsfw-b .home-tsfw-b-tr tr .col-sm-1 {
+    width: 8.333333%;
+    padding: 0;
+    text-align: center;
+}
+
+.home-tsfw .home-tsfw-b .home-tsfw-b-tr tr .col-sm-2 {
+    width: 16.666667%;
+    padding: 0;
+    text-align: center;
+}
+
+.home-tsfw .home-tsfw-b .home-tsfw-b-tr tr th {
+    padding: .68rem 0 !important;
+    color: #fff;
+    text-align: center;
+}
+
+.home-tsfw .coin_list .thead1 {
+    height: 3.5rem;
+    line-height: 3.5rem;
+}
+
+/*全套用户端*/
+
+.home-qtyhd {
+    margin-top: 3.25rem;
+    padding: 2.81rem 0;
+    background: #f9f8fe;
+}
+
+.home-qtyhd ul {
+    padding-top: 2.5rem;
+}
+
+.home-qtyhd ul li {
+    text-align: center;
+}
+
+.home-qtyhd ul li p {
+    padding-top: 1.25rem;
+    color: #715c63;
+}
+
+.home-qtyhd ul li img {
+    max-width: 32%;
+}
+
+
+/*区块链技术*/
+
+.home-qkljs {
+    padding-top: 3.12rem;
+    background: url("../img/qkljs.jpg")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/qkljs.jpg*/ no-repeat;
+}
+
+.home-qkljs ul {
+    padding-top: .31rem;
+}
+
+.home-qkljs ul li {
+    padding: .75rem;
+}
+
+.home-qkljs ul li dl {
+    height: 20.5rem;
+    margin: 0;
+    padding: 0 1.875rem;
+    background: url("../img/qkljs-li.png")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/qkljs-li.png*/ -.3125rem -.25rem no-repeat;
+    text-align: center;
+}
+
+.home-qkljs ul li:nth-of-type(2) dl {
+    background-position: -25.3125rem -.25rem;
+}
+
+.home-qkljs ul li:nth-of-type(3) dl {
+    background-position: -50.3125rem -.25rem;
+}
+
+.home-qkljs ul li:nth-of-type(4) dl {
+    background-position: -74.5625rem -.25rem;
+}
+
+.home-qkljs ul li:nth-of-type(5) dl {
+    background-position: -98.8125rem -.25rem;
+}
+
+.home-qkljs ul li:nth-of-type(6) dl {
+    background-position: -123.4375rem -.25rem;
+}
+
+.home-qkljs ul li dl dt {
+    padding-top: 2.5rem;
+}
+
+.home-qkljs ul li dl dd {
+    padding-top: 1.2475rem;
+}
+
+.home-qkljs ul li dl dd h3 {
+    display: inline-block;
+    padding-bottom: 0.75rem;
+    font-size: 1.25rem;
+    color: #35242a;
+}
+
+.home-qkljs ul li dl dd p {
+    font-size: .93rem;
+    line-height: 1.625rem;
+    color: #401f2a;
+}
+
+
+/*全方位咨询服务*/
+
+.home-qfwzx {
+    padding-top: 2.81rem;
+}
+
+.home-qfwzx .home-qfwzx-b {
+    padding-top: .62rem;
+}
+
+.home-qfwzx .home-qfwzx-b ul li {
+    padding: .93rem;
+}
+
+.home-qfwzx .home-qfwzx-b ul li dl {
+    height: 12rem;
+    padding: 2.81rem;
+    border-radius: .375rem;
+    background: url("../img/img-10.png")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/img-10.png*/ no-repeat;
+    background-size: cover;
+    color: #fff;
+}
+
+.home-qfwzx .home-qfwzx-b ul li dl dt {
+    margin-top: .5rem;
+    padding-left: .93rem;
+    background: url("../img/home-qfwzx-b-li.png")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/home-qfwzx-b-li.png*/ no-repeat left center;
+    font-size: 1.25rem;
+}
+
+.home-qfwzx .home-qfwzx-b ul li dl dd {
+    padding-top: .5rem;
+    font-size: .93rem;
+    line-height: 1.5rem;
+}
+
+
+/*案例展示*/
+
+.home-alzs {
+    height: 60.5rem;
+    margin-top: 3.125rem;
+    padding-top: 3.125rem;
+    background: url("../img/img-15.png")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/img-15.png*/;
+    background-size: cover;
+}
+
+.owl-carousel .owl-nav button.owl-prev,
+.owl-carousel .owl-nav button.owl-next {
+    position: absolute;
+    top: 50%;
+    z-index: 99;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 1.875rem;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.owl-carousel .owl-nav button.owl-prev {
+    left: 0;
+}
+
+.owl-carousel .owl-nav button.owl-next {
+    right: 0;
+}
+
+.owl-carousel .owl-nav button i {
+    font-size: 1.25rem;
+    color: #fff;
+}
+
+.home-alzs .deliveries_slider dt {
+    padding-top: 1rem;
+    font-size: 1rem;
+    text-align: center;
+    color: #35242a;
+}
+
+
+/*我们的优势*/
+
+.home-wmdys {
+    margin-top: -14rem;
+}
+
+.home-wmdys ul {
+    padding-top: 1rem;
+}
+
+.home-wmdys ul li {
+    padding: 0 .75rem;
+}
+
+.home-wmdys ul li dl {
+    height: 19.62rem;
+    padding: 0 .93rem;
+    padding-top: 2.5rem;
+    border: 0.0625rem solid #e8e8e8;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.home-wmdys ul li dl dt {
+    height: 5.8125rem;
+}
+
+.home-wmdys ul li dl dd h3 {
+    display: block;
+    padding: .93rem 0;
+    padding-top: .5rem;
+}
+
+.home-wmdys ul li dl dd p {
+    font-size: .87rem;
+    line-height: 1.5rem;
+    color: #715c63;
+}
+
+
+/*关于我们*/
+
+.home-about {
+    height: 25rem;
+    margin-top: 3.75rem;
+}
+
+.home-about-t {
+    position: relative;
+    height: 22.1875rem;
+    padding-top: 2.81rem;
+    background: url("../img/img-about-us.jpg")/*tpa=http://qkl.jinbocc.com/templates/jinbo_qkl/images/img-about-us.jpg*/;
+}
+
+.home-about-b {
+    z-index: 99;
+    height: 18.5rem;
+    margin-top: .62rem;
+    border-radius: 1.25rem;
+    background: #fff;
+    text-align: center;
+    box-shadow: 0 0 1.56rem rgba(89, 111, 255, 0.2);
+}
+
+.home-about-b h2 {
+    display: block;
+    padding-top: 2.68rem;
+    font-size: 1.25rem;
+    color: #1655cc;
+}
+
+.home-about-b span {
+    display: block;
+    padding: .62rem 0;
+    font-size: 1rem;
+    color: #715c63;
+}
+
+.home-about-b p {
+    padding: 0 3.75rem;
+    font-size: 1rem;
+    line-height: 1.875rem;
+    color: #715c63;
+}
+
+.home-about-b a {
+    display: block;
+    width: 11.87rem;
+    height: 3.43rem;
+    margin: 1.5625rem auto 0 auto;
+    font-size: 1rem;
+    line-height: 3.43rem;
+    color: #fff;
+    background: linear-gradient(to right, #00f1ff, #4c4bfe);
+    border-radius:20px;
+}
+
+.home-about-b a:hover {
+    color: #fff;
+}
+
+
+/*新闻资讯*/
+/*咨询动态*/
+.addidenwitem ul li h5 {
+    position: relative;
+    padding-bottom: 22px;
+    margin-bottom: 30px;
+    font-size: 22px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 30px;
+    letter-spacing: 0px;
+    color: #333333;
+}
+.addidenwitem ul li h5::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    background-color: #3a7db6;
+}
+.addidenwitem ul li .cottit a {
+    display: inline-block;
+    width: 374px;
+    height: 212px;
+    margin-bottom: 30px;
+    background: #fafafa;
+}
+.cottit p {
+    width: 374px;
+    padding: 0 12px;
+    height: 42px;
+    font-weight: 800;
+    line-height: 42px;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+    color: #333333;
+}
+.cottit img{
+    width: 374px ;
+    height: 170px;
+}
+.addidenwitem ul li dl dd a {
+    display: inline-block;
+    width: 374px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 4px;
+    font-size: 14px;
+    color: #666666;
+}
+.newsmore {
+    display: block;
+    width: 94px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #ffffff;
+    border: solid 1px #cccccc;
+    font-size: 14px;
+    color: #666666;
+}
+.home-news {
+    margin-top: 3.125rem;
+    padding: 2.685rem 0;
+    background: #fff;
+}
+
+.home-news-b {
+    padding-top: 1.9375rem;
+}
+
+.home-news-b-l img {
+    max-width: 100%;
+}
+
+.home-news-b-l dl {
+    margin-top: .31rem;
+    padding: 0 .93rem;
+    background: #fff;
+}
+
+.home-news-b-l dl dt {
+    overflow: hidden;
+    margin-bottom: .93rem;
+    padding-top: 1.5rem;
+    font-size: 1.12rem;
+}
+
+.home-news-b-l dl dt a {
+    color: #1655cc;
+}
+
+.home-news-b-l dl dd p {
+    overflow: hidden;
+    height: 7.81rem;
+    font-size: .87rem;
+    line-height: 1.5rem;
+    color: #715c63;
+}
+
+.home-news-b-l dl dd span {
+    display: flex;
+    padding-top: 1.875rem;
+}
+
+.home-news-b-l dl dd .home-news-b-l1 {
+    font-size: .87rem;
+}
+
+.home-news-b-l dl dd .home-news-b-l2 {
+    text-align: right;
+}
+
+.home-news-b-l dl dd span div {
+    flex: 1;
+}
+
+.tjcp-b {
+    height: 4rem;
+    line-height: 4rem;
+    background: #fff;
+}
+
+#tabs {
+    display: flex;
+}
+
+#tabs li {
+    flex: 1;
+    text-align: center;
+}
+
+#content {
+    background: #fff;
+}
+
+#content ul li {
+    padding: .62rem .93rem;
+}
+
+#content ul li dl {
+    height: 9rem;
+    padding: 0 1.12rem;
+    border: 0.0625rem solid #fff;
+    text-align: left;
+}
+
+#content li dl dt {
+    overflow: hidden;
+    height: 1.5rem;
+    margin-top: 1.12rem;
+    margin-bottom: .93rem;
+    line-height: 1.5rems;
+    font-size: 1.12rem;
+}
+
+#tabs #current {
+    display: block;
+    background: #50d6fd;
+    font-size: 1.12rem;
+    color: #fff;
+}
+#tabs a:hover{
+  color: #1b73fb;   
+}
+#content li dl dt a {
+    color: #35242a;
+}
+
+#content li dd {
+    overflow: hidden;
+    height: 4.5rem;
+    color: #715c63;
+}
+
+#content li dd p {
+    line-height: 1.5rem;
+    font-size: .87rem;
+}
+
+#content li dd span {
+    display: block;
+    padding-top: .18rem;
+    font-size: .87rem;
+}
+
+#content li:hover dl {
+    border-color: #1b73fb;
+}
+
+#content li:hover dl dt a {
+    color: #1b73fb;
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .app-product {
+        height: 540px;
+    }
+    .app-product-box .product-list .main p {
+        font-size: 14px;
+        line-height: 24px;
+    }
+    /*案例展示*/
+    .home-alzs {
+        height: 50rem;
+    }
+    /*我们的优势*/
+    .home-wmdys {
+        margin-top: -8rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .app-product-box .product-list .main p {
+        font-size: .75rem;
+        line-height: 1.5rem;
+    }
+    .app-product {
+        padding-bottom: 0;
+        background: none;
+    }
+    .app-product-box .product-list .main h2 {
+        font-size: 1rem;
+    }
+    .app-product-box .product-list .main {
+        margin-top: -120px;
+    }
+    .app-product-box .product-list .main a {
+        padding: .5rem 2.5rem;
+        font-size: .875rem;
+    }
+    .app-product-box {
+        padding-top: 25px;
+    }
+    .app-product-box .product-list .bg {
+        height: 180px;
+    }
+    .app-product-box .col-md-3:nth-child(5) {
+        display: none;
+    }
+    /*特色服务*/
+    .home-tsfw .home-tsfw-t ul li img {
+        padding-bottom: 1rem;
+    }
+    .home-tsfw .home-tsfw-t ul li p {
+        line-height: 1.25rem;
+    }
+    /*全套用户端*/
+    .home-qtyhd ul {
+        padding-top: 2rem;
+    }
+    /*区块链技术*/
+    .home-qkljs ul li dl {
+        height: 23rem;
+        padding: 0 0.9375rem;
+    }
+    .home-qkljs ul li dl dd {
+        padding-top: 1rem;
+    }
+    .home-qkljs ul li dl dd h3 {
+        padding-bottom: 0.685rem;
+        font-size: 1.25rem;
+    }
+    /*全方位咨询服务*/
+    .home-qfwzx .home-qfwzx-b ul li dl {
+        padding: 2rem;
+    }
+    /*案例展示*/
+    .home-alzs {
+        height: 52rem;
+    }
+    /*我们的优势*/
+    .home-wmdys {
+        margin-top: -10rem;
+    }
+    .home-wmdys ul {
+        padding: 0;
+    }
+    .home-wmdys ul li {
+        width: 50%;
+        margin: .75rem 0;
+    }
+    .home-wmdys ul li dl {
+        height: 18rem;
+    }
+    .home-wmdys ul li dl dd h3 {
+        padding: .75rem 0 .5rem 0;
+    }
+    /*关于我们*/
+    .home-about {
+        height: 27.5rem;
+        margin-top: 2.5rem;
+    }
+    .home-about-b {
+        height: 21.5rem;
+    }
+    /*新闻资讯*/
+    .home-news {
+        margin-top: 2.5rem;
+    }
+    .home-news-b {
+        padding-top: 1.25rem;
+    }
+    .home-news-b-l {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .app-product {
+        padding: 2rem 0 0 0;
+        background: none;
+    }
+    .app-product-box {
+        padding-top: 1.5rem;
+    }
+    .app-product-box .row {
+        padding-right: .75rem;
+    }
+    .app-product-box .col-md-3 {
+        width: 50%;
+        padding-right: 0;
+    }
+    .app-product-box .col-md-3:nth-child(5) {
+        display: none;
+    }
+    .app-product-box .product-list .bg {
+        height: 180px;
+    }
+    .app-product-box .product-list .main h2 {
+        padding-bottom: 10px;
+        font-size: 1rem;
+    }
+    .app-product-box .product-list .main p {
+        height: 106px;
+        padding: 10px 15px 10px;
+        font-size: .75rem;
+        line-height: 1.5rem;
+    }
+    .app-product-box .product-list .main a {
+        padding: .5rem 2.5rem;
+        font-size: .875rem;
+    }
+    .home-title1 h2 {
+        font-size: 1.125rem;
+        padding-bottom: .25rem;
+    }
+    .home-title1 p {
+        font-size: 0.875rem;
+        line-height: 1.5rem;
+    }
+    .home-tsfw .home-tsfw-t ul li p {
+        font-size: .875rem;
+    }
+    /*特色服务*/
+    .home-tsfw .home-tsfw-t ul li {
+        width: 50%;
+        padding-bottom: .75rem;
+    }
+    .home-tsfw .home-tsfw-t ul li img {
+        padding-bottom: .5rem;
+        max-width: 30%;
+    }
+    .home-tsfw .home-tsfw-t ul li em {
+        font-size: 1.125rem;
+    }
+    /*数据*/
+    .home-tsfw {
+        display: none;
+    }
+    /*全套用户端*/
+    .home-qtyhd {
+        margin-top: 2rem;
+        padding: 2rem 0;
+    }
+    .home-qtyhd ul {
+        padding-top: 1rem;
+    }
+    .home-qtyhd ul li {
+        width: 33%;
+    }
+    .home-qtyhd ul li img {
+        max-width: 40%;
+    }
+    .home-qtyhd ul li p {
+        padding-top: .5rem;
+        font-size: .875rem;
+    }
+    /*区块链技术*/
+    .home-qkljs h2,
+    .home-qfwzx h2 {
+        padding-bottom: 0;
+    }
+    .home-qkljs {
+        padding: 2rem 0;
+    }
+    .home-qkljs ul {
+        padding-left: .75rem;
+    }
+    .home-qkljs ul li {
+        width: 50%;
+        padding-left: 0;
+        padding-bottom: 0;
+    }
+    .home-qkljs ul li dl {
+        height: auto;
+    }
+    .home-qkljs ul li dl dd {
+        padding-top: .75rem;
+    }
+    .home-qkljs ul li dl dt {
+        padding-top: 2rem;
+    }
+    .home-qkljs ul li dl dd h3 {
+        padding-bottom: 1.5rem;
+        font-size: 1rem;
+    }
+    .home-qkljs ul li dl dd p {
+        display: none;
+    }
+    .home-qkljs ul li dl dt img {
+        width: 45%;
+    }
+    /*全方位咨询服务*/
+    .home-qfwzx .home-qfwzx-b {
+        padding-top: 0;
+    }
+    .home-qfwzx .home-qfwzx-b ul {
+        padding-left: .75rem;
+    }
+    .home-qfwzx .home-qfwzx-b ul li {
+        width: 50%;
+        padding-left: 0;
+        padding-bottom: 0;
+    }
+    .home-qfwzx .home-qfwzx-b ul li:nth-of-type(3) {
+        display: none;
+    }
+    .home-qfwzx .home-qfwzx-b ul li dl {
+        padding: 15%;
+    }
+    .home-qfwzx .home-qfwzx-b ul li dl dt {
+        font-size: 1rem;
+    }
+    .home-qfwzx .home-qfwzx-b ul li dl dd {
+        padding-top: .3rem;
+        font-size: .875rem;
+        line-height: 1.25rem;
+    }
+    /*案例展示*/
+    .home-alzs {
+        height: auto;
+        margin-top: 1.5rem;
+        padding: 1.5rem 0;
+        background: #eee;
+    }
+    .home-alzs .deliveries_slider dt {
+        padding-top: 1rem;
+        font-size: 1rem;
+    }
+    .owl-carousel {
+        padding-top: .5rem;
+    }
+    /*我们的优势*/
+    .home-wmdys {
+        margin-top: 2rem;
+    }
+    .home-wmdys ul {
+        padding-left: .75rem;
+    }
+    .home-wmdys ul li {
+        width: 50%;
+        margin: .75rem 0 0 0;
+        padding-left: 0;
+    }
+    .home-wmdys ul li dl {
+        height: 12rem;
+        padding-top: 1.875rem;
+    }
+    .home-wmdys ul li dl dd p {
+        display: none;
+    }
+    .home-wmdys ul li dl dd h3 {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+    }
+    /*关于我们*/
+    .home-about {
+        height: auto;
+        margin-top: 2.25rem;
+    }
+    .home-about-t {
+        height: auto;
+        padding: 2rem 0;
+    }
+    .home-about-b {
+        height: auto;
+        padding-bottom: 1.875rem;
+    }
+    .home-about-b h2 {
+        padding-top: 2rem;
+        font-size: 1rem;
+    }
+    .home-about-b span {
+        padding: .3rem 0;
+        font-size: .875rem;
+        line-height: .875rem;
+    }
+    .home-about-b p {
+        padding: .3rem 0.9375rem 0 .9375rem;
+        font-size: .875rem;
+        line-height: 1.25rem;
+    }
+    .home-about-b a {
+        margin-top: 1rem;
+    }
+    .home-about-b a {
+        font-size: .875rem;
+    }
+    /*新闻资讯*/
+    .home-news {
+        display: none;
+    }
+}
+
+@media (max-width:579px) {
+    .app-product-box .product-list .main p {
+        height: 106px
+    }
+}
+
+@media (max-width:449px) {
+    .app-product-box .product-list .bg {
+        height: 135px;
+    }
+    .app-product-box .product-list .main {
+        margin-top: -110px;
+    }
+    .app-product-box .product-list .main p {
+        height: 115px;
+    }
+}
