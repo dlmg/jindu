@@ -9,6 +9,7 @@ use app\admin\common\model\Role;
 use think\db;
 use think\facade\Request;
 use app\admin\common\model\Admin as AdminModel;
+use app\admin\common\model\Profile;
 
 class Admin extends Base
 {
@@ -61,7 +62,7 @@ class Admin extends Base
         $roleList = Role::where('id', '>', 1) -> select();
 
         // 设置模板变量
-        $this -> view -> assign('title', '添加管理员');
+        $this -> view -> assign('title', '添加员工');
         $this -> view -> assign('roleList', $roleList);
 
         // 渲染模板
@@ -81,11 +82,16 @@ class Admin extends Base
             if ( !empty($role)) {
                 return resMsg(-1, '用户名已经存在，不能重复添加', 'add');
             }
-            AdminModel::create($data);
+            $admin = new AdminModel;
+            if($admin->allowField(true)->save(input('post.'))) {
+                $profile = new Profile;
+                $profile->truename = $data["truename"];
+                $admin->profile()->save($profile);
+            }
         } catch (\Exception $e) {
-            return resMsg(0, '管理员添加失败' . '<br>' . $e->getMessage(), 'add' );
+            return resMsg(0, '员工信息添加失败' . '<br>' . $e->getMessage(), 'add' );
         }
-        return resMsg(1, '管理员添加成功', 'index');
+        return resMsg(1, '员工信息添加成功', 'index');
     }
 
     // 编辑管理员

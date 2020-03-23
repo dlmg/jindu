@@ -1,4 +1,4 @@
-<?php /*a:2:{s:73:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\admin\add.html";i:1584614909;s:83:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layer_layout.html";i:1584093394;}*/ ?>
+<?php /*a:2:{s:73:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\admin\add.html";i:1584943411;s:83:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layer_layout.html";i:1584093394;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +33,12 @@
             </div>
         </div>
         <div class="layui-form-item">
+            <label class="layui-form-label">员工姓名：</label>
+            <div class="layui-input-block">
+                <input type="text" name="truename" lay-verify="required" lay-reqText="姓名不能为空" placeholder="请输入员工姓名" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">密码：</label>
             <div class="layui-input-block">
                 <input type="text" name="password" lay-verify="required" lay-reqText="密码不能为空" placeholder="请输入密码" autocomplete="off" class="layui-input">
@@ -42,7 +48,7 @@
             <label class="layui-form-label">角色：</label>
             <div class="layui-input-block">
                 <select name="role_id" lay-verify="required">
-                    <option value="">请选择管理员角色</option>
+                    <option value="">请选择员工角色</option>
                     <?php if(!empty($roleList)): if(is_array($roleList) || $roleList instanceof \think\Collection || $roleList instanceof \think\Paginator): if( count($roleList)==0 ) : echo "" ;else: foreach($roleList as $key=>$vo): if($vo['id'] != 1): ?>
                     <option value="<?php echo htmlentities($vo['id']); ?>"><?php echo htmlentities($vo['name']); ?></option>
                     <?php endif; ?>

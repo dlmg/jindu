@@ -66,8 +66,8 @@ class Project extends Base
             if ($pro->save($data)) {
                 if ($pro->schedule()->save(['project_id' => $pro->id, 'buzhou' => 2, 'is_right' => 0]))
                     $pro->schedule()->save(['project_id' => $pro->id, 'buzhou' => 1, 'is_right' => 1]);
-                $pro->detail()->save(['pro_id' => $pro->id, 'buzhou' => 1, 'operation' => '您已经提交了项目']);
-                $pro->detail()->save(['pro_id' => $pro->id, 'buzhou' => 2, 'operation' => '等待您上传需求']);
+                $pro->detail()->save(['pro_id' => $pro->id, 'buzhou' => 1, 'operation' => '用户已经提交了项目']);
+                $pro->detail()->save(['pro_id' => $pro->id, 'buzhou' => 2, 'operation' => '等待用户上传需求']);
                 $pro->commit();
                 return resMsg(1, '项目提交成功', 'index');
             } else {
@@ -94,11 +94,12 @@ class Project extends Base
         $info = $img->move(env('ROOT_PATH') . 'public/upload');
         $pro_id = input('pro_id');
         $buzhou = input('buzhou');
+        $desc = input('description');
         Db::startTrans();
         try{
-        Db::name('schedule')->where('project_id', $pro_id)->where('buzhou', $buzhou)->setField('is_right', 1);
+        Db::name('schedule')->where('project_id', $pro_id)->where('buzhou', $buzhou)->setField('is_right',1);
         $create_time = date('Y-m-d H:i:s');
-        $data = ['pro_id'=>$pro_id,'buzhou'=>$buzhou,'operation'=>'您已经上传需求','file_url'=>$info->getSaveName(),'create_time'=>$create_time];
+        $data = ['pro_id'=>$pro_id,'buzhou'=>$buzhou,'operation'=>'用户已经上传需求','file_url'=>$info->getSaveName(),'create_time'=>$create_time,'upload_desc'=>$desc];
         Db::name('detail')->insert($data);
         unset($data);
         $data = ['project_id'=>$pro_id,'buzhou'=>3,'create_time'=>$create_time,'is_right'=>0];

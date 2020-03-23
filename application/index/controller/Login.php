@@ -38,6 +38,7 @@ class Login extends Controller
             if(!$result)
                 return resMsg(-1,'用户不存在','index');
             if($result['password']!=makePassword($data['password']))
+                return resMsg('');
                 SESSION::set('user_id',$result['client_id']);
                 SESSION::set('user_name',$result['khName']);
                 SESSION::set('name',$result['truename']);

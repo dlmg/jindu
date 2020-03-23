@@ -1,4 +1,4 @@
-<?php /*a:4:{s:78:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\project\detail.html";i:1584612413;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\header.html";i:1584417627;s:74:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\nav.html";i:1584440017;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\footer.html";i:1584440074;}*/ ?>
+<?php /*a:4:{s:78:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\project\detail.html";i:1584956821;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\header.html";i:1584417627;s:74:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\nav.html";i:1584440017;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\footer.html";i:1584440074;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -223,7 +223,7 @@ layer.close(index);
                             var index = layer.open({
                                 type: 2,
                                 title: '<i class=iconfont>&#xe7c7;</i> 上传需求',
-                                area: ['500px', '420px'],
+                                area: ['700px', '650px'],
                                 content: ['<?php echo url("project/upload"); ?>?buzhou='+$("#buzhou").val()+"&pro_id="+$("#pro_id").val()],
                                 skin: 'layui-layer-molv',
                                 //btn: ['立即提交', '重置'],

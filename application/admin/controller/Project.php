@@ -10,7 +10,10 @@ namespace app\admin\controller;
 use app\admin\common\model\Project as Pro;
 use app\admin\common\model\Schedule;
 use app\admin\common\model\Buzhou;
+use app\admin\common\model\Admin;
 use app\admin\common\controller\Base;
+use app\admin\common\model\Detail;
+use think\App;
 use think\Db;
 use think\facade\Request;
 
@@ -57,11 +60,17 @@ class Project extends Base
 
 
     public function detail(){
+
         $id = input('id');
-        $sql = "select a.buzhou,b.statusName from think_schedule a join think_buzhou b on a.buzhou=b.id join think_project c on c.id=a.project_id where a.project_id=$id order by a.buzhou asc ";
+        //连表查询得到详情页所需要用到的字段值
+        $sql = "select a.buzhou,a.create_time,a.is_right,b.statusName,a.project_id from think_schedule a join think_buzhou b on a.buzhou=b.id where a.project_id=$id order by a.buzhou asc ";
         $data = Db::query($sql);
-        $this->assign('result',$data);
-        $this->assign('title','项目详情');
+        $sql = "select a.id,a.operation,a.file_url,a.create_time,a.buzhou,a.upload_desc from think_detail a join think_schedule b on a.pro_id=b.project_id and a.buzhou=b.buzhou where b.project_id=$id order by a.create_time asc";
+        $operation = Db::query($sql);
+        $this->assign('operation', $operation);
+        $this->assign('result', $data);
+        $this->assign('title', '项目详情');
+        //dump($data);
         return $this->fetch();
     }
 
@@ -95,5 +104,44 @@ class Project extends Base
             return resMsg(0, '步骤名称修改失败' . '<br>' . $e->getMessage(), 'edit' );
         }
         return resMsg(1,"步骤名称修改成功",'all');
+    }
+
+    public function editPro(){
+        $prolist = Admin::where('a.role_id','>',2)
+            ->alias('a')
+            ->join(['think_profile'=>'b'],'b.admin_id=a.id')
+            ->field('a.id,b.truename')
+            ->select();
+
+        $id = input('id');
+        $project = new Pro;
+        $result = Pro::get($id);
+        //dump($result);
+        $this->assign('result',$result);
+        $this->assign('prolist',$prolist);
+        $this->assign('title','编辑项目');
+        return $this->fetch();
+    }
+
+    public function doEditPro(){
+        $id = input('id');
+        $data = Request::param();
+        $str = implode(',',$data['renyuan']);
+        $id = $data['id'];
+        $pro = Pro::get($id);
+        $pro->user_id = $str;
+        if($pro->save()){
+            return resMsg(1,'分配成功','index');
+        }
+    }
+
+    public function download(){
+        $id = input('id');
+        $url = Detail::where('id',$id)->value('file_url');
+        $download = new \think\response\Download('D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\public/upload/'.$url);
+        return $download->name('my.pdf');
+        // 或者使用助手函数完成相同的功能
+        // // download是系统封装的一个助手函数
+//        return download('image.jpg', 'my.jpg');
     }
 }

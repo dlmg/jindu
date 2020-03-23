@@ -1,4 +1,4 @@
-<?php /*a:3:{s:78:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\project\upload.html";i:1584669061;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\header.html";i:1584417627;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\footer.html";i:1584440074;}*/ ?>
+<?php /*a:3:{s:78:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\project\upload.html";i:1584958303;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\header.html";i:1584417627;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\footer.html";i:1584440074;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,19 +28,33 @@
     <script src="/static/js/vue.js"></script>
 </head>
 
-<div style="margin:0 auto;text-align: center;width:30%;">
-    <div style="margin-top:30px;">
-<button type="button" class="layui-btn" id="xuqiu">
-    <i class="layui-icon">&#xe67c;</i>上传需求
-</button>
-        <div>说明：只能上传一个文件，请您最好上传需求分析书</div>
-        <input type="hidden" value="<?php echo htmlentities($buzhou); ?>" id="buzhou">
-        <input type="hidden" value="<?php echo htmlentities($pro_id); ?>" id="pro_id">
-    </div>
-    <div style="margin-top:40px;">
-<button type="button" class="layui-btn" id="action">开始上传</button>
-    </div>
-</div>
+
+    <table style="margin:auto;" width="100%" height="60%" >
+        <tr>
+            <td>选择文件</td>
+            <td><button type="button" class="layui-btn" id="xuqiu" style="margin-top:20px;">
+                <i class="layui-icon">&#xe67c;</i>上传需求
+            </button>
+                <div>说明：只能上传一个文件，请您最好上传需求分析书</div>
+                <input type="hidden" value="<?php echo htmlentities($buzhou); ?>" id="buzhou">
+                <input type="hidden" value="<?php echo htmlentities($pro_id); ?>" id="pro_id">
+            </td>
+        </tr>
+        <tr>
+            <td>上传描述</td>
+            <td>
+                <textarea name="description" style="margin-top:80px;resize: none;" maxlength="200" width="60%" required lay-verify="required" rows="10" placeholder="请输入上传备注,限制在200字以内" class="layui-textarea" id="description"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+        <td><div style="margin-top:40px;">
+            <button type="button" class="layui-btn" id="action">开始上传</button>
+        </div></td>
+        </tr>
+    </table>
+
+
 <script type="text/javascript" src="/static/js/jquery-3.4.1.min.js"></script>
 <script src="/static/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="/static/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
@@ -96,6 +110,9 @@ layer.close(index);
                 },
                 buzhou:function () {
                     return $("#buzhou").val();
+                },
+                description:function () {
+                    return $("#description").val();
                 }
             }
             ,before: function(obj){

@@ -1,4 +1,4 @@
-<?php /*a:2:{s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\project\all.html";i:1584500572;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layout.html";i:1584093377;}*/ ?>
+<?php /*a:2:{s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\project\all.html";i:1584946590;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layout.html";i:1584093377;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,17 +39,10 @@
 <script type="text/html" id="barTool">
 
     <a href="<?php echo url('project/detail'); ?>?id={{d.id}}" class="layui-btn layui-btn-primary layui-btn-xs" target="_self"><i class="iconfont">&#xe7e0;</i>查看</a>
-    <!-- <a href='javascript:;' lay-event="del" class="layui-btn layui-btn-danger layui-btn-xs"><i class="iconfont">&#xe6b4;</i> 删除</a>-->
+    <a href="javascript:;" lay-event="edit" class="layui-btn layui-btn-xs"><i class="iconfont">&#xe7e0;</i> 编辑</a>
 </script>
 
 
-<script type="text/html" id="status">
-    {{# if(d.login_status == 1){ }}
-    <button class="layui-btn layui-btn-xs layui-btn-success">登录成功</button>
-    {{# } else { }}
-    <button class="layui-btn layui-btn-xs layui-btn-danger">登录失败</button>
-    {{# } }}
-</script>
 
         </div>
     </div>
@@ -167,7 +160,25 @@
             var e = obj.event;
             var data = obj.data;
 
-            if ( e === 'del') {
+            if ( e === 'edit' ) {
+                layer.open({
+                    type: 2,
+                    title: '<i class=iconfont>&#xe7e0;</i> 编辑项目',
+                    area: ['500px', '420px'],
+                    content: ['<?php echo url("editPro"); ?>?id=' + data.id, 'yes'],
+                    skin: 'layui-layer-molv',
+                    btn: ['保存', '取消'],
+                    btnAlign: 'c',
+                    yes: function(index, layero){
+                        var submit = layero.find('iframe').contents().find("#submit");// #subBtn为页面层提交按钮ID
+                        submit.click();// 触发提交监听
+                        return false;
+                    },
+                    btn2:function (index,layero) {
+                        layer.close(index);
+                    }
+                });
+            } else if ( e === 'del') {
                 layer.confirm('您确定要删除吗？', {
                     icon: 3
                 },function(index){
@@ -177,11 +188,11 @@
                         shade: 0.5
                     });
                     $.ajax({
-                        url: '<?php echo url("loginlog/delete"); ?>',
+                        url: '<?php echo url("client/delete"); ?>',
                         type: 'POST',
                         dataType: 'json',
                         data: {
-                            id : data.id
+                            id : data.client_id
                         },
                         beforeSend: function(){},
                         success: function(res){
@@ -205,23 +216,7 @@
                         }
                     });
                 });
-            }else if(e === 'detail'){
-                layer.open({
-                    type: 3
-                    ,title: "文章详情" //不显示标题栏
-                    ,titleAlign:'c'
-                    ,closeBtn: false
-                    ,area: '300px;'
-                    ,shade: 0.8
-                    ,id: 'LAY_article' //设定一个id，防止重复弹出
-                    ,btn: ['确定']
-                    ,btnAlign: 'c'
-                    ,content:data.content
-                    ,moveType: 1
-                })
-
             }
-
         });
     });
 </script>

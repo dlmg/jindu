@@ -1,4 +1,4 @@
-<?php /*a:2:{s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\admin\index.html";i:1584323488;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layout.html";i:1584093377;}*/ ?>
+<?php /*a:2:{s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\admin\index.html";i:1584945397;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layout.html";i:1584093377;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +34,7 @@
         <button class="layui-btn search-btn" data-type="reload"><i class="iconfont">&#xe679;</i> 查询</button>
         <?php if((buttonCheck('admin/add'))): ?>
         <div class="layui-inline">
-            <button class="layui-btn" id="add"><i class="iconfont">&#xe692;</i> 添加管理员</button>
+            <button class="layui-btn" id="add"><i class="iconfont">&#xe692;</i> 添加员工</button>
         </div>
         <?php endif; ?>
     </div>
