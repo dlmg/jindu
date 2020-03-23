@@ -1,49 +1,78 @@
-{extend name="public:layout"/}
+<?php /*a:2:{s:76:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\client\index.html";i:1584934763;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layout.html";i:1584093377;}*/ ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title><?php echo htmlentities((isset($title) && ($title !== '')?$title:"")); ?></title>
+    
+    <link rel="stylesheet" type="text/css" href="/static/css/public/public.css" />
+    <link rel="stylesheet" type="text/css" href="/static/layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/iconfont/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/admin/admin.css" />
+    
+    
+</head>
+<body class="layui-layout-body">
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <i class="iconfont">&#xe755;</i> <?php echo htmlentities($title); ?></i>
+        </div>
+        <div class="layui-card-body">
+            
 
-{block name="main"}
-{// 数据表格}
 <table class="layui-hide" id="dataTable" lay-filter="dataTable"></table>
-{// 顶部工具栏}
+
 <script type="text/html" id="toolbar">
     <div class="dataToolbar">
         <div class="layui-inline">
-            <input class="layui-input" name="keywords" id="keywords" value="{:input('keywords')}" autocomplete="on" placeholder="请输入用户名">
+            <input class="layui-input" name="keywords" id="keywords" value="<?php echo input('keywords'); ?>" autocomplete="on" placeholder="请输入用户名">
         </div>
         <button class="layui-btn search-btn" data-type="reload"><i class="iconfont">&#xe679;</i> 查询</button>
-        {if (buttonCheck('client/add')) }
+        <?php if((buttonCheck('client/add'))): ?>
         <div class="layui-inline">
             <button class="layui-btn" id="add"><i class="iconfont">&#xe692;</i> 添加客户</button>
         </div>
-        {/if}
+        <?php endif; ?>
     </div>
 </script>
 
-{// 行内工具栏}
+
 <script type="text/html" id="barTool">
     <a href="javascript:;" lay-event="edit" class="layui-btn layui-btn-xs"><i class="iconfont">&#xe7e0;</i> 编辑</a>
     <a href='javascript:;' lay-event="del" class="layui-btn layui-btn-danger layui-btn-xs"><i class="iconfont">&#xe6b4;</i> 删除</a>
 </script>
 
-{// 状态}
+
 <script type="text/html" id="status">
-    {eq name="$Think.session.admin_id" value="1"}
+    <?php if(app('session')->get('admin_id') == '1'): ?>
     {{# if(d.status == 1){ }}
     <button class="layui-btn layui-btn-xs" onclick="setStatus('{{d.client_id}}', '{{d.status}}')">启用</button>
     {{# } else { }}
     <button class="layui-btn layui-btn-xs layui-btn-danger" onclick="setStatus('{{d.client_id}}', '{{d.status}}')">禁用</button>
     {{# } }}
-    {else/}
+    <?php else: ?>
     {{# if(d.status == 1){ }}
     <button class="layui-btn layui-btn-xs">启用</button>
     {{# } else { }}
     <button class="layui-btn layui-btn-xs layui-btn-danger">禁用</button>
     {{# } }}
-    {/eq}
+    <?php endif; ?>
 </script>
-{/block}
 
-{block name="layui"}{/block}
-{block name="javascript"}
+        </div>
+    </div>
+
+    
+    <script type="text/javascript" src="/static/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/static/layui/layui.js"></script>
+
+    
+    
+    
 <script>
     layui.use(['jquery', 'layer', 'form', 'table'], function () {
         var $ = layui.$,
@@ -88,7 +117,7 @@
         // 渲染数据表格
         table.render({
             elem : '#dataTable'
-            ,url : '{:url("clientList")}'
+            ,url : '<?php echo url("clientList"); ?>'
             ,cellMinWidth: 80
             ,page: {
                 prev: '上一页',
@@ -146,7 +175,7 @@
                     type: 2,
                     title: '<i class=iconfont>&#xe7e0;</i> 编辑管理员',
                     area: ['500px', '420px'],
-                    content: ['{:url("client/edit")}?id=' + data.client_id, 'yes'],
+                    content: ['<?php echo url("client/edit"); ?>?id=' + data.client_id, 'yes'],
                     skin: 'layui-layer-molv',
                     btn: ['保存', '取消'],
                     btnAlign: 'c',
@@ -169,7 +198,7 @@
                         shade: 0.5
                     });
                     $.ajax({
-                        url: '{:url("client/delete")}',
+                        url: '<?php echo url("client/delete"); ?>',
                         type: 'POST',
                         dataType: 'json',
                         data: {
@@ -206,7 +235,7 @@
                 type: 2,
                 title: '<i class=iconfont>&#xe7c7;</i> 添加客户',
                 area: ['500px', '420px'],
-                content: ['{:url("client/add")}', 'yes'],
+                content: ['<?php echo url("client/add"); ?>', 'yes'],
                 skin: 'layui-layer-molv',
                 btn: ['立即提交', '重置'],
                 btnAlign: 'c',
@@ -232,7 +261,7 @@
             shade: 0.2
         });
         $.ajax({
-            url: "{:url('setStatus')}",
+            url: "<?php echo url('setStatus'); ?>",
             type: 'post',
             dataType: 'json',
             data: {
@@ -259,4 +288,6 @@
         });
     }
 </script>
-{/block}
+
+</body>
+</html>

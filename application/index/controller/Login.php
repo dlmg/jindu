@@ -37,8 +37,7 @@ class Login extends Controller
             $result = $user->where('khName',$data['username'])->find();
             if(!$result)
                 return resMsg(-1,'用户不存在','index');
-            if($result['password']!=$data['password'])
-                return resMsg('');
+            if($result['password']!=makePassword($data['password']))
                 SESSION::set('user_id',$result['client_id']);
                 SESSION::set('user_name',$result['khName']);
                 SESSION::set('name',$result['truename']);
