@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 ![](https://images.gitee.com/uploads/images/2020/0210/172236_e5b19fa6_1163529.png) 
 
 ThinkPHP 5.1.39（LTS版本） —— RBAC权限管理系统
