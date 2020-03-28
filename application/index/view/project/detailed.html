@@ -44,8 +44,13 @@
                         </ul>
                     </div>
                 </div>
-
+                {if condition="$is_right == 0"}
                 <div style="margin:0 auto;width:100px;"><button class="layui-btn layui-btn-normal" id="upload">沟通需求</button></div>
+                {/if}
+            </div>
+        </div>
+    </div>
+</div>
                 {include file="public/footer"}
                 <script>
                         //注意：折叠面板 依赖 element 模块，否则无法进行功能性操作

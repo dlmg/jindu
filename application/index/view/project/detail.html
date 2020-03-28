@@ -26,9 +26,9 @@
                                     </div>
                                 </h2>
 
-                                <div class="layui-colla-content" style="height:100px;">
+                                <div class="layui-colla-content" style="height:auto;">
                                     {if condition="$result.buzhou gt 2 && $result.is_goto eq 1"}
-                                    <div style="float:right;width:auto;"><a href="{:url('detailed',array('id'=>$result.buzhou,'pro_id'=>$result.project_id))}"><button  class="layui-btn layui-btn-normal" id="chakan">查看内容</button></a>
+                                    <div style="float:right;width:auto;"><a href="{:url('detailed',array('id'=>$result.buzhou,'pro_id'=>$result.project_id,'is_right'=>$result.is_right))}"><button  class="layui-btn layui-btn-normal" id="chakan">查看内容</button></a>
                                         {if condition="$result.is_ready eq 1 && $result.is_right eq 0"}
                                             <input type="hidden" value="{$result.buzhou}" id="buzhou">
                                             <input type="hidden" value="{$result.project_id}" id="pro_id">
@@ -43,7 +43,7 @@
                                     {if condition="$result.buzhou eq $ope.buzhou"}
                                         <li style="margin-top:10px;"><span class="layui-badge-dot layui-bg-blue"></span>&nbsp;<span style="margin-left:10px;">{$ope.create_time}&nbsp;&nbsp;&nbsp;&nbsp;{$ope.operation}</span>
                                             {if condition="$ope.url neq null"}
-                                            <br><div style="background-color: darkgrey;font-size: 20px;width:auto;"><span style="color:#123456;"><a href="{$ope.url}" title="点击查看该链接">{$ope.url}</a></span></div>
+                                            <br><div style="background-color: #808080;font-size: 20px;width:auto;"><a href="{$ope.url}" title="点击查看该链接" target="_blank"><span style="color:#11EEEE;">{$ope.url}</span></a></div>
                                             {/if}
                                         </li>
 
@@ -72,6 +72,10 @@
                         {/volist}
                     </ul>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
                 {include file="public/footer"}

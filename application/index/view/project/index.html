@@ -7,9 +7,12 @@
     <div class="main-content">
         <div class="container-fluid">
             <div class="panel">
+
                 {if condition="$count neq null"}
-                <div class="panel-heading">
-                    <h3 class="panel-title">当前您有{$count}个项目</h3>
+                <div class="panel-footer">
+                <div class="row">
+                    <div class="col-md-6"><span class="panel-note"> <h3 class="panel-title">当前您有{$count}个项目</h3></span></div>
+                </div>
                 </div>
                 {else}
                 <div class="panel-heading">
@@ -17,7 +20,7 @@
                 </div>
                 {/if}
                 <div class="panel-body">
-                    <table class="table table-hover">
+                    <table class="table table-striped">
                         <thead>
                         <tr>
                             <th>序号</th>
@@ -34,9 +37,9 @@
                             <td>{$data.proName}</td>
                             <td>{$data.create_time}</td>
                             {if $data.status==0}
-                            <td>正在进行</td>
+                            <td><span class="label label-info">正在进行</span></td>
                             {else}
-                            <td>已完成</td>
+                            <td><span class="label label-success">已完成</span></td>
                             {/if}
                             <td><a href="{:url('project/detail',array('id'=>$data.id))}">查看详情</a></td>
                         </tr>

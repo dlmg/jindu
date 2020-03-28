@@ -24,7 +24,7 @@ class Index extends Base
         $menu = $rbac -> getAuthMenu(Session::get('admin_role_id'));
 
         // 设置模板变量
-        $this -> view -> assign('title', 'ThinkPHP5.1 RBAC权限管理系统');
+        $this -> view -> assign('title', '项目进度管理系统');
         $this -> view -> assign('menu', $menu);
 
         // 渲染模板

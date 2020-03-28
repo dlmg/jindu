@@ -26,6 +26,7 @@ class Project extends Base
         $count = count($data);
         $this->assign('count', $count);
         $this->assign('data', $data);
+        $this->assign('action','project');
         return $this->fetch();
     }
 
@@ -33,13 +34,14 @@ class Project extends Base
     {
         $id = input('id');
         //连表查询得到详情页所需要用到的字段值
-        $sql = "select a.buzhou,a.create_time,a.is_right,b.statusName,a.project_id,a.is_ready,a.is_goto from think_schedule a join think_buzhou b on a.buzhou=b.id where a.project_id=$id order by a.buzhou asc ";
+        $sql = "select a.buzhou,a.create_time,a.is_right,b.statusName,a.project_id,a.is_ready,a.is_goto,a.is_right from think_schedule a join think_buzhou b on a.buzhou=b.id where a.project_id=$id order by a.buzhou asc ";
         $data = Db::query($sql);
         //$sql = "select a.operation,a.file_url,a.create_time,a.buzhou from think_detail a join think_schedule b on a.pro_id=b.project_id and a.buzhou=b.buzhou where b.project_id=$id";
         $sql = "select id,operation,create_time,buzhou,url from think_fenbu where pro_id=$id order by create_time asc";
         $operation = Db::query($sql);
         $this->assign('operation', $operation);
         $this->assign('result', $data);
+        $this->assign('action','project');
         $this->assign('title', '项目详情');
         //dump($data);
         return $this->fetch();
@@ -53,6 +55,7 @@ class Project extends Base
         $this->assign('contact', $data->mobile);
         //dump($data);
         /*$this->assign('contact',$data);*/
+        $this->assign('action','add');
         return $this->fetch();
     }
 
@@ -124,25 +127,32 @@ class Project extends Base
         $buzhou = input('buzhou');
         $create_time = date('Y-m-d H:i:s');
         Db::startTrans();
-        try {
-            $data = ['pro_id' => $pro_id, 'buzhou' => $buzhou, 'operation' => '客户已经确认', 'create_time' => $create_time];
-            Db::name('fenbu')->insert($data);
-            Db::name('schedule')->where('project_id', $pro_id)->where('buzhou', $buzhou)->setField('is_right', 1);
-            unset($data);
+        $done = Db::name('buzhou')->where('id','>',$buzhou)->find();
+        if(empty($done)){
+            Db::name('project')->where('id',$pro_id)->setField('status',1);
+        }else{
             $data = ['project_id' => $pro_id, 'buzhou' => $buzhou + 1, 'create_time' => $create_time, 'is_right' => 0];
             Db::name('schedule')->insert($data);
-            Db::commit();
-            return resMsg(1, '执行成功', 'index');
-        } catch (Exception $e) {
-            Db::rollback();
-            return resMsg(2, '执行失败', 'index');
         }
+            try {
+                unset($data);
+                $data = ['pro_id' => $pro_id, 'buzhou' => $buzhou, 'operation' => '客户已经确认', 'create_time' => $create_time];
+                Db::name('fenbu')->insert($data);
+                Db::name('schedule')->where('project_id', $pro_id)->where('buzhou', $buzhou)->setField('is_right', 1);
+                Db::commit();
+                return resMsg(1, '执行成功', 'index');
+            } catch (Exception $e) {
+                Db::rollback();
+                return resMsg(2, '执行失败', 'index');
+            }
+
     }
 
     public function detailed()
     {
         $buzhou = input('id');
         $pro_id = input('pro_id');
+        $is_right = input('is_right');
         $sql = "select upload_desc,operation,create_time from think_detail where pro_id=$pro_id and buzhou=$buzhou group by create_time";
         $result = Db::query($sql);
         $sql1 = "select * from think_detail WHERE create_time in ( select create_time from  think_detail group by create_time) and pro_id=$pro_id and buzhou=$buzhou";
@@ -151,6 +161,8 @@ class Project extends Base
         $this->assign('result', $result);
         $this->assign('data', $data);
         $this->assign('buzhou', $buzhou);
+        $this->assign('action','project');
+        $this->assign('is_right',$is_right);
         $this->assign('pro_id', $pro_id);
         return $this->fetch();
     }

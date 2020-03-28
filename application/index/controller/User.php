@@ -13,18 +13,6 @@ use think\facade\Request;
 
 class User extends Base
 {
-    public function profile()
-    {
-        $client_id = session('user_id');
-        $pro = new Project;
-        $client = new Client;
-        $count = count($pro->where('client_id',$client_id)->select());
-        $data = $client->where('client_id',$client_id)->find();
-        $this->assign('count',$count);
-        $this->assign('data',$data);
-        return $this->fetch();
-    }
-
     public function edit(){
         $id = session('user_id');
         $username = session('user_name');

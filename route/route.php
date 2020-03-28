@@ -14,7 +14,8 @@ Route::get('think', function () {
 });
 
 Route::get('hello/:name', 'index/hello');
-
+Route::rule('user/editpwd','index/index/editPassword','GET|POST');
+Route::rule('user/info','index/index/index');
 return [
 
 ];

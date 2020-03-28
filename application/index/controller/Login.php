@@ -42,9 +42,7 @@ class Login extends Controller
                 SESSION::set('user_id',$result['client_id']);
                 SESSION::set('user_name',$result['khName']);
                 SESSION::set('name',$result['truename']);
-//            session('user_id',$result['client_id']);
-//            session('username',$result['khName']);
-            return resMsg(1, '登录成功', '/index/index/index');
+            return resMsg(1, '登录成功', '/user/info');
         }
     }
 
@@ -52,6 +50,6 @@ class Login extends Controller
     {
         session('user_id', null);
         session('user_name', null);
-        $this -> redirect('login/index');
+        $this -> redirect('index/login/index');
     }
 }
