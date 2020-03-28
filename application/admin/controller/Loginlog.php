@@ -57,12 +57,6 @@ class Loginlog extends Base
         $total = count(LoginLogModel::where($map)->select());
         $result = array("code" => 0, "msg" => "查询成功", "count" => $total, "data" => $logList);
         return json($result);
-
-        // 3. 设置模板变量
-        $this -> view -> assign('logList', $logList);
-
-        // 4. 渲染模板
-        return $this -> view -> fetch('index');
     }
 
     // 删除登录日志

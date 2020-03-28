@@ -83,7 +83,11 @@ class Admin extends Base
                 return resMsg(-1, '用户名已经存在，不能重复添加', 'add');
             }
             $admin = new AdminModel;
-            if($admin->allowField(true)->save(input('post.'))) {
+            $admin->username = $data['username'];
+            $admin->password = $data['password'];
+            $admin->role_id = $data['role_id'];
+            $admin->status = $data['is_able'];
+            if($admin->save()) {
                 $profile = new Profile;
                 $profile->truename = $data["truename"];
                 $admin->profile()->save($profile);
@@ -149,7 +153,8 @@ class Admin extends Base
             // 执行删除操作
             try {
                 $id = Request::param('id');
-                AdminModel::where('id', $id) -> delete();
+                $admin = AdminModel::get($id,'profile');
+                $admin->together('profile') -> delete();
             } catch (\Exception $e) {
                 return resMsg(0, '管理员删除失败' . '<br>' . $e->getMessage(), 'index' );
             }

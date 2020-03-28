@@ -8,14 +8,13 @@
 
 namespace app\admin\controller;
 use app\admin\common\model\Project as Pro;
-use app\admin\common\model\Schedule;
 use app\admin\common\model\Buzhou;
 use app\admin\common\model\Admin;
 use app\admin\common\controller\Base;
 use app\admin\common\model\Detail;
-use think\App;
 use think\Db;
 use think\facade\Request;
+use app\admin\common\model\Fenbu;
 
 class Project extends Base
 {
@@ -27,7 +26,6 @@ class Project extends Base
     public function all(){
         $this->assign('title', '所有项目');
         return $this->fetch();
-
     }
 
     public function allList(){
@@ -60,13 +58,15 @@ class Project extends Base
 
 
     public function detail(){
-
         $id = input('id');
         //连表查询得到详情页所需要用到的字段值
-        $sql = "select a.buzhou,a.create_time,a.is_right,b.statusName,a.project_id from think_schedule a join think_buzhou b on a.buzhou=b.id where a.project_id=$id order by a.buzhou asc ";
+        //$sql = "select buzhou,is_right,is_goto from think_schedule where project_id = $id";
+        $sql = "select a.buzhou,a.create_time,a.is_goto,a.is_right,b.statusName,a.project_id,a.is_ready from think_schedule a join think_buzhou b on a.buzhou=b.id where a.project_id=$id order by a.buzhou asc ";
         $data = Db::query($sql);
-        $sql = "select a.id,a.operation,a.file_url,a.create_time,a.buzhou,a.upload_desc from think_detail a join think_schedule b on a.pro_id=b.project_id and a.buzhou=b.buzhou where b.project_id=$id order by a.create_time asc";
+        //$sql = "select a.id,a.operation,a.file_url,a.create_time,a.buzhou,a.upload_desc from think_detail a join think_schedule b on a.pro_id=b.project_id and a.buzhou=b.buzhou where b.project_id=$id order by a.create_time asc";
+        $sql = "select id,operation,create_time,buzhou,file_url,description,url from think_fenbu where pro_id=$id order by create_time asc";
         $operation = Db::query($sql);
+        if($operation)
         $this->assign('operation', $operation);
         $this->assign('result', $data);
         $this->assign('title', '项目详情');
@@ -131,17 +131,146 @@ class Project extends Base
         $pro = Pro::get($id);
         $pro->user_id = $str;
         if($pro->save()){
-            return resMsg(1,'分配成功','index');
+            return resMsg(1,'分配员工成功','index');
         }
     }
 
     public function download(){
         $id = input('id');
+        $url = Fenbu::where('id',$id)->value('file_url');
+        $download = new \think\response\Download('D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\public/upload/'.$url);
+        return $download->name('文件');
+
+    }
+
+    public function downloadDt(){
+        $id = input('id');
         $url = Detail::where('id',$id)->value('file_url');
         $download = new \think\response\Download('D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\public/upload/'.$url);
-        return $download->name('my.pdf');
-        // 或者使用助手函数完成相同的功能
-        // // download是系统封装的一个助手函数
-//        return download('image.jpg', 'my.jpg');
+        return $download->name('文件');
+
+    }
+
+    public function communication(){
+        $buzhou = input('buzhou');
+        $pro_id = input('pro_id');
+//      var_dump($pro_id);
+        $this->assign(['buzhou' => $buzhou, 'pro_id' => $pro_id]);
+        $this->assign('title', '上传文件');
+        return $this->fetch();
+    }
+
+    public function doCommunication(){
+        $img = request()->file('file');
+        // 移动到框架应用根目录/public/uploads/ 目录下
+        $info = $img->move(env('ROOT_PATH') . 'public/upload');
+        $pro_id = input('pro_id');
+        $buzhou = input('buzhou');
+        $desc = input('description');
+        $user_id = session('admin_id');
+        $admin = Admin::get($user_id);
+        $name = $admin->profile->truename;
+        $hz = $info->getExtension();
+        $image = array('jpg','png','bmp','gif','jpeg');
+        if(in_array($hz,$image))
+            $is_image = 1;
+        else
+            $is_image = 0;
+        Db::startTrans();
+        try{
+            $create_time = date('Y-m-d H:i:s');
+            $data = ['pro_id'=>$pro_id,'buzhou'=>$buzhou,'operation'=>'由'.$name.'上传','file_url'=>$info->getSaveName(),'create_time'=>$create_time,'upload_desc'=>$desc,'is_image'=>$is_image];
+            Db::name('detail')->insert($data);
+            Db::commit();
+        }catch(Exception $e){
+            Db::rollback();
+            return $e->getMessage();
+        }
+        if ($info) {
+            // 成功上传后 获取上传信息
+            return json(['code' => 0, 'msg' => '上传成功!', 'url' => '/uploads/' . $info->getSaveName()]);
+        } else {
+            // 上传失败获取错误信息
+            return json(['code' => 1, 'msg' => $img->getError(), 'url' => '']);
+        }
+    }
+
+    public function next(){
+        $pro_id = input('pro_id');
+        $buzhou = input('buzhou');
+        $statusName = input('statusName');
+        $user_id = session('admin_id');
+        $admin = Admin::get($user_id);
+        $name = $admin->profile->truename;
+
+        $fenbu = new Fenbu;
+        $fenbu->startTrans();
+        $fenbu->pro_id = $pro_id;
+        $fenbu->buzhou = $buzhou;
+        $fenbu->operation = $name.' 进入了'.$statusName;
+        Db::startTrans();
+        Db::name('schedule')->where(['project_id'=>$pro_id,'buzhou'=>$buzhou])->setField('is_goto',1);
+        if($fenbu->save()){
+            $fenbu->commit();
+            Db::commit();
+            return resMsg(1,'进入成功','detail');
+        }else{
+            $fenbu->rollback();
+            Db::rollback();
+            return resMsg(-1,'未知失败','detail');
+        }
+    }
+
+    public function detailed(){
+        $buzhou = input('id');
+        $pro_id = input('pro_id');
+        $sql = "select upload_desc,operation,create_time from think_detail where pro_id=$pro_id and buzhou=$buzhou group by create_time";
+        $result = Db::query($sql);
+        $sql1 = "select * from think_detail WHERE create_time in ( select create_time from  think_detail group by create_time) and pro_id=$pro_id and buzhou=$buzhou";
+        $data = Db::query($sql1);
+        $this->assign('title', '查看内容');
+        $this->assign('result',$result);
+        $this->assign('data',$data);
+        $this->assign('buzhou',$buzhou);
+        $this->assign('pro_id',$pro_id);
+        return $this->fetch();
+    }
+
+    public function done(){
+        $buzhou = input('buzhou');
+        $pro_id = input('pro_id');
+        $statusName = Db::name('buzhou')->where('id',$buzhou)->value('statusName');
+        if(request()->isGet()){
+            $this->assign('buzhou',$buzhou);
+            $this->assign('pro_id',$pro_id);
+            return $this->fetch();
+        }elseif(request()->isPost()){
+            $buzhou = input('buzhou');
+            $pro_id = input('pro_id');
+            $description = input('description');
+            $url = input('url');
+            $fenbu = new Fenbu;
+            $fenbu->pro_id = $pro_id;
+            $fenbu->buzhou = $buzhou;
+            $fenbu->description = $description;
+            $fenbu->url = $url;
+
+            $user_id = session('admin_id');
+            $admin = Admin::get($user_id);
+            $name = $admin->profile->truename;
+            $fenbu->operation = $name.' 完成了'.$statusName;
+            $fenbu->startTrans();
+            Db::startTrans();
+            $result = Db::name('schedule')->where(['project_id'=>$pro_id,'buzhou'=>$buzhou])->setField('is_ready',1);
+            if($fenbu->save()&&$result){
+                $fenbu->commit();
+                Db::commit();
+                return resMsg(1,'提交成功','detail');
+            }else{
+                $fenbu->rollback();
+                Db::rollback();
+                return resMsg(-1,'提交失败,请重试','detailed');
+            }
+        }
     }
 }

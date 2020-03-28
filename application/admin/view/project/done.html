@@ -1,0 +1,74 @@
+{extend name="public:layer_layout"/}
+
+{block name="main"}
+<table width="70%">
+    <tr><td width="20%" align="center">查看链接:</td>
+        <td width="80%">
+            <input type="text" name="url" id="url" style="text-decoration:underline;width:300px;" placeholder="请点击此处输入链接，若无则忽略">
+        </td>
+    </tr>
+                <input type="hidden" value="{$buzhou}" id="buzhou">
+                <input type="hidden" value="{$pro_id}" id="pro_id">
+    <tr><td width="30%" align="center">完成说明：</td><td width="70%"><textarea name="description" style="margin-top:80px;resize: none;" maxlength="200" width="60%" required lay-verify="required" rows="10" placeholder="请输入上传备注,限制在200字以内" class="layui-textarea" id="description"></textarea></tr>
+    <tr><td></td>
+        <td><div style="margin-top:40px;">
+            <button type="button" class="layui-btn" id="action">提交</button>
+        </div></td>
+    </tr>
+</table>
+{/block}
+
+{block name="javascript"}
+<script>
+    layui.use('upload', function(){
+        var element = layui.element,
+            layer = layui.layer,
+            $ = layui.jquery;
+
+
+        $('#action').on('click',function () {
+            var pro_id = document.getElementById("pro_id").value;
+            var buzhou = document.getElementById("buzhou").value;
+            var description = document.getElementById('description').value;
+            var url = document.getElementById('url').value;
+            if(isnull(description)){
+            $.ajax({
+                url:"{:url('done')}",
+                data:{pro_id:pro_id,buzhou:buzhou,description:description,url:url},
+                type:'post',
+                success: function(res){
+                    //layer.close(loading);
+                    if (res.status == 1) {
+                        layer.msg(res.message, {
+                            time: 1000
+                        },function(){
+                            window.location.reload();
+                        });
+                    } else if (res.status == 0) {
+                        layer.alert(res.message, {
+                            icon: 2,
+                            skin: 'layer-ext-moon'
+                        },function(){
+                            parent.window.location.reload();
+                            var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                            parent.layer.close(index);
+                        });
+                    }
+                }
+            })
+            }
+        });
+
+        function isnull(val) {
+            var str = val.replace(/(^\s*)|(\s*$)/g, '');
+
+            if (str == '' || str == undefined || str == null) {
+                layer.msg('完成说明不能为空');
+            } else {
+                return true;
+
+            }
+        }
+    });
+</script>
+{/block}

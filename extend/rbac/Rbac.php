@@ -42,7 +42,9 @@ class Rbac
     private $skipAuthMap = [
         'login/index' => 1,
         'index/index' => 1,
-        'index/home' => 1
+        'index/home' => 1,
+        'project/detail' => 1,
+        'project/detailed' => 1,
     ];
 
     /**

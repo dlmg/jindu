@@ -1,14 +1,12 @@
 {extend name="public:layout"/}
 
 {block name="main"}
-
 <div class="layui-collapse" style="width:98%;">
     <ul class="layui-timeline" style="margin-top:30px;">
 
-        {volist name='result' id='result' key='i'}
+        {volist name='result' id='result'}
         <li class="layui-timeline-item" style="margin-left:100px;">
-           <span style="float:left;margin-left:-70px;margin-top:10px;color:#25cee6;font-size: 18px;">第{$result.buzhou}步</span><i
-                class="layui-icon layui-timeline-axis" style="margin-top:10px;">&#xe63f;</i>
+           <span style="float:left;margin-left:-70px;margin-top:10px;color:#25cee6;font-size: 18px;">第{$result.buzhou}步</span><i class="layui-icon layui-timeline-axis" style="margin-top:10px;">&#xe63f;</i>
             <div class=" layui-colla-item " style="margin-left: 35px;margin-top:20px;">
                 <h2 class=" layui-colla-title" style="border:1px solid #eee;font-size: 16px;">
                     {$result.buzhou}. &nbsp;{$result.statusName}
@@ -23,14 +21,26 @@
                 </h2>
 
                 <div class="layui-colla-content" style="height:auto;">
+                    {if condition="$result.buzhou gt 2 && $result.is_goto eq 1"}
+                    <div style="float:right;width:auto;"><a href="{:url('detailed',array('id'=>$result.buzhou,'pro_id'=>$result.project_id))}"><button  class="layui-btn layui-btn-normal" id="chakan">查看内容</button></a>
+                        {if condition="$result.is_ready eq 0"}
+                        <button  class="layui-btn layui-btn-normal" id="yes">完成</button>
+                        {else}
+                        <button type="button" class="layui-btn layui-btn-disabled">已完成</button>
+                        {/if}
+                    </div>
+                    {/if}
                     <ul>
                         {volist name="operation" id="ope"}
                         {if condition="$result.buzhou eq $ope.buzhou"}
-
                         <li style="margin-top:10px;"><span class="layui-badge-dot layui-bg-blue"></span>&nbsp;<span style="margin-left:10px;">{$ope.create_time}&nbsp;&nbsp;&nbsp;&nbsp;{$ope.operation}</span>
+                            {if condition="$ope.url neq null"}
+                            <br><div style="background-color: lightgrey;width:auto;margin-left:20px;"><span style="color:#25cee6;font-size: 18px;">{$ope.url}</span></div>
+                            <div style="margin-top:5px;">上传描述：<span style="color:black;">{$ope.description}</span></div>
+                            {/if}
                             {if condition="$ope.file_url neq null"}
-                            <span><a href="{:url('project/download',array('id'=>$ope.id))}">点击此处下载文档</a></span>
-                            <br>上传描述：<div style="background-color: darkgrey;font-size: 15px;"><span style="color:#123456;">{$ope.upload_desc}</span></div>
+                            <span><a href="{:url('admin/project/download')}?id={$ope.id}">点击此处下载</a></span>
+                            <br>上传描述：<div style="background-color: darkgrey;font-size: 15px;"><span style="color:#123456;">{$ope.description}</span></div>
                             {/if}
                         </li>
                         {/if}
@@ -38,6 +48,18 @@
                     </ul>
                     {if condition="$result.buzhou gt 1"}
                     <div style="float:right;">
+
+                        {if condition="$result.buzhou gt 2 && $result.is_right eq 0"}
+                        <div>
+                            <input type="hidden" value="{$result.buzhou}" id="buzhou">
+                            <input type="hidden" value="{$result.project_id}" id="pro_id">
+                            <input type="hidden" value="{$result.statusName}" id="statusName">
+                        {if condition="$result.is_goto eq 0"}
+                            <button  class="layui-btn layui-btn-normal" id="goto">进入此步骤</button>
+                            {/if}
+
+                        </div>
+                        {/if}
                     </div>
                     {/if}
                 </div>
@@ -53,17 +75,17 @@
 {block name="layui"}{/block}
 {block name="javascript"}
 <script>
-    //注意：折叠面板 依赖 element 模块，否则无法进行功能性操作
-    layui.use('element', function(){
-        var element = layui.element;
+    layui.use(['element', 'layer'],function(){
+        var element = layui.element,
+            layer = layui.layer,
+            $ = layui.jquery;
 
-        //
         $('#upload').on('click', function () {
             var index = layer.open({
                 type: 2,
-                title: '<i class=iconfont>&#xe7c7;</i> 上传需求',
+                title: '<i class=iconfont>&#xe7c7;</i> 上传文件',
                 area: ['1000px', '840px'],
-                content: ['{:url("project/upload")}?buzhou='+$("#buzhou").val()+"&pro_id="+$("#pro_id").val()],
+                content: ['{:url("project/done")}?buzhou='+$("#buzhou").val()+"&pro_id="+$("#pro_id").val()],
                 skin: 'layui-layer-molv',
                 //btn: ['立即提交', '重置'],
                 btnAlign: 'c',
@@ -79,49 +101,59 @@
                 }
             });
         });
-        $('#queren').on('click',function () {
-            var index = layer.confirm('点击确认后将进行下一步！',{
-                icon: 3
-            },function (index) {
-                var loading = layer.msg('处理中，请稍后...', {
-                    icon: 16,
-                    shade: 0.5
-                });
-                $.ajax({
-                    url: '{:url("project/next")}',
-                    type: 'POST',
-                    dataType: 'json',
-                    data: {
-                        pro_id :function () {
-                            return $('#pro_id').val();
-                        } ,
-                        buzhou:function () {
-                            return $('#buzhou').val();
-                        }
-                    },
-                    beforeSend: function(){},
-                    success: function(res){
-                        layer.close(loading);
-                        if (res.status == 1) {
-                            layer.msg(res.message, {
-                                time: 1000
-                            },function(){
-                                window.location.reload();
-                            });
-                        } else if (res.status == 0) {
-                            layer.alert(res.message, {
-                                icon: 2,
-                                skin: 'layer-ext-moon'
-                            },function(){
-                                parent.window.location.reload();
-                                var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
-                                parent.layer.close(index);
-                            });
-                        }
-                    }
-                });
+
+        $('#yes').on('click', function () {
+            var index = layer.open({
+                type: 2,
+                title: '<i class=iconfont>&#xe7c7;</i> 完成说明',
+                area: ['90%', '90%'],
+                content: ['{:url("project/done")}?buzhou='+$("#buzhou").val()+"&pro_id="+$("#pro_id").val()],
+                skin: 'layui-layer-molv',
+                //btn: ['立即提交', '重置'],
+                btnAlign: 'c',
+                yes: function(index, layero){
+                    var submit = layero.find('iframe').contents().find("#submit");// #subBtn为页面层提交按钮ID
+                    submit.click();// 触发提交监听
+                    return false;
+                },
+                btn2:function (index,layero) {
+                    var reset = layero.find('iframe').contents().find("#reset");// #subBtn为页面层提交按钮ID
+                    reset.click();// 触发重置按钮
+                    return false;
+                }
             });
+        });
+
+        $('#goto').on('click',function () {
+            var pro_id = document.getElementById("pro_id").value;
+            var buzhou = document.getElementById("buzhou").value;
+            var statusName = document.getElementById("statusName").value;
+            $.ajax({
+                url:"{:url('next')}",
+                data:{pro_id:pro_id,buzhou:buzhou,statusName:statusName},
+                type:'post',
+                success: function(res){
+                    //layer.close(loading);
+                    if (res.status == 1) {
+                        layer.msg(res.message, {
+                            time: 1000
+                        },function(){
+                            window.location.reload();
+                        });
+                    } else if (res.status == 0) {
+                        layer.alert(res.message, {
+                            icon: 2,
+                            skin: 'layer-ext-moon'
+                        },function(){
+                            parent.window.location.reload();
+                            var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                            parent.layer.close(index);
+                        });
+                    }
+                }
+            })
         })
     });
 </script>
+
 {/block}

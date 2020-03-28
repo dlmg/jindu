@@ -1,0 +1,79 @@
+{include file="public/header"}
+
+{include file="public/nav"}
+<div class="main">
+    <!-- MAIN CONTENT -->
+    <div class="main-content" style="background-color: #fff">
+        <div class="container-fluid">
+            <div class="panel" style="box-shadow: rgba(0,0,0,0)">
+                <div class="layui-collapse" style="width:98%;">
+
+                    <div class="layui-collapse" style="width:98%;">
+
+                        <input type="hidden" value="{$buzhou}" id="buzhou">
+                        <input type="hidden" value="{$pro_id}" id="pro_id">
+
+                        <ul class="layui-timeline">
+
+                            {volist name="result" id="v"}
+                            <li class="layui-timeline-item">
+                                <i class="layui-icon layui-timeline-axis"></i>
+                                <div class="layui-timeline-content layui-text">
+                                    <h3 class="layui-timeline-title">{$v.create_time}&nbsp;&nbsp;<span>{$v.operation}</span></h3>
+                                    <p>
+                                        {volist name="data" id="vo"}
+                                        {if condition="$v.create_time eq $vo.create_time"}
+                                        {if condition="$vo.is_image eq 1"}
+                                        <span><img src="/upload/{$vo.file_url}" width="216" title="可右键另存为" alt="上传的图片被意大利炮轰走了"></span>
+                                        {else}
+                                        <span><a href="{:url('admin/project/downloadDt')}?id={$vo.id}">点击此处下载文档</a></span>
+                                        {/if}
+                                        {/if}
+                                        {/volist}
+                                        {if $v.upload_desc neq null}
+                                        <br><br>上传描述：<div style="background-color: darkgrey;font-size: 15px;width:70%"><span style="color:#123456;"><pre>{$v.upload_desc}</pre></span></div>
+                                    <br><br>
+                                    {else}
+                                    <br><br>
+                                    {/if}
+                                    </p>
+                                </div>
+                            </li>
+                            {/volist}
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin:0 auto;width:100px;"><button class="layui-btn layui-btn-normal" id="upload">沟通需求</button></div>
+                {include file="public/footer"}
+                <script>
+                        //注意：折叠面板 依赖 element 模块，否则无法进行功能性操作
+                        layui.use(['element', 'layer'],function(){
+                            var element = layui.element,
+                                layer = layui.layer,
+                                $ = layui.jquery;
+
+                            $('#upload').on('click', function () {
+                                var index = layer.open({
+                                    type: 2,
+                                    title: '<i class=iconfont>&#xe7c7;</i> 沟通需求',
+                                    area: ['80%', '80%'],
+                                    content: ['{:url("project/communication")}?buzhou='+$("#buzhou").val()+"&pro_id="+$("#pro_id").val()],
+                                    skin: 'layui-layer-molv',
+                                    //btn: ['立即提交', '重置'],
+                                    btnAlign: 'c',
+                                    yes: function(index, layero){
+                                        var submit = layero.find('iframe').contents().find("#submit");// #subBtn为页面层提交按钮ID
+                                        submit.click();// 触发提交监听
+                                        return false;
+                                    },
+                                    btn2:function (index,layero) {
+                                        var reset = layero.find('iframe').contents().find("#reset");// #subBtn为页面层提交按钮ID
+                                        reset.click();// 触发重置按钮
+                                        return false;
+                                    }
+                                });
+                            });
+                        });
+                </script>
