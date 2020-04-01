@@ -1,4 +1,4 @@
-<?php /*a:2:{s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\project\index.html";i:1584499298;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layout.html";i:1585275795;}*/ ?>
+<?php /*a:2:{s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\project\index.html";i:1585643457;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layout.html";i:1585275795;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,10 +44,12 @@
 
 
 <script type="text/html" id="status">
-    {{# if(d.login_status == 1){ }}
-    <button class="layui-btn layui-btn-xs layui-btn-success">登录成功</button>
+    {{# if(d.status == 1){ }}
+    <button class="layui-btn layui-btn-xs layui-btn-success">已完成</button>
+    {{# }else if(d.status == 0){ }}
+    <button class="layui-btn layui-btn-xs layui-btn-warm" onclick="setStatus('{{d.id}}')">待审核</button>
     {{# } else { }}
-    <button class="layui-btn layui-btn-xs layui-btn-danger">登录失败</button>
+    <button class="layui-btn layui-btn-xs layui-btn-normal">正在进行</button>
     {{# } }}
 </script>
 
@@ -129,7 +131,7 @@
                 ,{field: 'description', width: 150, title: '项目描述', align: 'center',width:'300'}
                 ,{field: 'truename', width: 100, title: '客户姓名',align: 'center'}
                 ,{field: 'create_time', width: 150, title: '项目提交时间', align: 'center',width:'300',sort:true}
-                ,{field: 'status', width: 150, title: '项目状态', align: 'center',templet:'#zhuangtai'}
+                ,{field: 'status', width: 150, title: '项目状态', align: 'center',templet:'#status'}
                 ,{fixed: 'right', width: 200, title: '操作', align:'center', toolbar: '#barTool',width:'300'}
 
             ]], done() {
@@ -225,13 +227,7 @@
         });
     });
 </script>
-<script type="text/html" id="zhuangtai">
-{{# if(d.status==0){d.status='正在进行' }}
-<span>{{d.status}}</span>
-{{#  }else{d.status='已经完成'}}
-    {{d.status}}
-{{# } }}
-    </script>
+
 
 </body>
 </html>

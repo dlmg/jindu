@@ -1,4 +1,4 @@
-<?php /*a:4:{s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\project\index.html";i:1585376669;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\header.html";i:1585379478;s:74:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\nav.html";i:1585384273;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\footer.html";i:1585378888;}*/ ?>
+<?php /*a:2:{s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\project\index.html";i:1585639894;s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\base.html";i:1585644957;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,20 +19,27 @@
     <link rel="stylesheet" type="text/css" href="/static/css/font-awesome-4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/iconfont/iconfont.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/admin/admin.css" />
+
     <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
     <link rel="stylesheet" href="/static/assets/css/demo.css">
     <!-- GOOGLE FONTS -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
     <!-- ICONS -->
     <link rel="icon" type="image/png" sizes="96x96" href="/static/assets/img/favicon.ico">
     <script src="/static/js/vue.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-3.4.1.min.js"></script>
+    <script src="/static/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/static/assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <script src="/static/assets/vendor/chartist/js/chartist.min.js"></script>
+    <script src="/static/assets/scripts/klorofil-common.js"></script>
+    <script type="text/javascript" src="/static/layui/layui.js"></script>
+    <script type="text/javascript" src="/static/js/admin/layout.js"></script>
     <style>
         body{
             font-size: 15px;
         }
-        </style>
+    </style>
 </head>
-
 
 <body>
 <!-- WRAPPER -->
@@ -91,6 +98,7 @@
                     <li><a href="<?php echo url('index/index/index'); ?>" <?php if($action == 'index'): ?>class="active"<?php endif; ?>><i class="lnr lnr-home"></i> <span>基本信息</span></a></li>
                     <li><a href="<?php echo url('index/project/index'); ?>" <?php if($action == 'project'): ?>class="active"<?php endif; ?>><i class="lnr lnr-book"></i> <span>我的项目</span></a></li>
                     <li><a href="<?php echo url('index/project/add'); ?>" <?php if($action == 'add'): ?>class="active"<?php endif; ?>><i class="lnr lnr-code"></i> <span>提交项目</span></a></li>
+                    <li><a href="<?php echo url('index/index/about'); ?>" <?php if($action == 'about'): ?>class="active"<?php endif; ?>><i class="lnr lnr-code"></i> <span>关于SIST</span></a></li>
                     <li><a href="<?php echo url('index/login/logout'); ?>"><i class="lnr lnr-exit"></i> <span>退出登录</span></a></li>
 
 
@@ -108,117 +116,91 @@
         </div>
     </div>
     <!-- END LEFT SIDEBAR -->
+    <!-- MAIN -->
+    <div class="main">
+        <!-- MAIN CONTENT 模板继承-->
+        
+<!-- MAIN CONTENT -->
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="panel">
 
-        <script type="text/javascript" >
-            //获取div下面所有的a标签（返回节点对象）
-            var myNav = document.getElementById("nav").getElementsByTagName("a");
-            //获取当前窗口的url
-            var myURL = document.location.href;
-            //循环div下面所有的链接，
-            for(var i=1;i<myNav.length;i++){
-                //获取每一个a标签的herf属性
-                var links = myNav[i].getAttribute("href");
-                var myURL = document.location.href;
-                //查看div下的链接是否包含当前窗口，如果存在，则给其添加样式
-                if(myURL.indexOf(links) != -1){
-                    myNav[i].className="active";
-                    myNav[0].className="";
-                }
-            }
-    </script>
-
-<div class="main">
-    <!-- MAIN CONTENT -->
-    <div class="main-content">
-        <div class="container-fluid">
-            <div class="panel">
-
-                <?php if($count != null): ?>
-                <div class="panel-footer">
+            <?php if($count != null): ?>
+            <div class="panel-footer">
                 <div class="row">
-                    <div class="col-md-6"><span class="panel-note"> <h3 class="panel-title">当前您有<?php echo htmlentities($count); ?>个项目</h3></span></div>
+                    <div class="col-md-6"><span class="panel-note"> <h3 class="panel-title">当前您有<?php echo htmlentities($count); ?>个项目</h3></span>
+                    </div>
                 </div>
-                </div>
-                <?php else: ?>
-                <div class="panel-heading">
-                    <h3 class="panel-title">当前您还没有项目</h3>
-                </div>
-                <?php endif; ?>
-                <div class="panel-body">
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th>序号</th>
-                            <th>项目名称</th>
-                            <th>提交时间</th>
-                            <th>项目状态</th>
-                            <th>查看</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php if(is_array($data) || $data instanceof \think\Collection || $data instanceof \think\Paginator): $kkk = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$data): $mod = ($kkk % 2 );++$kkk;?>
-                        <tr>
-                            <td><?php echo htmlentities($kkk); ?></td>
-                            <td><?php echo htmlentities($data['proName']); ?></td>
-                            <td><?php echo htmlentities($data['create_time']); ?></td>
-                            <?php if($data['status']==0): ?>
-                            <td><span class="label label-info">正在进行</span></td>
-                            <?php else: ?>
-                            <td><span class="label label-success">已完成</span></td>
-                            <?php endif; ?>
-                            <td><a href="<?php echo url('project/detail',array('id'=>$data['id'])); ?>">查看详情</a></td>
-                        </tr>
-                        <?php endforeach; endif; else: echo "" ;endif; ?>
-                        </tbody>
-                    </table>
-                </div>
-
             </div>
+            <?php else: ?>
+            <div class="panel-heading">
+                <h3 class="panel-title">当前您还没有项目</h3>
+            </div>
+            <?php endif; ?>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>项目名称</th>
+                        <th>提交时间</th>
+                        <th>项目状态</th>
+                        <th>查看</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php if(is_array($data) || $data instanceof \think\Collection || $data instanceof \think\Paginator): $kkk = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$data): $mod = ($kkk % 2 );++$kkk;?>
+                    <tr>
+                        <td><?php echo htmlentities($kkk); ?></td>
+                        <td><?php echo htmlentities($data['proName']); ?></td>
+                        <td><?php echo htmlentities($data['create_time']); ?></td>
+                        <?php if($data['status']==0): ?>
+                        <td><span class="label label-warning">等待审核</span></td>
+                        <td></td>
+                        <?php elseif($data['status']==1): ?>
+                        <td><span class="label label-success">已完成</span></td>
+                        <td><a href="<?php echo url('project/detail',array('id'=>$data['id'])); ?>">查看详情</a></td>
+                        <?php else: ?>
+                        <td><span class="label label-info">正在进行中</span></td>
+                        <td><a href="<?php echo url('project/detail',array('id'=>$data['id'])); ?>">查看详情</a></td>
+                        <?php endif; ?>
+                    </tr>
+                    <?php endforeach; endif; else: echo "" ;endif; ?>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </div>
-    <!-- END MAIN CONTENT -->
+
+    
+        <!-- END MAIN CONTENT -->
+    </div>
+    <!-- END MAIN -->
+    <div class="clearfix"></div>
+    <footer>
+        <div class="container-fluid">
+            <p class="text-left">Copyright &copy; <a href="http://www.zzsist.com/" target="_blank">2019.SIST</a></p>
+        </div>
+    </footer>
 </div>
 
-
-
-<script type="text/javascript" src="/static/js/jquery-3.4.1.min.js"></script>
-<script src="/static/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="/static/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="/static/assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-<script src="/static/assets/vendor/chartist/js/chartist.min.js"></script>
-<script src="/static/assets/scripts/klorofil-common.js"></script>
-
-<script type="text/javascript" src="/static/layui/layui.js"></script>
-<script type="text/javascript" src="/static/js/admin/layout.js"></script>
-<script>
-    layui.use([ 'layer'], function () {
-        var $ = layui.jquery,
-            layer = layui.layer;
-        layuimini.init('');
-    });
-    // 修改密码
-function editPassword() {
-var index = layer.open({
-type: 2,
-title: '<i class=iconfont>&#xe7c7;</i> 修改密码',
-area: ['550px', '650px'],
-content: ['<?php echo url("user/edit"); ?>', 'no'],
-skin: 'layui-layer-molv',
-btn: ['保存', '取消'],
-btnAlign: 'c',
-yes: function(index, layero){
-var submit = layero.find('iframe').contents().find("#submit");// #subBtn为页面层提交按钮ID
-submit.click();// 触发提交监听
-return false;
-},
-btn2:function (index,layero) {
-layer.close(index);
-}
-});
-}
-</script>
-<footer>
-    <div class="container-fluid">
-        <p class="text-left">Copyright &copy; <a href="http://www.zzsist.com/" target="_blank">2019.SIST</a></p>
-    </div>
-</footer>
+    <script type="text/javascript" >
+        //获取div下面所有的a标签（返回节点对象）
+        var myNav = document.getElementById("nav").getElementsByTagName("a");
+        //获取当前窗口的url
+        var myURL = document.location.href;
+        //循环div下面所有的链接，
+        for(var i=1;i<myNav.length;i++){
+            //获取每一个a标签的herf属性
+            var links = myNav[i].getAttribute("href");
+            var myURL = document.location.href;
+            //查看div下的链接是否包含当前窗口，如果存在，则给其添加样式
+            if(myURL.indexOf(links) != -1){
+                myNav[i].className="active";
+                myNav[0].className="";
+            }
+        }
+    </script>
+</body>
+</html>

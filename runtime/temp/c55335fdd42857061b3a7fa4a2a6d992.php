@@ -1,4 +1,4 @@
-<?php /*a:4:{s:78:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\project\detail.html";i:1585379705;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\header.html";i:1585379478;s:74:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\nav.html";i:1585384273;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\footer.html";i:1585378888;}*/ ?>
+<?php /*a:2:{s:78:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\project\detail.html";i:1585643287;s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\base.html";i:1585644957;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,20 +19,27 @@
     <link rel="stylesheet" type="text/css" href="/static/css/font-awesome-4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/iconfont/iconfont.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/admin/admin.css" />
+
     <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
     <link rel="stylesheet" href="/static/assets/css/demo.css">
     <!-- GOOGLE FONTS -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
     <!-- ICONS -->
     <link rel="icon" type="image/png" sizes="96x96" href="/static/assets/img/favicon.ico">
     <script src="/static/js/vue.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-3.4.1.min.js"></script>
+    <script src="/static/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/static/assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <script src="/static/assets/vendor/chartist/js/chartist.min.js"></script>
+    <script src="/static/assets/scripts/klorofil-common.js"></script>
+    <script type="text/javascript" src="/static/layui/layui.js"></script>
+    <script type="text/javascript" src="/static/js/admin/layout.js"></script>
     <style>
         body{
             font-size: 15px;
         }
-        </style>
+    </style>
 </head>
-
 
 <body>
 <!-- WRAPPER -->
@@ -91,6 +98,7 @@
                     <li><a href="<?php echo url('index/index/index'); ?>" <?php if($action == 'index'): ?>class="active"<?php endif; ?>><i class="lnr lnr-home"></i> <span>基本信息</span></a></li>
                     <li><a href="<?php echo url('index/project/index'); ?>" <?php if($action == 'project'): ?>class="active"<?php endif; ?>><i class="lnr lnr-book"></i> <span>我的项目</span></a></li>
                     <li><a href="<?php echo url('index/project/add'); ?>" <?php if($action == 'add'): ?>class="active"<?php endif; ?>><i class="lnr lnr-code"></i> <span>提交项目</span></a></li>
+                    <li><a href="<?php echo url('index/index/about'); ?>" <?php if($action == 'about'): ?>class="active"<?php endif; ?>><i class="lnr lnr-code"></i> <span>关于SIST</span></a></li>
                     <li><a href="<?php echo url('index/login/logout'); ?>"><i class="lnr lnr-exit"></i> <span>退出登录</span></a></li>
 
 
@@ -108,212 +116,294 @@
         </div>
     </div>
     <!-- END LEFT SIDEBAR -->
+    <!-- MAIN -->
+    <div class="main">
+        <!-- MAIN CONTENT 模板继承-->
+        
+<!-- MAIN CONTENT -->
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="panel">
 
-        <script type="text/javascript" >
-            //获取div下面所有的a标签（返回节点对象）
-            var myNav = document.getElementById("nav").getElementsByTagName("a");
-            //获取当前窗口的url
-            var myURL = document.location.href;
-            //循环div下面所有的链接，
-            for(var i=1;i<myNav.length;i++){
-                //获取每一个a标签的herf属性
-                var links = myNav[i].getAttribute("href");
-                var myURL = document.location.href;
-                //查看div下的链接是否包含当前窗口，如果存在，则给其添加样式
-                if(myURL.indexOf(links) != -1){
-                    myNav[i].className="active";
-                    myNav[0].className="";
-                }
-            }
-    </script>
-<div class="main">
-    <!-- MAIN CONTENT -->
-    <div class="main-content">
-        <div class="container-fluid">
-            <div class="panel">
-                <div class="layui-collapse" style="width:98%;">
-                    <ul class="layui-timeline" style="margin-top:30px;">
+            <div class="layui-collapse" lay-accordion>
 
-                        <?php if(is_array($result) || $result instanceof \think\Collection || $result instanceof \think\Paginator): $i = 0; $__LIST__ = $result;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$result): $mod = ($i % 2 );++$i;?>
-                        <li class="layui-timeline-item" style="margin-left:100px;">
-                            <span style="float:left;margin-left:-70px;margin-top:10px;color:#25cee6;font-size: 18px;">第<?php echo htmlentities($result['buzhou']); ?>步</span><i
-                                class="layui-icon layui-timeline-axis" style="margin-top:10px;">&#xe63f;</i>
-                            <div class=" layui-colla-item " style="margin-left: 35px;margin-top:20px;">
-                                <h2 class=" layui-colla-title" style="border:1px solid #eee;font-size: 16px;">
-                                    <?php echo htmlentities($result['buzhou']); ?>. &nbsp;<?php echo htmlentities($result['statusName']); ?>
+                <ul class="layui-timeline" style="margin-top:30px;">
+                    项目进度：
+                    <?php if(is_array($result) || $result instanceof \think\Collection || $result instanceof \think\Paginator): $i = 0; $__LIST__ = $result;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$result): $mod = ($i % 2 );++$i;?>
+                    <li class="layui-timeline-item" style="margin-left:100px;">
+                        <span style="float:left;margin-left:-70px;margin-top:10px;color:#25cee6;font-size: 18px;">第<?php echo htmlentities($result['buzhou']); ?>步</span><i
+                            class="layui-icon layui-timeline-axis" style="margin-top:10px;">&#xe63f;</i>
+                        <div class=" layui-colla-item " style="margin-left: 35px;margin-top:20px;">
+                            <h2 class=" layui-colla-title" style="border:1px solid #eee;font-size: 16px;">
+                                <?php echo htmlentities($result['buzhou']); ?>. &nbsp;<?php echo htmlentities($result['statusName']); ?>
 
 
-                                    <div style="float:right;font-size: 14px;">
-                                        <?php if($result['is_right'] == 1): ?>
-                                        <span style="color:#009900;">已完成&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                        <?php endif; ?>
-                                        <?php echo htmlentities($result['create_time']); ?>
-                                    </div>
-                                </h2>
-
-                                <div class="layui-colla-content" style="height:auto;">
-                                    <?php if($result['buzhou'] > 2 && $result['is_goto'] == 1): ?>
-                                    <div style="float:right;width:auto;"><a href="<?php echo url('detailed',array('id'=>$result['buzhou'],'pro_id'=>$result['project_id'],'is_right'=>$result['is_right'])); ?>"><button  class="layui-btn layui-btn-normal" id="chakan">查看内容</button></a>
-                                        <?php if($result['is_ready'] == 1 && $result['is_right'] == 0): ?>
-                                            <input type="hidden" value="<?php echo htmlentities($result['buzhou']); ?>" id="buzhou">
-                                            <input type="hidden" value="<?php echo htmlentities($result['project_id']); ?>" id="pro_id">
-                                            <button  class="layui-btn layui-btn-normal" id="queren">确认，下一步</button>
-                                        <?php endif; ?>
-                                    </div>
-                                    <?php elseif($result['buzhou'] > 2): ?>
-                                    <div style="float:right;width:auto;"><button  class="layui-btn layui-btn-normal" id="">等待开发人员进入</button></div>
+                                <div style="float:right;font-size: 14px;">
+                                    <?php if($result['is_right'] == 1): ?>
+                                    <span style="color:#009900;">已完成&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                     <?php endif; ?>
-                                    <ul>
+                                    <?php echo htmlentities($result['create_time']); ?>
+                                </div>
+                            </h2>
+
+                            <div class="layui-colla-content" style="height:auto;">
+                                <?php if($result['buzhou'] > 2 && $result['is_goto'] == 1): ?>
+                                <div style="float:right;width:auto;"><a
+                                        href="<?php echo url('detailed',array('id'=>$result['buzhou'],'pro_id'=>$result['project_id'])); ?>">
+                                    <button class="layui-btn layui-btn-normal" id="chakan">查看内容</button>
+                                </a>
+                                    <?php if($result['is_ready'] == 1 && $result['is_right'] == 0): ?>
+                                    <input type="hidden" value="<?php echo htmlentities($result['buzhou']); ?>" id="buzhou">
+                                    <input type="hidden" value="<?php echo htmlentities($result['project_id']); ?>" id="pro_id">
+                                    <button class="layui-btn layui-btn-normal" id="queren">确认，下一步</button>
+                                    <?php endif; ?>
+                                </div>
+                                <?php endif; if($result['is_right'] == 0 && $result['buzhou'] == 2): ?>
+                                <div style="float:right;width:auto;">
+                                    <button class="layui-btn layui-btn-normal" id="upload">上传需求</button>
+                                    <input type="hidden" value="<?php echo htmlentities($result['buzhou']); ?>" id="buzhou">
+                                    <input type="hidden" value="<?php echo htmlentities($result['project_id']); ?>" id="pro_id">
+                                </div>
+                                <?php endif; ?>
+                                <ul>
                                     <?php if(is_array($operation) || $operation instanceof \think\Collection || $operation instanceof \think\Paginator): $i = 0; $__LIST__ = $operation;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$ope): $mod = ($i % 2 );++$i;if($result['buzhou'] == $ope['buzhou']): ?>
-                                        <li style="margin-top:10px;"><span class="layui-badge-dot layui-bg-blue"></span>&nbsp;<span style="margin-left:10px;"><?php echo htmlentities($ope['create_time']); ?>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo htmlentities($ope['operation']); ?></span>
-                                            <?php if($ope['url'] != null): ?>
-                                            <br><div style="background-color: #808080;font-size: 20px;width:auto;"><a href="<?php echo htmlentities($ope['url']); ?>" title="点击查看该链接" target="_blank"><span style="color:#11EEEE;"><?php echo htmlentities($ope['url']); ?></span></a></div>
-                                            <?php endif; ?>
-                                        </li>
+                                    <li style="margin-top:10px;"><span class="layui-badge-dot layui-bg-blue"></span>&nbsp;<span
+                                            style="margin-left:10px;"><?php echo htmlentities($ope['create_time']); ?>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo htmlentities($ope['operation']); ?></span>
+                                        <?php if($ope['url'] != null): ?>
+                                        <br>
+                                        <div style="background-color: lightgrey;width:auto;margin-left:20px;"><span style="color:#25cee6;font-size: 18px;"><?php echo htmlentities($ope['url']); ?></span></div>
+                                        <div style="margin-top:5px;">上传描述：<span style="color:black;"><?php echo htmlentities($ope['description']); ?></span></div>
+                                        <?php endif; ?>
+                                    </li>
 
                                     <?php endif; ?>
                                     <?php endforeach; endif; else: echo "" ;endif; ?>
-                                    </ul>
-                                    <?php if($result['buzhou'] > 1): ?>
-                                    <div style="float:right;">
-                                        <?php if($result['is_right'] == 0 && $result['buzhou'] == 2): ?>
-                                        <div>
-                                            <button class="layui-btn layui-btn-normal" id="upload">上传需求</button>
-                                            <input type="hidden" value="<?php echo htmlentities($result['buzhou']); ?>" id="buzhou">
-                                            <input type="hidden" value="<?php echo htmlentities($result['project_id']); ?>" id="pro_id">
-                                        </div>
-                                        <?php endif; if($result['buzhou'] > 2 && $result['is_right'] == 0): ?>
-
-                                        <?php endif; ?>
-                                    </div>
-                                    <?php endif; ?>
-                                </div>
-
-
+                                </ul>
                             </div>
-                        </li>
-                        <?php endforeach; endif; else: echo "" ;endif; ?>
-                    </ul>
-                </div>
+                        </div>
+                    </li>
+                    <?php endforeach; endif; else: echo "" ;endif; ?>
+                </ul>
+
             </div>
         </div>
+        <?php if($pj['status'] == 1): ?>
+        <div class="layui-col-md12"
+             style="border:1px solid grey;margin-bottom: 60px;">
+
+            <div class="layui-card">
+                <div class="layui-card-header" style="border:none;font-size: 15px;">该项目已完成，请您对本次项目作出评价</div>
+                <hr class="layui-bg-black">
+                <input type="hidden" id="pingfen" name="pingfen" value="">
+                <input type="hidden" id="pro_id" name="pro_id" value="<?php echo htmlentities(app('request')->param('id')); ?>">
+                <?php if($pj['is_evaluation'] == 0): ?>
+                <div style="width:70%;margin:0 auto;">
+                    <textarea name="pjnr" id="pjnr" placeholder="您的评价是对我们工作的最大肯定" class="layui-textarea" style="resize: none;"></textarea>
+                    <input type="hidden" id="fenshu" value="<?php echo htmlentities($pj['score']); ?>">
+                    <div id="score">
+                    </div>
+                </div>
+                <div class="layui-card-body">
+                    <button class="layui-btn layui-btn-normal" id="pingjia">提交评价</button>
+                </div>
+                <?php else: ?>
+                <div class="layui-card-body">
+                    您的评价：
+                    <input type="hidden" id="fenshu" value="<?php echo htmlentities($pj['score']); ?>">
+                    <div style="width:80%;"><span><pre><?php echo htmlentities($pj['evaluation']); ?></pre></span></div>
+                    <div id="score1">
+                    </div>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php endif; ?>
+
+        <script>
+            //注意：折叠面板 依赖 element 模块，否则无法进行功能性操作
+            layui.use(['element', 'layer', 'rate'], function () {
+                var element = layui.element,
+                    layer = layui.layer,
+                    rate = layui.rate;
+                rate.render({
+                    elem: '#score'
+                    , value: 0//初始值
+                    , text: true //开启文本
+                    , setText: function (value) {
+                        var arrs = {
+                            '1': '极差'
+                            , '2': '差'
+                            , '3': '中等'
+                            , '4': '好'
+                            , '5': '非常好'
+                        };
+                        this.span.text(arrs[value] || (value + "星"));
+                        $('#pingfen').val(value);
+                    }
+                });
+
+                rate.render({
+                    elem: '#score1'
+                    , value: $('#fenshu').val()//初始值
+                    , text: true //开启文本
+                    ,readonly:true
+                    , setText: function (value) {
+                        var arrs = {
+                            '1': '极差'
+                            , '2': '差'
+                            , '3': '中等'
+                            , '4': '好'
+                            , '5': '非常好'
+                        };
+                        this.span.text(arrs[value] || (value + "星"));
+                    }
+                });
+
+                $('#pingjia').on('click', function () {
+                    var index = layer.confirm('点击确认后将进行评价！', {
+                        icon: 3
+                    }, function (index) {
+                        var loading = layer.msg('处理中，请稍后...', {
+                            icon: 16,
+                            shade: 0.5
+                        });
+                        $.ajax({
+                            url: '<?php echo url("score"); ?>',
+                            type: 'POST',
+                            dataType: 'json',
+                            data: {
+                                pro_id: function () {
+                                    return $('#pro_id').val();
+                                },
+                                pingfen: function () {
+                                    return $('#pingfen').val();
+                                },
+                                text:function () {
+                                    return $('#pjnr').val();
+                                }
+
+                            },
+                            success: function (res) {
+                                //layer.close(loading);
+                                if (res.status == 200) {
+                                    layer.msg(res.message, {
+                                        time: 1000
+                                    }, function () {
+                                        window.location.href = '<?php echo url("index"); ?>';
+                                    });
+                                } else if (res.status == 201) {
+                                    layer.alert(res.message, {
+                                        icon: 2,
+                                        skin: 'layer-ext-moon'
+                                    }, function () {
+                                        parent.window.location.reload();
+                                        var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                                        parent.layer.close(index);
+                                    });
+                                }
+                            }
+                        });
+                    })
+                });
+
+                // 上传需求
+                $('#upload').on('click', function () {
+                    var index = layer.open({
+                        type: 2,
+                        title: '<i class=iconfont>&#xe7c7;</i> 上传需求',
+                        area: ['700px', '650px'],
+                        content: ['<?php echo url("project/upload"); ?>?buzhou=' + $("#buzhou").val() + "&pro_id=" + $("#pro_id").val()],
+                        skin: 'layui-layer-molv',
+                        //btn: ['立即提交', '重置'],
+                        btnAlign: 'c',
+                        yes: function (index, layero) {
+                            var submit = layero.find('iframe').contents().find("#submit");// #subBtn为页面层提交按钮ID
+                            submit.click();// 触发提交监听
+                            return false;
+                        },
+                        btn2: function (index, layero) {
+                            var reset = layero.find('iframe').contents().find("#reset");// #subBtn为页面层提交按钮ID
+                            reset.click();// 触发重置按钮
+                            return false;
+                        }
+                    });
+                });
+                $('#queren').on('click', function () {
+                    var index = layer.confirm('点击确认后将进行下一步！', {
+                        icon: 3
+                    }, function (index) {
+                        var loading = layer.msg('处理中，请稍后...', {
+                            icon: 16,
+                            shade: 0.5
+                        });
+                        $.ajax({
+                            url: '<?php echo url("project/next"); ?>',
+                            type: 'POST',
+                            dataType: 'json',
+                            data: {
+                                pro_id: function () {
+                                    return $('#pro_id').val();
+                                },
+                                buzhou: function () {
+                                    return $('#buzhou').val();
+                                }
+                            },
+                            beforeSend: function () {
+                            },
+                            success: function (res) {
+                                layer.close(loading);
+                                if (res.status == 1) {
+                                    layer.msg(res.message, {
+                                        time: 1000
+                                    }, function () {
+                                        window.location.reload();
+                                    });
+                                } else if (res.status == 0) {
+                                    layer.alert(res.message, {
+                                        icon: 2,
+                                        skin: 'layer-ext-moon'
+                                    }, function () {
+                                        parent.window.location.reload();
+                                        var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                                        parent.layer.close(index);
+                                    });
+                                }
+                            }
+                        });
+                    });
+                });
+
+
+            });
+        </script>
+        
+        <!-- END MAIN CONTENT -->
     </div>
+    <!-- END MAIN -->
+    <div class="clearfix"></div>
+    <footer>
+        <div class="container-fluid">
+            <p class="text-left">Copyright &copy; <a href="http://www.zzsist.com/" target="_blank">2019.SIST</a></p>
+        </div>
+    </footer>
 </div>
 
-
-                
-<script type="text/javascript" src="/static/js/jquery-3.4.1.min.js"></script>
-<script src="/static/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="/static/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="/static/assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-<script src="/static/assets/vendor/chartist/js/chartist.min.js"></script>
-<script src="/static/assets/scripts/klorofil-common.js"></script>
-
-<script type="text/javascript" src="/static/layui/layui.js"></script>
-<script type="text/javascript" src="/static/js/admin/layout.js"></script>
-<script>
-    layui.use([ 'layer'], function () {
-        var $ = layui.jquery,
-            layer = layui.layer;
-        layuimini.init('');
-    });
-    // 修改密码
-function editPassword() {
-var index = layer.open({
-type: 2,
-title: '<i class=iconfont>&#xe7c7;</i> 修改密码',
-area: ['550px', '650px'],
-content: ['<?php echo url("user/edit"); ?>', 'no'],
-skin: 'layui-layer-molv',
-btn: ['保存', '取消'],
-btnAlign: 'c',
-yes: function(index, layero){
-var submit = layero.find('iframe').contents().find("#submit");// #subBtn为页面层提交按钮ID
-submit.click();// 触发提交监听
-return false;
-},
-btn2:function (index,layero) {
-layer.close(index);
-}
-});
-}
-</script>
-<footer>
-    <div class="container-fluid">
-        <p class="text-left">Copyright &copy; <a href="http://www.zzsist.com/" target="_blank">2019.SIST</a></p>
-    </div>
-</footer>
-                <script>
-                        //注意：折叠面板 依赖 element 模块，否则无法进行功能性操作
-                    layui.use('element', function () {
-                        var element = layui.element;
-
-                        // 上传需求
-                        $('#upload').on('click', function () {
-                            var index = layer.open({
-                                type: 2,
-                                title: '<i class=iconfont>&#xe7c7;</i> 上传需求',
-                                area: ['700px', '650px'],
-                                content: ['<?php echo url("project/upload"); ?>?buzhou='+$("#buzhou").val()+"&pro_id="+$("#pro_id").val()],
-                                skin: 'layui-layer-molv',
-                                //btn: ['立即提交', '重置'],
-                                btnAlign: 'c',
-                                yes: function(index, layero){
-                                    var submit = layero.find('iframe').contents().find("#submit");// #subBtn为页面层提交按钮ID
-                                    submit.click();// 触发提交监听
-                                    return false;
-                                },
-                                btn2:function (index,layero) {
-                                    var reset = layero.find('iframe').contents().find("#reset");// #subBtn为页面层提交按钮ID
-                                    reset.click();// 触发重置按钮
-                                    return false;
-                                }
-                            });
-                        });
-                        $('#queren').on('click',function () {
-                            var index = layer.confirm('点击确认后将进行下一步！',{
-                                icon: 3
-                            },function (index) {
-                                var loading = layer.msg('处理中，请稍后...', {
-                                    icon: 16,
-                                    shade: 0.5
-                                });
-                                $.ajax({
-                                    url: '<?php echo url("project/next"); ?>',
-                                    type: 'POST',
-                                    dataType: 'json',
-                                    data: {
-                                        pro_id :function () {
-                                            return $('#pro_id').val();
-                                        } ,
-                                        buzhou:function () {
-                                            return $('#buzhou').val();
-                                        }
-                                    },
-                                    beforeSend: function(){},
-                                    success: function(res){
-                                        layer.close(loading);
-                                        if (res.status == 1) {
-                                            layer.msg(res.message, {
-                                                time: 1000
-                                            },function(){
-                                                window.location.reload();
-                                            });
-                                        } else if (res.status == 0) {
-                                            layer.alert(res.message, {
-                                                icon: 2,
-                                                skin: 'layer-ext-moon'
-                                            },function(){
-                                                parent.window.location.reload();
-                                                var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
-                                                parent.layer.close(index);
-                                            });
-                                        }
-                                    }
-                                });
-                            });
-                        })
-
-
-                    });
-                </script>
+    <script type="text/javascript" >
+        //获取div下面所有的a标签（返回节点对象）
+        var myNav = document.getElementById("nav").getElementsByTagName("a");
+        //获取当前窗口的url
+        var myURL = document.location.href;
+        //循环div下面所有的链接，
+        for(var i=1;i<myNav.length;i++){
+            //获取每一个a标签的herf属性
+            var links = myNav[i].getAttribute("href");
+            var myURL = document.location.href;
+            //查看div下的链接是否包含当前窗口，如果存在，则给其添加样式
+            if(myURL.indexOf(links) != -1){
+                myNav[i].className="active";
+                myNav[0].className="";
+            }
+        }
+    </script>
+</body>
+</html>

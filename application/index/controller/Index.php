@@ -2,7 +2,7 @@
 namespace app\index\controller;
 use app\index\model\Project;
 use app\index\model\Client;
-use think\facade\Request;
+use think\Request;
 use think\Validate;
 use think\Db;
 
@@ -30,7 +30,7 @@ class Index extends Base
         } elseif (request()->isPost()) {
             $rule = [
                 'old_password' => 'require|length:6,60',
-                'new_password' => 'require|length:6,60',
+                'new_password'  => 'require|length:6,60|confirm:con_password',
                 'con_password' => 'require|length:6,60',
             ];
 
@@ -39,6 +39,7 @@ class Index extends Base
                 'old_password.length' => '密码长度要在6~60之间',
                 'new_password.require' => '新密码为必填项',
                 'new_password.length' => '密码长度要在6~60之间',
+                'new_password.confirm' => '两次输入新密码不一致！',
                 'con_password.require' => '确认密码为必填项',
                 'con_password.length' => '密码长度要在6~60之间',
             ];
@@ -69,20 +70,16 @@ class Index extends Base
             $pwd = makePassword($new_password);
             $flag = Db::name('client')->where('client_id',$user_id)->update(['password'=>$pwd]);
             if($flag){
-                $msg = array(
-                    "status" => 200,
-                    "info" => "修改成功！",
-                    "url" => url('index/member/property'),
-                );
-                return json($msg);
+                return resMsg(1,'密码修改成功','/user/info');
             }else{
-                $msg = array(
-                    "status" => 201,
-                    "info" => "修改失败！",
-                );
-                return json($msg);
+                return resMsg(-1,'密码修改失败','/user/editpwd');
             }
         }
 
+    }
+
+    public function about(){
+        $this->assign('action','about');
+        return $this->fetch();
     }
 }

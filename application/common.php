@@ -20,7 +20,7 @@ use ipquery\IPQuery;
  * @return string
  */
 function makePassword($password) {
-    return sha1(md5($password . config('whisper.salt')));
+    return sha1(md5($password . config('admin.salt')));
 }
 
 /**

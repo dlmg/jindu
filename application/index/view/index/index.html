@@ -1,7 +1,5 @@
-{include file="public/header"}
-
-{include file="public/nav"}
-<div class="main">
+{extend name="public/base" /}
+{block name="content"}
 	<!-- MAIN CONTENT -->
 	<div class="main-content">
 		<div class="container-fluid">
@@ -48,8 +46,4 @@
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-
-					<!-- END LEFT COLUMN -->
-					{include file="public/footer"}
+{/block}

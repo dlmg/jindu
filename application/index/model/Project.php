@@ -27,4 +27,8 @@ class Project extends Model
     public function detail(){
         return $this->hasMany('Detail');
     }
+
+    public function fenbu(){
+        return $this->hasOne('Fenbu');
+    }
 }

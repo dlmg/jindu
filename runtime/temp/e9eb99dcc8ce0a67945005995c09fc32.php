@@ -1,4 +1,4 @@
-<?php /*a:4:{s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\index\index.html";i:1585384111;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\header.html";i:1585379478;s:74:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\nav.html";i:1585384273;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\footer.html";i:1585378888;}*/ ?>
+<?php /*a:2:{s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\index\index.html";i:1585553849;s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\base.html";i:1585644957;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,20 +19,27 @@
     <link rel="stylesheet" type="text/css" href="/static/css/font-awesome-4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/iconfont/iconfont.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/admin/admin.css" />
+
     <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
     <link rel="stylesheet" href="/static/assets/css/demo.css">
     <!-- GOOGLE FONTS -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
     <!-- ICONS -->
     <link rel="icon" type="image/png" sizes="96x96" href="/static/assets/img/favicon.ico">
     <script src="/static/js/vue.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-3.4.1.min.js"></script>
+    <script src="/static/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/static/assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <script src="/static/assets/vendor/chartist/js/chartist.min.js"></script>
+    <script src="/static/assets/scripts/klorofil-common.js"></script>
+    <script type="text/javascript" src="/static/layui/layui.js"></script>
+    <script type="text/javascript" src="/static/js/admin/layout.js"></script>
     <style>
         body{
             font-size: 15px;
         }
-        </style>
+    </style>
 </head>
-
 
 <body>
 <!-- WRAPPER -->
@@ -91,6 +98,7 @@
                     <li><a href="<?php echo url('index/index/index'); ?>" <?php if($action == 'index'): ?>class="active"<?php endif; ?>><i class="lnr lnr-home"></i> <span>基本信息</span></a></li>
                     <li><a href="<?php echo url('index/project/index'); ?>" <?php if($action == 'project'): ?>class="active"<?php endif; ?>><i class="lnr lnr-book"></i> <span>我的项目</span></a></li>
                     <li><a href="<?php echo url('index/project/add'); ?>" <?php if($action == 'add'): ?>class="active"<?php endif; ?>><i class="lnr lnr-code"></i> <span>提交项目</span></a></li>
+                    <li><a href="<?php echo url('index/index/about'); ?>" <?php if($action == 'about'): ?>class="active"<?php endif; ?>><i class="lnr lnr-code"></i> <span>关于SIST</span></a></li>
                     <li><a href="<?php echo url('index/login/logout'); ?>"><i class="lnr lnr-exit"></i> <span>退出登录</span></a></li>
 
 
@@ -108,25 +116,10 @@
         </div>
     </div>
     <!-- END LEFT SIDEBAR -->
-
-        <script type="text/javascript" >
-            //获取div下面所有的a标签（返回节点对象）
-            var myNav = document.getElementById("nav").getElementsByTagName("a");
-            //获取当前窗口的url
-            var myURL = document.location.href;
-            //循环div下面所有的链接，
-            for(var i=1;i<myNav.length;i++){
-                //获取每一个a标签的herf属性
-                var links = myNav[i].getAttribute("href");
-                var myURL = document.location.href;
-                //查看div下的链接是否包含当前窗口，如果存在，则给其添加样式
-                if(myURL.indexOf(links) != -1){
-                    myNav[i].className="active";
-                    myNav[0].className="";
-                }
-            }
-    </script>
-<div class="main">
+    <!-- MAIN -->
+    <div class="main">
+        <!-- MAIN CONTENT 模板继承-->
+        
 	<!-- MAIN CONTENT -->
 	<div class="main-content">
 		<div class="container-fluid">
@@ -173,49 +166,34 @@
 				</div>
 			</div>
 		</div>
-	</div>
+
+        <!-- END MAIN CONTENT -->
+    </div>
+    <!-- END MAIN -->
+    <div class="clearfix"></div>
+    <footer>
+        <div class="container-fluid">
+            <p class="text-left">Copyright &copy; <a href="http://www.zzsist.com/" target="_blank">2019.SIST</a></p>
+        </div>
+    </footer>
 </div>
 
-					<!-- END LEFT COLUMN -->
-					
-<script type="text/javascript" src="/static/js/jquery-3.4.1.min.js"></script>
-<script src="/static/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="/static/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="/static/assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-<script src="/static/assets/vendor/chartist/js/chartist.min.js"></script>
-<script src="/static/assets/scripts/klorofil-common.js"></script>
-
-<script type="text/javascript" src="/static/layui/layui.js"></script>
-<script type="text/javascript" src="/static/js/admin/layout.js"></script>
-<script>
-    layui.use([ 'layer'], function () {
-        var $ = layui.jquery,
-            layer = layui.layer;
-        layuimini.init('');
-    });
-    // 修改密码
-function editPassword() {
-var index = layer.open({
-type: 2,
-title: '<i class=iconfont>&#xe7c7;</i> 修改密码',
-area: ['550px', '650px'],
-content: ['<?php echo url("user/edit"); ?>', 'no'],
-skin: 'layui-layer-molv',
-btn: ['保存', '取消'],
-btnAlign: 'c',
-yes: function(index, layero){
-var submit = layero.find('iframe').contents().find("#submit");// #subBtn为页面层提交按钮ID
-submit.click();// 触发提交监听
-return false;
-},
-btn2:function (index,layero) {
-layer.close(index);
-}
-});
-}
-</script>
-<footer>
-    <div class="container-fluid">
-        <p class="text-left">Copyright &copy; <a href="http://www.zzsist.com/" target="_blank">2019.SIST</a></p>
-    </div>
-</footer>
+    <script type="text/javascript" >
+        //获取div下面所有的a标签（返回节点对象）
+        var myNav = document.getElementById("nav").getElementsByTagName("a");
+        //获取当前窗口的url
+        var myURL = document.location.href;
+        //循环div下面所有的链接，
+        for(var i=1;i<myNav.length;i++){
+            //获取每一个a标签的herf属性
+            var links = myNav[i].getAttribute("href");
+            var myURL = document.location.href;
+            //查看div下的链接是否包含当前窗口，如果存在，则给其添加样式
+            if(myURL.indexOf(links) != -1){
+                myNav[i].className="active";
+                myNav[0].className="";
+            }
+        }
+    </script>
+</body>
+</html>

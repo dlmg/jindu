@@ -139,7 +139,7 @@ class Project extends Base
         $id = input('id');
         $url = Fenbu::where('id',$id)->value('file_url');
         $download = new \think\response\Download('D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\public/upload/'.$url);
-        return $download->name('文件');
+        return $download->name('客户需求');
 
     }
 
@@ -271,6 +271,38 @@ class Project extends Base
                 Db::rollback();
                 return resMsg(-1,'提交失败,请重试','detailed');
             }
+        }
+    }
+
+    public function setStatus(){
+        if(request()->isPost()) {
+            $id = input('id');
+            Db::startTrans();
+            $flag = Db::name('project')->where('id', $id)->setField('status', 2);
+            if ($flag > 0) {
+                Db::commit();
+                $msg = array(
+                    'status' => 200,
+                    'message' => '审核已通过',
+                    'url' => 'admin/project/all'
+                );
+                return json($msg);
+            } else {
+                Db::rollback();
+                $msg = array(
+                    'status' => 201,
+                    'message' => '审核未通过',
+                    'url' => 'admin/project/all'
+                );
+                return json($msg);
+            }
+        }else{
+            $msg = array(
+                'status' => 201,
+                'message' => '审核未通过',
+                'url' => 'admin/project/all'
+            );
+            return json($msg);
         }
     }
 }

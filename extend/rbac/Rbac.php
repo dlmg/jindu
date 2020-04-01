@@ -45,6 +45,10 @@ class Rbac
         'index/home' => 1,
         'project/detail' => 1,
         'project/detailed' => 1,
+        'project/communication' => 1,
+        'project/done' => 1,
+        'project/download' => 1,
+        'admin/project/downloadDt' => 1,
     ];
 
     /**
@@ -55,10 +59,10 @@ class Rbac
     {
         //可设置配置项 auth, 此配置项为数组。
         if ($rbac = Config::get('rbac')) {
-            $this -> config = array_merge($this -> config, $rbac);
+            $this->config = array_merge($this->config, $rbac);
         }
         // 初始化request
-        $this -> request = Request::instance();
+        $this->request = Request::instance();
     }
 
     /**
@@ -92,12 +96,12 @@ class Rbac
      */
     public function authCheck($rules, $roleId)
     {
-        if ( 1 == $roleId ) {
+        if (1 == $roleId) {
             return true;
         }
 
         $roleModel = new Role();
-        $roleAuthNodeMap = $roleModel -> getRoleAuthNodeMap($roleId)['data'];
+        $roleAuthNodeMap = $roleModel->getRoleAuthNodeMap($roleId)['data'];
 
         if (empty($roleAuthNodeMap)) {
             return false;

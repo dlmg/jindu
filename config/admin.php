@@ -5,5 +5,5 @@
 
 return [
     // 定义密码加密盐
-    'salt' => 'think_rbac@#wcg!'
+    //'salt' => 'think_rbac@#mg!'
 ];

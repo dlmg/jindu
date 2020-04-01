@@ -1,155 +1,261 @@
-{include file="public/header"}
+{extend name="public/base" /}
+{block name="content"}
+<!-- MAIN CONTENT -->
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="panel">
 
-{include file="public/nav"}
-<div class="main">
-    <!-- MAIN CONTENT -->
-    <div class="main-content">
-        <div class="container-fluid">
-            <div class="panel">
-                <div class="layui-collapse" style="width:98%;">
-                    <ul class="layui-timeline" style="margin-top:30px;">
+            <div class="layui-collapse" lay-accordion>
 
-                        {volist name='result' id='result'}
-                        <li class="layui-timeline-item" style="margin-left:100px;">
-                            <span style="float:left;margin-left:-70px;margin-top:10px;color:#25cee6;font-size: 18px;">第{$result.buzhou}步</span><i
-                                class="layui-icon layui-timeline-axis" style="margin-top:10px;">&#xe63f;</i>
-                            <div class=" layui-colla-item " style="margin-left: 35px;margin-top:20px;">
-                                <h2 class=" layui-colla-title" style="border:1px solid #eee;font-size: 16px;">
-                                    {$result.buzhou}. &nbsp;{$result.statusName}
+                <ul class="layui-timeline" style="margin-top:30px;">
+                    项目进度：
+                    {volist name='result' id='result'}
+                    <li class="layui-timeline-item" style="margin-left:100px;">
+                        <span style="float:left;margin-left:-70px;margin-top:10px;color:#25cee6;font-size: 18px;">第{$result.buzhou}步</span><i
+                            class="layui-icon layui-timeline-axis" style="margin-top:10px;">&#xe63f;</i>
+                        <div class=" layui-colla-item " style="margin-left: 35px;margin-top:20px;">
+                            <h2 class=" layui-colla-title" style="border:1px solid #eee;font-size: 16px;">
+                                {$result.buzhou}. &nbsp;{$result.statusName}
 
 
-                                    <div style="float:right;font-size: 14px;">
-                                        {if condition="$result.is_right eq 1"}
-                                        <span style="color:#009900;">已完成&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                        {/if}
-                                        {$result.create_time}
-                                    </div>
-                                </h2>
-
-                                <div class="layui-colla-content" style="height:auto;">
-                                    {if condition="$result.buzhou gt 2 && $result.is_goto eq 1"}
-                                    <div style="float:right;width:auto;"><a href="{:url('detailed',array('id'=>$result.buzhou,'pro_id'=>$result.project_id,'is_right'=>$result.is_right))}"><button  class="layui-btn layui-btn-normal" id="chakan">查看内容</button></a>
-                                        {if condition="$result.is_ready eq 1 && $result.is_right eq 0"}
-                                            <input type="hidden" value="{$result.buzhou}" id="buzhou">
-                                            <input type="hidden" value="{$result.project_id}" id="pro_id">
-                                            <button  class="layui-btn layui-btn-normal" id="queren">确认，下一步</button>
-                                        {/if}
-                                    </div>
-                                    {elseif condition="$result.buzhou gt 2"}
-                                    <div style="float:right;width:auto;"><button  class="layui-btn layui-btn-normal" id="">等待开发人员进入</button></div>
+                                <div style="float:right;font-size: 14px;">
+                                    {if condition="$result.is_right eq 1"}
+                                    <span style="color:#009900;">已完成&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                     {/if}
-                                    <ul>
+                                    {$result.create_time}
+                                </div>
+                            </h2>
+
+                            <div class="layui-colla-content" style="height:auto;">
+                                {if condition="$result.buzhou gt 2 && $result.is_goto eq 1"}
+                                <div style="float:right;width:auto;"><a
+                                        href="{:url('detailed',array('id'=>$result.buzhou,'pro_id'=>$result.project_id))}">
+                                    <button class="layui-btn layui-btn-normal" id="chakan">查看内容</button>
+                                </a>
+                                    {if condition="$result.is_ready eq 1 && $result.is_right eq 0"}
+                                    <input type="hidden" value="{$result.buzhou}" id="buzhou">
+                                    <input type="hidden" value="{$result.project_id}" id="pro_id">
+                                    <button class="layui-btn layui-btn-normal" id="queren">确认，下一步</button>
+                                    {/if}
+                                </div>
+                                {/if}
+                                {if condition="$result.is_right eq 0 && $result.buzhou eq 2"}
+                                <div style="float:right;width:auto;">
+                                    <button class="layui-btn layui-btn-normal" id="upload">上传需求</button>
+                                    <input type="hidden" value="{$result.buzhou}" id="buzhou">
+                                    <input type="hidden" value="{$result.project_id}" id="pro_id">
+                                </div>
+                                {/if}
+                                <ul>
                                     {volist name="operation" id="ope"}
                                     {if condition="$result.buzhou eq $ope.buzhou"}
-                                        <li style="margin-top:10px;"><span class="layui-badge-dot layui-bg-blue"></span>&nbsp;<span style="margin-left:10px;">{$ope.create_time}&nbsp;&nbsp;&nbsp;&nbsp;{$ope.operation}</span>
-                                            {if condition="$ope.url neq null"}
-                                            <br><div style="background-color: #808080;font-size: 20px;width:auto;"><a href="{$ope.url}" title="点击查看该链接" target="_blank"><span style="color:#11EEEE;">{$ope.url}</span></a></div>
-                                            {/if}
-                                        </li>
+                                    <li style="margin-top:10px;"><span class="layui-badge-dot layui-bg-blue"></span>&nbsp;<span
+                                            style="margin-left:10px;">{$ope.create_time}&nbsp;&nbsp;&nbsp;&nbsp;{$ope.operation}</span>
+                                        {if condition="$ope.url neq null"}
+                                        <br>
+                                        <div style="background-color: lightgrey;width:auto;margin-left:20px;"><span style="color:#25cee6;font-size: 18px;">{$ope.url}</span></div>
+                                        <div style="margin-top:5px;">上传描述：<span style="color:black;">{$ope.description}</span></div>
+                                        {/if}
+                                    </li>
 
                                     {/if}
                                     {/volist}
-                                    </ul>
-                                    {if condition="$result.buzhou gt 1"}
-                                    <div style="float:right;">
-                                        {if condition="$result.is_right eq 0 && $result.buzhou eq 2"}
-                                        <div>
-                                            <button class="layui-btn layui-btn-normal" id="upload">上传需求</button>
-                                            <input type="hidden" value="{$result.buzhou}" id="buzhou">
-                                            <input type="hidden" value="{$result.project_id}" id="pro_id">
-                                        </div>
-                                        {/if}
-                                        {if condition="$result.buzhou gt 2 && $result.is_right eq 0"}
-
-                                        {/if}
-                                    </div>
-                                    {/if}
-                                </div>
-
-
+                                </ul>
                             </div>
-                        </li>
-                        {/volist}
-                    </ul>
-                </div>
+                        </div>
+                    </li>
+                    {/volist}
+                </ul>
+
             </div>
         </div>
-    </div>
-</div>
+        {if condition="$pj.status == 1"}
+        <div class="layui-col-md12"
+             style="border:1px solid grey;margin-bottom: 60px;">
 
+            <div class="layui-card">
+                <div class="layui-card-header" style="border:none;font-size: 15px;">该项目已完成，请您对本次项目作出评价</div>
+                <hr class="layui-bg-black">
+                <input type="hidden" id="pingfen" name="pingfen" value="">
+                <input type="hidden" id="pro_id" name="pro_id" value="{$Request.param.id}">
+                {if condition="$pj.is_evaluation == 0"}
+                <div style="width:70%;margin:0 auto;">
+                    <textarea name="pjnr" id="pjnr" placeholder="您的评价是对我们工作的最大肯定" class="layui-textarea" style="resize: none;"></textarea>
+                    <input type="hidden" id="fenshu" value="{$pj.score}">
+                    <div id="score">
+                    </div>
+                </div>
+                <div class="layui-card-body">
+                    <button class="layui-btn layui-btn-normal" id="pingjia">提交评价</button>
+                </div>
+                {else}
+                <div class="layui-card-body">
+                    您的评价：
+                    <input type="hidden" id="fenshu" value="{$pj.score}">
+                    <div style="width:80%;"><span><pre>{$pj.evaluation}</pre></span></div>
+                    <div id="score1">
+                    </div>
+                </div>
+                {/if}
+            </div>
+        </div>
+        {/if}
 
-                {include file="public/footer"}
-                <script>
-                        //注意：折叠面板 依赖 element 模块，否则无法进行功能性操作
-                    layui.use('element', function () {
-                        var element = layui.element;
+        <script>
+            //注意：折叠面板 依赖 element 模块，否则无法进行功能性操作
+            layui.use(['element', 'layer', 'rate'], function () {
+                var element = layui.element,
+                    layer = layui.layer,
+                    rate = layui.rate;
+                rate.render({
+                    elem: '#score'
+                    , value: 0//初始值
+                    , text: true //开启文本
+                    , setText: function (value) {
+                        var arrs = {
+                            '1': '极差'
+                            , '2': '差'
+                            , '3': '中等'
+                            , '4': '好'
+                            , '5': '非常好'
+                        };
+                        this.span.text(arrs[value] || (value + "星"));
+                        $('#pingfen').val(value);
+                    }
+                });
 
-                        // 上传需求
-                        $('#upload').on('click', function () {
-                            var index = layer.open({
-                                type: 2,
-                                title: '<i class=iconfont>&#xe7c7;</i> 上传需求',
-                                area: ['700px', '650px'],
-                                content: ['{:url("project/upload")}?buzhou='+$("#buzhou").val()+"&pro_id="+$("#pro_id").val()],
-                                skin: 'layui-layer-molv',
-                                //btn: ['立即提交', '重置'],
-                                btnAlign: 'c',
-                                yes: function(index, layero){
-                                    var submit = layero.find('iframe').contents().find("#submit");// #subBtn为页面层提交按钮ID
-                                    submit.click();// 触发提交监听
-                                    return false;
-                                },
-                                btn2:function (index,layero) {
-                                    var reset = layero.find('iframe').contents().find("#reset");// #subBtn为页面层提交按钮ID
-                                    reset.click();// 触发重置按钮
-                                    return false;
-                                }
-                            });
+                rate.render({
+                    elem: '#score1'
+                    , value: $('#fenshu').val()//初始值
+                    , text: true //开启文本
+                    ,readonly:true
+                    , setText: function (value) {
+                        var arrs = {
+                            '1': '极差'
+                            , '2': '差'
+                            , '3': '中等'
+                            , '4': '好'
+                            , '5': '非常好'
+                        };
+                        this.span.text(arrs[value] || (value + "星"));
+                    }
+                });
+
+                $('#pingjia').on('click', function () {
+                    var index = layer.confirm('点击确认后将进行评价！', {
+                        icon: 3
+                    }, function (index) {
+                        var loading = layer.msg('处理中，请稍后...', {
+                            icon: 16,
+                            shade: 0.5
                         });
-                        $('#queren').on('click',function () {
-                            var index = layer.confirm('点击确认后将进行下一步！',{
-                                icon: 3
-                            },function (index) {
-                                var loading = layer.msg('处理中，请稍后...', {
-                                    icon: 16,
-                                    shade: 0.5
-                                });
-                                $.ajax({
-                                    url: '{:url("project/next")}',
-                                    type: 'POST',
-                                    dataType: 'json',
-                                    data: {
-                                        pro_id :function () {
-                                            return $('#pro_id').val();
-                                        } ,
-                                        buzhou:function () {
-                                            return $('#buzhou').val();
-                                        }
-                                    },
-                                    beforeSend: function(){},
-                                    success: function(res){
-                                        layer.close(loading);
-                                        if (res.status == 1) {
-                                            layer.msg(res.message, {
-                                                time: 1000
-                                            },function(){
-                                                window.location.reload();
-                                            });
-                                        } else if (res.status == 0) {
-                                            layer.alert(res.message, {
-                                                icon: 2,
-                                                skin: 'layer-ext-moon'
-                                            },function(){
-                                                parent.window.location.reload();
-                                                var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
-                                                parent.layer.close(index);
-                                            });
-                                        }
-                                    }
-                                });
-                            });
-                        })
+                        $.ajax({
+                            url: '{:url("score")}',
+                            type: 'POST',
+                            dataType: 'json',
+                            data: {
+                                pro_id: function () {
+                                    return $('#pro_id').val();
+                                },
+                                pingfen: function () {
+                                    return $('#pingfen').val();
+                                },
+                                text:function () {
+                                    return $('#pjnr').val();
+                                }
 
+                            },
+                            success: function (res) {
+                                //layer.close(loading);
+                                if (res.status == 200) {
+                                    layer.msg(res.message, {
+                                        time: 1000
+                                    }, function () {
+                                        window.location.href = '{:url("index")}';
+                                    });
+                                } else if (res.status == 201) {
+                                    layer.alert(res.message, {
+                                        icon: 2,
+                                        skin: 'layer-ext-moon'
+                                    }, function () {
+                                        parent.window.location.reload();
+                                        var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                                        parent.layer.close(index);
+                                    });
+                                }
+                            }
+                        });
+                    })
+                });
 
+                // 上传需求
+                $('#upload').on('click', function () {
+                    var index = layer.open({
+                        type: 2,
+                        title: '<i class=iconfont>&#xe7c7;</i> 上传需求',
+                        area: ['700px', '650px'],
+                        content: ['{:url("project/upload")}?buzhou=' + $("#buzhou").val() + "&pro_id=" + $("#pro_id").val()],
+                        skin: 'layui-layer-molv',
+                        //btn: ['立即提交', '重置'],
+                        btnAlign: 'c',
+                        yes: function (index, layero) {
+                            var submit = layero.find('iframe').contents().find("#submit");// #subBtn为页面层提交按钮ID
+                            submit.click();// 触发提交监听
+                            return false;
+                        },
+                        btn2: function (index, layero) {
+                            var reset = layero.find('iframe').contents().find("#reset");// #subBtn为页面层提交按钮ID
+                            reset.click();// 触发重置按钮
+                            return false;
+                        }
                     });
-                </script>
+                });
+                $('#queren').on('click', function () {
+                    var index = layer.confirm('点击确认后将进行下一步！', {
+                        icon: 3
+                    }, function (index) {
+                        var loading = layer.msg('处理中，请稍后...', {
+                            icon: 16,
+                            shade: 0.5
+                        });
+                        $.ajax({
+                            url: '{:url("project/next")}',
+                            type: 'POST',
+                            dataType: 'json',
+                            data: {
+                                pro_id: function () {
+                                    return $('#pro_id').val();
+                                },
+                                buzhou: function () {
+                                    return $('#buzhou').val();
+                                }
+                            },
+                            beforeSend: function () {
+                            },
+                            success: function (res) {
+                                layer.close(loading);
+                                if (res.status == 1) {
+                                    layer.msg(res.message, {
+                                        time: 1000
+                                    }, function () {
+                                        window.location.reload();
+                                    });
+                                } else if (res.status == 0) {
+                                    layer.alert(res.message, {
+                                        icon: 2,
+                                        skin: 'layer-ext-moon'
+                                    }, function () {
+                                        parent.window.location.reload();
+                                        var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                                        parent.layer.close(index);
+                                    });
+                                }
+                            }
+                        });
+                    });
+                });
+
+
+            });
+        </script>
+        {/block}

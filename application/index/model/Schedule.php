@@ -11,6 +11,6 @@ use think\Model;
 
 class Schedule extends Model
 {
-    //protected $autoWriteTimestamp = 'datetime';
+    protected $autoWriteTimestamp = 'datetime';
     protected $updateTime = false;
 }
