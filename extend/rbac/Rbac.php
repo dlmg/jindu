@@ -65,12 +65,7 @@ class Rbac
         $this->request = Request::instance();
     }
 
-    /**
-     * 初始化
-     * @access public
-     * @param array $options 参数
-     * @return \think\facade\Request
-     */
+
 //    public static function instance($options = [])
 //    {
 //        if (is_null(self::$instance)) {
@@ -79,7 +74,12 @@ class Rbac
 //        return self::$instance;
 //    }
 
-    // 初始化权限检测实例
+
+    /**
+     * 初始化权限检测实例
+     * @return object|Rbac
+     * @author wcg
+     */
     public static function instance()
     {
         if (!self::$instance instanceof self) {

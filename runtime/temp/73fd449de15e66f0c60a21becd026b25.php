@@ -1,4 +1,4 @@
-<?php /*a:1:{s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\index\index.html";i:1584094789;}*/ ?>
+<?php /*a:1:{s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\index\index.html";i:1585792497;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,13 +46,13 @@
 
         <ul class="layui-nav layui-layout-left layui-header-menu layui-header-pc-menu mobile layui-hide-xs">
         </ul>
-<!--        <ul class="layui-nav layui-layout-left layui-header-menu mobile layui-hide-sm">-->
-<!--            <li class="layui-nav-item">-->
-<!--                <a href="javascript:;"><i class="fa fa-list-ul"></i> 选择模块</a>-->
-<!--                <dl class="layui-nav-child layui-header-mini-menu">-->
-<!--                </dl>-->
-<!--            </li>-->
-<!--        </ul>-->
+<!--        <ul class="layui-nav layui-layout-left layui-header-menu mobile layui-hide-sm">
+            <li class="layui-nav-item">
+                <a href="javascript:;"><i class="fa fa-list-ul"></i> 选择模块</a>
+                <dl class="layui-nav-child layui-header-mini-menu">
+                </dl>
+            </li>
+        </ul>-->
 
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">

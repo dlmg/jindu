@@ -107,7 +107,7 @@ class Project extends Base
     {
         $img = request()->file('file');
         // 移动到框架应用根目录/public/uploads/ 目录下
-        $info = $img->move(env('ROOT_PATH') . 'public/upload', '');
+        $info = $img->move(env('ROOT_PATH') . 'public/upload');
         $pro_id = input('pro_id');
         $buzhou = input('buzhou');
         $desc = input('description');

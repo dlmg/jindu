@@ -10,11 +10,12 @@ use think\App;
 use think\facade\Session;
 use think\facade\Request;
 use app\admin\common\model\Admin;
-
+use think\Db;
 
 class Index extends Base
 {
     // 后台管理首页
+
     public function index()
     {
         // 实例化RBAC类
@@ -40,10 +41,19 @@ class Index extends Base
             'tp_version' => App::VERSION
         ]);
 
+        $adminNum = Db::name('admin')->count();
+        $roleNum = Db::name('role')->where('status',1)->count();
+        $nodeNum = Db::name('node')->where('status',1)->count();
+        $loginNum = Db::name('login_log')->count();
         // 渲染模板
+        $this->assign('adminNum',$adminNum);
+        $this->assign('roleNum',$roleNum);
+        $this->assign('nodeNum',$nodeNum);
+        $this->assign('loginNum',$loginNum);
         return $this -> view -> fetch('home');
 
     }
+
 
     // 后台管理员修改密码
     public function editPassword()
@@ -63,7 +73,7 @@ class Index extends Base
         return $this -> view -> fetch('editpassword');
     }
 
-    // 执行修改密码操作
+
     public function doEditPwd()
     {
         // 获取的用户提交的信息

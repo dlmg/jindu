@@ -12,7 +12,7 @@ use app\admin\common\model\Admin;
 use think\facade\Session;
 use Jenssegers\Agent\Agent;
 use app\admin\controller\IPQuery;
-
+use think\facade\Cache;
 class Login extends Controller
 {
     // 登录页面
@@ -22,7 +22,13 @@ class Login extends Controller
         return $this -> view ->fetch('index');
     }
 
-    // 插入登录日志
+    /**
+     * @param $username
+     * @param $status
+     * @name `insertLoginLog`  插入登录日志到数据库
+     * @return array|bool
+     * @create_time 2020/4/2 10:16:35
+     */
     public function insertLoginLog($username, $status)
     {
         // 获取登录客户端信息
@@ -54,7 +60,16 @@ class Login extends Controller
         return true;
     }
 
-    // 管理员登录验证
+    /**
+     * @name `checkLogin`  管理员登录验证
+     * @return array
+     * @throws \think\Exception
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     * @throws \think\exception\PDOException
+     * @create_time 2020/4/2 10:20:07
+     */
     public function checkLogin()
     {
         if ( Request::isPost() ) {
@@ -108,7 +123,7 @@ class Login extends Controller
         session('admin_id', null);
         session('admin_username', null);
         session('admin_role_id', null);
-
+        Cache::clear();
         $this -> redirect('login/index');
     }
 }

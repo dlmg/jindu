@@ -1,4 +1,4 @@
-<?php /*a:1:{s:74:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\index\home.html";i:1584094132;}*/ ?>
+<?php /*a:1:{s:74:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\index\home.html";i:1585792051;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,8 +35,8 @@
                                 <i class="iconfont">&#xe936;</i>
                             </div>
                             <div class="panel-info layui-col-xs9 layui-col-md9">
-                                <span class="counts">100</span>
-                                <span class="counts-name">管理员数量</span>
+                                <span class="counts"><?php echo htmlentities($adminNum); ?></span>
+                                <span class="counts-name">员工数量</span>
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                                 <i class="iconfont">&#xea62;</i>
                             </div>
                             <div class="panel-info layui-col-xs9 layui-col-md9">
-                                <span class="counts">100</span>
+                                <span class="counts"><?php echo htmlentities($roleNum); ?></span>
                                 <span class="counts-name">角色数量</span>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                                 <i class="iconfont">&#xe7f0;</i>
                             </div>
                             <div class="panel-info layui-col-xs9 layui-col-md9">
-                                <span class="counts">100</span>
+                                <span class="counts"><?php echo htmlentities($nodeNum); ?></span>
                                 <span class="counts-name">权限节点数量</span>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                                 <i class="iconfont">&#xe7fe;</i>
                             </div>
                             <div class="panel-info layui-col-xs9 layui-col-md9">
-                                <span class="counts">100</span>
+                                <span class="counts"><?php echo htmlentities($loginNum); ?></span>
                                 <span class="counts-name">登录次数</span>
                             </div>
                         </div>

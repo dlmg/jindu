@@ -1,4 +1,4 @@
-<?php /*a:2:{s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\index\about.html";i:1585710692;s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\base.html";i:1585644957;}*/ ?>
+<?php /*a:2:{s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\index\about.html";i:1585710692;s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\base.html";i:1585789809;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,10 +19,6 @@
     <link rel="stylesheet" type="text/css" href="/static/css/font-awesome-4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/iconfont/iconfont.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/admin/admin.css" />
-
-    <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-    <link rel="stylesheet" href="/static/assets/css/demo.css">
-    <!-- GOOGLE FONTS -->
     <!-- ICONS -->
     <link rel="icon" type="image/png" sizes="96x96" href="/static/assets/img/favicon.ico">
     <script src="/static/js/vue.js"></script>

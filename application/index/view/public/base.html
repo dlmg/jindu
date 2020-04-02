@@ -18,10 +18,6 @@
     {load href="__CSS__/font-awesome-4.7.0/css/font-awesome.min.css"/}
     {load href="__CSS__/iconfont/iconfont.css"/}
     {load href="__CSS__/admin/admin.css"/}
-
-    <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-    <link rel="stylesheet" href="__STATIC__/assets/css/demo.css">
-    <!-- GOOGLE FONTS -->
     <!-- ICONS -->
     <link rel="icon" type="image/png" sizes="96x96" href="__STATIC__/assets/img/favicon.ico">
     <script src="__STATIC__/js/vue.js"></script>
@@ -80,7 +76,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>{$Request.session.name}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{:url('index/index')}"><i class="lnr lnr-user"></i><span>个人资料</span></a></li>
+                            <li><a href="{:url('index/index/index')}"><i class="lnr lnr-user"></i><span>个人资料</span></a></li>
                             <li><a href="{:url('login/logout')}"><i class="lnr lnr-exit"></i> <span>退出登录</span></a></li>
                         </ul>
                     </li>
@@ -97,7 +93,7 @@
                     <li><a href="{:url('index/index/index')}" {if condition="$action == 'index'"}class="active"{/if}><i class="lnr lnr-home"></i> <span>基本信息</span></a></li>
                     <li><a href="{:url('index/project/index')}" {if condition="$action == 'project'"}class="active"{/if}><i class="lnr lnr-book"></i> <span>我的项目</span></a></li>
                     <li><a href="{:url('index/project/add')}" {if condition="$action == 'add'"}class="active"{/if}><i class="lnr lnr-code"></i> <span>提交项目</span></a></li>
-                    <li><a href="{:url('index/index/about')}" {if condition="$action == 'about'"}class="active"{/if}><i class="lnr lnr-code"></i> <span>关于SIST</span></a></li>
+                    <li><a href="{:url('index/index/about')}" {if condition="$action == 'about'"}class="active"{/if}><i class="lnr lnr-diamond"></i> <span>关于SIST</span></a></li>
                     <li><a href="{:url('index/login/logout')}"><i class="lnr lnr-exit"></i> <span>退出登录</span></a></li>
 
 

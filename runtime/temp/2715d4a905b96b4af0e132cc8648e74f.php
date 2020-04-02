@@ -1,4 +1,4 @@
-<?php /*a:2:{s:76:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\project\done.html";i:1585642635;s:83:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layer_layout.html";i:1584093394;}*/ ?>
+<?php /*a:2:{s:76:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\project\done.html";i:1585808286;s:83:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layer_layout.html";i:1584093394;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,6 +28,7 @@
     <tr><td width="20%" align="center">查看链接:</td>
         <td width="80%">
             <input type="text" name="url" id="url" style="text-decoration:underline;width:300px;" placeholder="请点击此处输入链接，若无则忽略">
+            <br/>说明：请填写完整链接：如http(s)://www.XXX.com
         </td>
     </tr>
                 <input type="hidden" value="<?php echo htmlentities($buzhou); ?>" id="buzhou">

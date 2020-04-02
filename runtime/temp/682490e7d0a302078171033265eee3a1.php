@@ -1,4 +1,4 @@
-<?php /*a:2:{s:78:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\project\detail.html";i:1585359329;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layout.html";i:1585275795;}*/ ?>
+<?php /*a:2:{s:78:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\project\detail.html";i:1585809217;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layout.html";i:1585275795;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,6 +90,26 @@
         <?php endforeach; endif; else: echo "" ;endif; ?>
     </ul>
 </div>
+<?php if($pj['status'] == 1): ?>
+<div class="layui-col-md12"
+     style="border:1px solid grey;margin-bottom: 60px;">
+
+    <div class="layui-card">
+        <div class="layui-card-header" style="border:none;font-size: 15px;">客户对此项目的评价</div>
+        <hr class="layui-bg-black">
+
+        <?php if($pj['is_evaluation'] == 1): ?>
+        <div class="layui-card-body">
+            客户的评价：
+            <input type="hidden" id="fenshu" value="<?php echo htmlentities($pj['score']); ?>">
+            <div style="width:80%;"><span><pre><?php echo htmlentities($pj['evaluation']); ?></pre></span></div>
+            <div id="score1">
+            </div>
+        </div>
+        <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>
 
         </div>
     </div>
@@ -102,10 +122,28 @@
     
     
 <script>
-    layui.use(['element', 'layer'],function(){
+    layui.use(['element', 'layer','rate'],function(){
         var element = layui.element,
             layer = layui.layer,
+            rate = layui.rate,
             $ = layui.jquery;
+
+        rate.render({
+            elem: '#score1'
+            , value: $('#fenshu').val()//初始值
+            , text: true //开启文本
+            ,readonly:true
+            , setText: function (value) {
+                var arrs = {
+                    '1': '极差'
+                    , '2': '差'
+                    , '3': '中等'
+                    , '4': '好'
+                    , '5': '非常好'
+                };
+                this.span.text(arrs[value] || (value + "星"));
+            }
+        });
 
         $('#upload').on('click', function () {
             var index = layer.open({

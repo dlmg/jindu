@@ -25,6 +25,11 @@ use think\Facade;
  * @method void remove(string $name = '') static 移除配置
  * @method void setYaconf(mixed $yaconf) static 设置开启Yaconf 或者指定配置文件名
  */
+
+/**
+ * Class Config
+ * @package think\facade
+ */
 class Config extends Facade
 {
     /**
@@ -32,6 +37,7 @@ class Config extends Facade
      * @access protected
      * @return string
      */
+
     protected static function getFacadeClass()
     {
         return 'config';

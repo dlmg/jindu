@@ -1,8 +1,5 @@
 <?php
-
-
 namespace app\admin\common\controller;
-
 
 use think\Controller;
 use think\facade\Request;

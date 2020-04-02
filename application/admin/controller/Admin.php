@@ -11,16 +11,32 @@ use think\facade\Request;
 use app\admin\common\model\Admin as AdminModel;
 use app\admin\common\model\Profile;
 
+/**
+ * Class Admin
+ * @package app\admin\controller
+ * @create_time 2020/4/1 16:24:09
+ * @Author MG <dlmg521@163.com>
+ */
 class Admin extends Base
 {
     // 管理员管理首页
     public function index()
     {
-        $this -> view -> assign('title', '管理员管理');
-        return $this -> view -> fetch('index');
+        $this->view->assign('title', '管理员管理');
+        return $this->view->fetch('index');
     }
 
     // 管理员列表
+
+    /**
+     * @name `adminList`   查询管理员列表
+     * @return \think\response\Json
+     * @create_time 2020/4/1 16:25:34
+     * @throws \think\exception\DbException
+     * @throws db\exception\DataNotFoundException
+     * @throws db\exception\ModelNotFoundException
+     * @author MG <dlmg521@163.com>
+     */
     public function adminList()
     {
         // 定义全局查询条件
@@ -28,8 +44,8 @@ class Admin extends Base
 
         // 搜索功能
         $keywords = Request::param('keywords');
-        if ( !empty($keywords) ) {
-            $map[] = ['username', 'like', '%'.$keywords.'%'];
+        if (!empty($keywords)) {
+            $map[] = ['username', 'like', '%' . $keywords . '%'];
         }
 
         // 定义分页参数
@@ -38,35 +54,36 @@ class Admin extends Base
 
         // 获取到所有的管理员
         $adminList = AdminModel::where($map)
-            -> alias('a')
-            -> join(['think_role' => 'r'], 'a.role_id = r.id')
-            -> order('a.id', 'desc')
-            -> field('a.id, a.username, a.role_id, a.status, a.create_time, a.update_time, a.last_login_time, r.name')
-            -> select();
+            ->alias('a')
+            ->join(['think_role' => 'r'], 'a.role_id = r.id')
+            ->order('a.id', 'desc')
+            ->field('a.id, a.username, a.role_id, a.status, a.create_time, a.update_time, a.last_login_time, r.name')
+            ->select();
 
         $total = count(AdminModel::where($map)->select());
         $result = array("code" => 0, "msg" => "查询成功", "count" => $total, "data" => $adminList);
         return json($result);
-
-        // 3. 设置模板变量
-        //$this -> view -> assign('adminList', $adminList);
-
-        // 4. 渲染模板
-        //return $this -> view -> fetch('index');
     }
 
-    // 添加管理员
+    /**
+     * @return string
+     * @create_time 2020/4/1 16:24:25
+     * @throws \think\exception\DbException
+     * @throws db\exception\DataNotFoundException
+     * @throws db\exception\ModelNotFoundException
+     * @author MG <dlmg521@163.com>
+     */
     public function add()
     {
         // 获取所有非超级管理员角色
-        $roleList = Role::where('id', '>', 1) -> select();
+        $roleList = Role::where('id', '>', 1)->select();
 
         // 设置模板变量
-        $this -> view -> assign('title', '添加员工');
-        $this -> view -> assign('roleList', $roleList);
+        $this->view->assign('title', '添加员工');
+        $this->view->assign('roleList', $roleList);
 
         // 渲染模板
-        return $this -> view -> fetch('add');
+        return $this->view->fetch('add');
     }
 
     // 执行管理员添加操作
@@ -78,8 +95,8 @@ class Admin extends Base
 
         // 执行添加操作
         try {
-            $role = AdminModel::where('username', $data['username']) -> find();
-            if ( !empty($role)) {
+            $role = AdminModel::where('username', $data['username'])->find();
+            if (!empty($role)) {
                 return resMsg(-1, '用户名已经存在，不能重复添加', 'add');
             }
             $admin = new AdminModel;
@@ -87,13 +104,13 @@ class Admin extends Base
             $admin->password = $data['password'];
             $admin->role_id = $data['role_id'];
             $admin->status = $data['is_able'];
-            if($admin->save()) {
+            if ($admin->save()) {
                 $profile = new Profile;
                 $profile->truename = $data["truename"];
                 $admin->profile()->save($profile);
             }
         } catch (\Exception $e) {
-            return resMsg(0, '员工信息添加失败' . '<br>' . $e->getMessage(), 'add' );
+            return resMsg(0, '员工信息添加失败' . '<br>' . $e->getMessage(), 'add');
         }
         return resMsg(1, '员工信息添加成功', 'index');
     }
@@ -105,18 +122,18 @@ class Admin extends Base
         $adminId = Request::param('id');
 
         // 根据节点id查询要更新的节点信息
-        $adminInfo = AdminModel::where('id', $adminId) -> field('id, username, role_id, status') -> find();
+        $adminInfo = AdminModel::where('id', $adminId)->field('id, username, role_id, status')->find();
 
         // 获取所有非超级管理员角色
-        $roleList = Role::where('id', '>', 1) -> select();
+        $roleList = Role::where('id', '>', 1)->select();
 
         // 设置模板变量
-        $this -> view -> assign('title', '编辑管理员');
-        $this -> view -> assign('adminInfo', $adminInfo);
-        $this -> view -> assign('roleList', $roleList);
+        $this->view->assign('title', '编辑管理员');
+        $this->view->assign('adminInfo', $adminInfo);
+        $this->view->assign('roleList', $roleList);
 
         // 渲染模板
-        return $this -> view -> fetch('edit');
+        return $this->view->fetch('edit');
     }
 
     // 执行编辑管理员操作
@@ -125,7 +142,7 @@ class Admin extends Base
         // 1. 获取的用户提交的信息
         $data = Request::param();
 
-        if ( !empty($data['password']) ) {
+        if (!empty($data['password'])) {
             $data['password'] = makePassword($data['password']);
         } else {
             unset($data['password']);
@@ -135,13 +152,13 @@ class Admin extends Base
 
         // 执行编辑操作
         try {
-            $admin = AdminModel::where('username', $data['username']) -> where('id', '<>', $data['id']) -> find();
-            if ( !empty($admin)) {
+            $admin = AdminModel::where('username', $data['username'])->where('id', '<>', $data['id'])->find();
+            if (!empty($admin)) {
                 return resMsg(-1, '用户名已经存在，请重新修改', 'edit');
             }
             AdminModel::update($data);
         } catch (\Exception $e) {
-            return resMsg(0, '管理员编辑失败' . '<br>' . $e->getMessage(), 'edit' );
+            return resMsg(0, '管理员编辑失败' . '<br>' . $e->getMessage(), 'edit');
         }
         return resMsg(1, '管理员编辑成功', 'index');
     }
@@ -149,14 +166,14 @@ class Admin extends Base
     // 删除管理员
     public function delete()
     {
-        if ( Request::isAjax() ) {
+        if (Request::isAjax()) {
             // 执行删除操作
             try {
                 $id = Request::param('id');
-                $admin = AdminModel::get($id,'profile');
-                $admin->together('profile') -> delete();
+                $admin = AdminModel::get($id, 'profile');
+                $admin->together('profile')->delete();
             } catch (\Exception $e) {
-                return resMsg(0, '管理员删除失败' . '<br>' . $e->getMessage(), 'index' );
+                return resMsg(0, '管理员删除失败' . '<br>' . $e->getMessage(), 'index');
             }
             return resMsg(1, '管理员删除成功', 'index');
         } else {
@@ -176,17 +193,17 @@ class Admin extends Base
 
         // 3. 更新数据，判断显示状态，如果为1则更改为0，如果为0则更改为1
         try {
-            if ( $status == 1 ) {
+            if ($status == 1) {
                 AdminModel::where('id', $id)
                     ->data('status', 0)
                     ->update();
             } else {
                 AdminModel::where('id', $id)
-                    -> data('status', 1)
-                    -> update();
+                    ->data('status', 1)
+                    ->update();
             }
         } catch (\Exception $e) {
-            return resMsg(0, '<i class="iconfont">&#xe646;</i> 操作失败，请检查' . '<br>' . $e->getMessage(), 'index' );
+            return resMsg(0, '<i class="iconfont">&#xe646;</i> 操作失败，请检查' . '<br>' . $e->getMessage(), 'index');
         }
         return resMsg(1, '<i class="iconfont">&#xe645;</i> 状态变更成功', 'index');
     }
