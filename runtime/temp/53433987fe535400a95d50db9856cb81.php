@@ -1,4 +1,4 @@
-<?php /*a:2:{s:80:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\project\detailed.html";i:1585643973;s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\base.html";i:1585805893;}*/ ?>
+<?php /*a:2:{s:80:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\project\detailed.html";i:1585884410;s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\base.html";i:1585822126;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,7 +78,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span><?php echo htmlentities(app('request')->session('name')); ?></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="<?php echo url('index/index/index'); ?>"><i class="lnr lnr-user"></i><span>个人资料</span></a></li>
-                            <li><a href="<?php echo url('login/logout'); ?>"><i class="lnr lnr-exit"></i> <span>退出登录</span></a></li>
+                            <li><a href="javascript:;" class="login-out" onclick="logout()"><i class="lnr lnr-exit"></i> <span>退出登录</span></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -128,7 +128,6 @@
                     <input type="hidden" value="<?php echo htmlentities($pro_id); ?>" id="pro_id">
 
                     <ul class="layui-timeline">
-
                         <?php if(is_array($result) || $result instanceof \think\Collection || $result instanceof \think\Paginator): $i = 0; $__LIST__ = $result;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
                         <li class="layui-timeline-item">
                             <i class="layui-icon layui-timeline-axis"></i>
@@ -225,6 +224,24 @@
                 myNav[0].className="";
             }
         }
+        layui.use(['element', 'layer', 'layuimini'], function () {
+            var $ = layui.jquery,
+                element = layui.element,
+                layer = layui.layer;
+            layuimini.init('');
+
+        });
+        // 退出登录
+        function logout() {
+            layer.confirm('您确定要退出吗？',{
+                icon: 3,
+                skin: 'layer-ext-moon'
+            },function(index){
+                window.location = '<?php echo url("login/logout"); ?>';
+            });
+        }
+
+
     </script>
 </body>
 </html>

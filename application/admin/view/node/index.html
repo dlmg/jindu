@@ -122,7 +122,21 @@
                 dataType: 'json',
                 beforeSend: function(){},
                 success: function () {
-                    treeTable = treeGrid.reload();
+                    treeTable = treeGrid.reload('treeTable',{
+                        treeId: 'id', //树形id字段名称
+                        treeUpId: 'pid', //树形父id字段名称
+                        treeShowName: 'title', //以树形式显示的字段
+                        height: 'full-140',
+                        isFilter: false,
+                        iconOpen: false, //是否显示图标【默认显示】
+                        isOpenDefault: true, //节点默认是展开还是折叠【默认展开】
+                        where: {
+                            keywords: keywords
+                        },
+                        done(){
+
+                        }
+                    });
                 }
             });
             return false;

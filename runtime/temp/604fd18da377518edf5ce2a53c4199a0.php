@@ -1,4 +1,4 @@
-<?php /*a:2:{s:74:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\node\index.html";i:1584091919;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layout.html";i:1585275795;}*/ ?>
+<?php /*a:2:{s:74:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\node\index.html";i:1585882395;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layout.html";i:1585275795;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -149,7 +149,21 @@
                 dataType: 'json',
                 beforeSend: function(){},
                 success: function () {
-                    treeTable = treeGrid.reload();
+                    treeTable = treeGrid.reload('treeTable',{
+                        treeId: 'id', //树形id字段名称
+                        treeUpId: 'pid', //树形父id字段名称
+                        treeShowName: 'title', //以树形式显示的字段
+                        height: 'full-140',
+                        isFilter: false,
+                        iconOpen: false, //是否显示图标【默认显示】
+                        isOpenDefault: true, //节点默认是展开还是折叠【默认展开】
+                        where: {
+                            keywords: keywords
+                        },
+                        done(){
+
+                        }
+                    });
                 }
             });
             return false;

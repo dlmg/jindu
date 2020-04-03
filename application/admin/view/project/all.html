@@ -16,10 +16,13 @@
 
 {// 行内工具栏}
 <script type="text/html" id="barTool">
-
+    {{# if(d.status != 0){ }}
     <a href="{:url('project/detail')}?id={{d.id}}" class="layui-btn layui-btn-primary layui-btn-xs" target="_self"><i
             class="iconfont">&#xe7e0;</i>查看</a>
     <a href="javascript:;" lay-event="edit" class="layui-btn layui-btn-xs"><i class="iconfont">&#xe7e0;</i> 编辑</a>
+    {{# }else{ }}
+    <button class="layui-btn layui-btn-xs layui-btn-warm" onclick="setStatus('{{d.id}}')">审核</button>
+    {{# } }}
 </script>
 
 {// 状态}
@@ -27,7 +30,7 @@
     {{# if(d.status == 1){ }}
     <button class="layui-btn layui-btn-xs layui-btn-success">已完成</button>
     {{# }else if(d.status == 0){ }}
-    <button class="layui-btn layui-btn-xs layui-btn-warm" onclick="setStatus('{{d.id}}')">待审核</button>
+    <button class="layui-btn layui-btn-xs layui-btn-warm">待审核</button>
     {{# } else { }}
     <button class="layui-btn layui-btn-xs layui-btn-normal">正在进行</button>
     {{# } }}
@@ -204,7 +207,7 @@
     });
 
     function setStatus(id) {
-        layer.confirm('点击确认将审核通过吗？', {
+        layer.confirm('点击确认将审核通过', {
             icon: 3
         }, function (index) {
             // 加载层

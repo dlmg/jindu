@@ -1,4 +1,4 @@
-<?php /*a:2:{s:74:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\client\add.html";i:1584933704;s:83:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layer_layout.html";i:1584093394;}*/ ?>
+<?php /*a:2:{s:74:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\client\add.html";i:1585820931;s:83:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layer_layout.html";i:1584093394;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,6 +44,14 @@
                 <input type="text" name="password" lay-verify="required" lay-reqText="密码不能为空" placeholder="请输入密码" autocomplete="off" class="layui-input">
             </div>
         </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系方式：</label>
+            <div class="layui-input-block">
+                <input type="text" name="mobile" lay-verify="required" lay-reqText="联系方式不能为空" placeholder="请输入联系方式" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
         <div class="layui-form-item">
             <label class="layui-form-label">是否启用：</label>
             <div class="layui-input-block">

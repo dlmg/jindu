@@ -283,6 +283,7 @@ class Project extends Base
     {
         $buzhou = input('id');
         $pro_id = input('pro_id');
+        $is_right = Db::name('schedule')->where(['project_id'=>$pro_id,'buzhou'=>$buzhou])->value('is_right');
         $sql = "select upload_desc,operation,create_time from think_detail where pro_id=$pro_id and buzhou=$buzhou group by create_time";
         $result = Db::query($sql);
         $sql1 = "select * from think_detail WHERE create_time in ( select create_time from  think_detail group by create_time) and pro_id=$pro_id and buzhou=$buzhou";
@@ -292,6 +293,7 @@ class Project extends Base
         $this->assign('data', $data);
         $this->assign('buzhou', $buzhou);
         $this->assign('pro_id', $pro_id);
+        $this->assign('is_right', $is_right);
         return $this->fetch();
     }
 

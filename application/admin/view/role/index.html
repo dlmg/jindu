@@ -105,7 +105,35 @@
                             }
                             ,where: {
                                 keywords: keywords.val()
-                            }
+                            },
+                            done(){
+                                $('.search-btn').on('click', function(){
+                                    var type = $(this).data('type');
+                                    active[type] ? active[type].call(this) : '';
+                                });
+                                // 添加角色
+                                $('#add').on('click', function () {
+                                    var index = layer.open({
+                                        type: 2,
+                                        title: '<i class=iconfont>&#xe7c7;</i> 添加角色',
+                                        area: ['500px', '400px'],
+                                        content: ['{:url("role/add")}', 'yes'],
+                                        skin: 'layui-layer-molv',
+                                        btn: ['立即提交', '重置'],
+                                        btnAlign: 'c',
+                                        yes: function(index, layero){
+                                            var submit = layero.find('iframe').contents().find("#submit");// #subBtn为页面层提交按钮ID
+                                            submit.click();// 触发提交监听
+                                            return false;
+                                        },
+                                        btn2:function (index,layero) {
+                                            var reset = layero.find('iframe').contents().find("#reset");// #subBtn为页面层提交按钮ID
+                                            reset.click();// 触发重置按钮
+                                            return false;
+                                        }
+                                    });
+                                });
+                            },
                         }, 'data');
                     }
                 };
@@ -116,6 +144,28 @@
             }
         });
 
+
+        $('#add').on('click', function () {
+            var index = layer.open({
+                type: 2,
+                title: '<i class=iconfont>&#xe7c7;</i> 添加角色',
+                area: ['500px', '400px'],
+                content: ['{:url("role/add")}', 'yes'],
+                skin: 'layui-layer-molv',
+                btn: ['立即提交', '重置'],
+                btnAlign: 'c',
+                yes: function(index, layero){
+                    var submit = layero.find('iframe').contents().find("#submit");// #subBtn为页面层提交按钮ID
+                    submit.click();// 触发提交监听
+                    return false;
+                },
+                btn2:function (index,layero) {
+                    var reset = layero.find('iframe').contents().find("#reset");// #subBtn为页面层提交按钮ID
+                    reset.click();// 触发重置按钮
+                    return false;
+                }
+            });
+        });
         // 监听行内工具栏
         table.on('tool(dataTable)', function (obj) {
             var e = obj.event;
@@ -201,28 +251,7 @@
             }
         });
 
-        // 添加角色
-        $('#add').on('click', function () {
-            var index = layer.open({
-                type: 2,
-                title: '<i class=iconfont>&#xe7c7;</i> 添加角色',
-                area: ['500px', '400px'],
-                content: ['{:url("role/add")}', 'yes'],
-                skin: 'layui-layer-molv',
-                btn: ['立即提交', '重置'],
-                btnAlign: 'c',
-                yes: function(index, layero){
-                    var submit = layero.find('iframe').contents().find("#submit");// #subBtn为页面层提交按钮ID
-                    submit.click();// 触发提交监听
-                    return false;
-                },
-                btn2:function (index,layero) {
-                    var reset = layero.find('iframe').contents().find("#reset");// #subBtn为页面层提交按钮ID
-                    reset.click();// 触发重置按钮
-                    return false;
-                }
-            });
-        });
+
     });
 
     // 设置显示状态

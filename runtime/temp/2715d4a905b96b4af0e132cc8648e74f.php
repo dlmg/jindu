@@ -1,4 +1,4 @@
-<?php /*a:2:{s:76:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\project\done.html";i:1585808286;s:83:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layer_layout.html";i:1584093394;}*/ ?>
+<?php /*a:2:{s:76:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\project\done.html";i:1585899645;s:83:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layer_layout.html";i:1584093394;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,16 +97,17 @@
                         layer.msg(res.message, {
                             time: 1000
                         },function(){
-                            window.location.reload();
+                            parent.window.location.reload();
+                            var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                            parent.layer.close(index);
                         });
                     } else if (res.status == 0) {
                         layer.alert(res.message, {
                             icon: 2,
                             skin: 'layer-ext-moon'
                         },function(){
-                            parent.window.location.reload();
-                            var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
-                            parent.layer.close(index);
+                            window.location.reload();
+
                         });
                     }
                 }

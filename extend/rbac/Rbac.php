@@ -48,7 +48,9 @@ class Rbac
         'project/communication' => 1,
         'project/done' => 1,
         'project/download' => 1,
-        'admin/project/downloadDt' => 1,
+        'project/downloaddt' => 1,
+        'index/editpassword' => 1,
+        'index/doeditpwd' => 1,
     ];
 
     /**

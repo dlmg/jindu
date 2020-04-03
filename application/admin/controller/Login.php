@@ -87,10 +87,12 @@ class Login extends Controller
             // 判断用户登录信息是否存在
             if ( empty($adminInfo) ) {
                 // 写入登录日志
-                $this->insertLoginLog($data['username'], 0);
-                return resMsg(0, '用户名或密码错误', 'index');
+                //$this->insertLoginLog($data['username'], 0);
+                return resMsg(0, '用户不存在', 'index');
             }
-
+            if($adminInfo['status'] == 0){
+                return resMsg(0,'用户已被禁用','index');
+            }
             // 判断用户密码是否正确
             if ( !checkPassword($data['password'], $adminInfo['password']) ) {
                 // 写入登录日志

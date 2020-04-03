@@ -1,4 +1,4 @@
-<?php /*a:1:{s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\index\index.html";i:1585792497;}*/ ?>
+<?php /*a:1:{s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\index\index.html";i:1585897049;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

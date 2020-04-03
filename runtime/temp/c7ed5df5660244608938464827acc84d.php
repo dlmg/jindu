@@ -1,4 +1,4 @@
-<?php /*a:2:{s:76:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\client\index.html";i:1584934763;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layout.html";i:1585275795;}*/ ?>
+<?php /*a:2:{s:76:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\client\index.html";i:1585902379;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layout.html";i:1585275795;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -154,6 +154,30 @@
                             }
                             ,where: {
                                 keywords: keywords.val()
+                            },
+                            done(){
+                                // 添加用户
+                                $('#add').on('click', function () {
+                                    var index = layer.open({
+                                        type: 2,
+                                        title: '<i class=iconfont>&#xe7c7;</i> 添加客户',
+                                        area: ['500px', '420px'],
+                                        content: ['<?php echo url("client/add"); ?>', 'yes'],
+                                        skin: 'layui-layer-molv',
+                                        btn: ['立即提交', '重置'],
+                                        btnAlign: 'c',
+                                        yes: function(index, layero){
+                                            var submit = layero.find('iframe').contents().find("#submit");// #subBtn为页面层提交按钮ID
+                                            submit.click();// 触发提交监听
+                                            return false;
+                                        },
+                                        btn2:function (index,layero) {
+                                            var reset = layero.find('iframe').contents().find("#reset");// #subBtn为页面层提交按钮ID
+                                            reset.click();// 触发重置按钮
+                                            return false;
+                                        }
+                                    });
+                                });
                             }
                         }, 'data');
                     }

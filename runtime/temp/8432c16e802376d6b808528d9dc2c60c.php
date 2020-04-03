@@ -1,4 +1,4 @@
-<?php /*a:2:{s:80:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\project\detailed.html";i:1585357795;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layout.html";i:1585275795;}*/ ?>
+<?php /*a:2:{s:80:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\project\detailed.html";i:1585884410;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layout.html";i:1585275795;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +23,6 @@
         </div>
         <div class="layui-card-body">
             
-<div style="float:right;"><button class="layui-btn layui-btn-normal" id="upload">沟通</button></div>
 <div class="layui-collapse" style="width:98%;">
     <input type="hidden" value="<?php echo htmlentities($buzhou); ?>" id="buzhou">
     <input type="hidden" value="<?php echo htmlentities($pro_id); ?>" id="pro_id">
@@ -54,6 +53,11 @@
         <?php endforeach; endif; else: echo "" ;endif; ?>
     </ul>
 </div>
+<?php if($is_right === 0): ?>
+<div style="margin:0 auto;width:100px;">
+    <button class="layui-btn layui-btn-normal" id="upload">沟通需求</button>
+</div>
+<?php endif; ?>
 
         </div>
     </div>
