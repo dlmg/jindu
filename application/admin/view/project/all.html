@@ -21,7 +21,7 @@
             class="iconfont">&#xe7e0;</i>查看</a>
     <a href="javascript:;" lay-event="edit" class="layui-btn layui-btn-xs"><i class="iconfont">&#xe7e0;</i> 编辑</a>
     {{# }else{ }}
-    <button class="layui-btn layui-btn-xs layui-btn-warm" onclick="setStatus('{{d.id}}')"><i class="layui-icon-ok"></i> 审核</button>
+    <button class="layui-btn layui-btn-xs layui-btn-warm" onclick="setStatus('{{d.id}}')"><i class="layui-icon layui-icon-ok"></i> 审核</button>
     {{# } }}
 </script>
 
@@ -30,7 +30,7 @@
     {{# if(d.status == 1){ }}
     <button class="layui-btn layui-btn-xs layui-btn-success">已完成</button>
     {{# }else if(d.status == 0){ }}
-    <button class="layui-btn layui-btn-xs layui-btn-warm">待审核</button>
+    <button class="layui-btn layui-btn-xs layui-btn-danger">待审核</button>
     {{# } else { }}
     <button class="layui-btn layui-btn-xs layui-btn-normal">正在进行</button>
     {{# } }}
