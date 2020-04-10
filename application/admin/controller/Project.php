@@ -178,7 +178,6 @@ class Project extends Base
         $url = Fenbu::where('id', $id)->value('file_url');
         $download = new \think\response\Download('D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\public/upload/' . $url);
         return $download->name('客户需求');
-
     }
 
     public function downloadDt()
@@ -283,7 +282,7 @@ class Project extends Base
     {
         $buzhou = input('id');
         $pro_id = input('pro_id');
-        $is_right = Db::name('schedule')->where(['project_id'=>$pro_id,'buzhou'=>$buzhou])->value('is_right');
+        $is_right = Db::name('schedule')->where(['project_id' => $pro_id, 'buzhou' => $buzhou])->value('is_right');
         $sql = "select upload_desc,operation,create_time from think_detail where pro_id=$pro_id and buzhou=$buzhou group by create_time";
         $result = Db::query($sql);
         $sql1 = "select * from think_detail WHERE create_time in ( select create_time from  think_detail group by create_time) and pro_id=$pro_id and buzhou=$buzhou";
@@ -374,6 +373,27 @@ class Project extends Base
             }
         } else {
             return resMsg(201, '审核未通过', 'index');
+        }
+    }
+
+    public function delete(){
+        if (Request::isAjax()) {
+            $id = Request::param('id');
+            $status = Pro::where('id',$id)->value('status');
+            // 执行删除操作
+            if($status != 2) {
+                try {
+                    $sql = "delete t1,t2,t3 from think_project as t1 join think_fenbu as t2 on t1.id=t2.pro_id join think_schedule as t3 on t1.id=t3.project_id where t1.id = $id";
+                    $result = Db::query($sql);
+                } catch (\Exception $e) {
+                    return resMsg(0, '项目删除失败' . '<br>' . $e->getMessage(), 'index');
+                }
+                return resMsg(1, '项目删除成功', 'index');
+            }else{
+                return resMsg(0,'项目正在进行中，不能删除','index');
+            }
+        } else {
+            return resMsg(-1, '请求类型错误', 'index');
         }
     }
 }
