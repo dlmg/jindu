@@ -145,4 +145,7 @@ return [
     // 异常处理handle类 留空使用 \think\exception\Handle
     'exception_handle'       => '',
 
+    //下载文件路径
+    'down_url'               => 'D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\public\upload\\',
+
 ];

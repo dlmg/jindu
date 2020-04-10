@@ -33,7 +33,7 @@ class Project extends Base
     public function downloadDt(){
         $id = input('id');
         $url = Detail::where('id',$id)->value('file_url');
-        $download = new \think\response\Download('D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\public/upload/'.$url);
+        $download = new \think\response\Download(config('app.down_url').$url);
         return $download->name('文件');
 
     }

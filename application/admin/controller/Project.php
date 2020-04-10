@@ -176,7 +176,7 @@ class Project extends Base
     {
         $id = input('id');
         $url = Fenbu::where('id', $id)->value('file_url');
-        $download = new \think\response\Download('D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\public/upload/' . $url);
+        $download = new \think\response\Download(config('app.down_url'). $url);
         return $download->name('客户需求');
     }
 
@@ -184,7 +184,7 @@ class Project extends Base
     {
         $id = input('id');
         $url = Detail::where('id', $id)->value('file_url');
-        $download = new \think\response\Download('D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\public/upload/' . $url);
+        $download = new \think\response\Download(config('app.down_url') . $url);
         return $download->name('文件');
 
     }
