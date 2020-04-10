@@ -45,7 +45,7 @@
         </div>
         <div class="layui-form-item layui-hide">
             <div class="layui-input-block">
-                <button type="submit" class="layui-btn" id="submit" lay-submit lay-filter="submit">立即提交</button>
+                <button type="submit" class="layui-btn tijiao" id="submit" lay-submit lay-filter="submit">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary" id="reset">重置</button>
             </div>
         </div>
@@ -64,6 +64,12 @@
                 icon: 16,
                 shade: 0.2
             });
+            var DISABLED = 'layui-btn-disabled';
+            // 增加样式
+            $('.tijiao').addClass(DISABLED);
+            // 增加属性
+            $('.tijiao').attr('disabled', 'disabled');
+
             $.ajax({
                 url: '{:url("doAdd")}',
                 type: 'POST',

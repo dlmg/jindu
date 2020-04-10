@@ -1,4 +1,4 @@
-<?php /*a:2:{s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\index\index.html";i:1585805617;s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\base.html";i:1585903467;}*/ ?>
+<?php /*a:2:{s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\index\index.html";i:1585805617;s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\base.html";i:1585903555;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,17 +73,6 @@
                     <li><a href="<?php echo url('index/project/add'); ?>" <?php if($action == 'add'): ?>class="active"<?php endif; ?>><i class="lnr lnr-code"></i> <span>提交项目</span></a></li>
                     <li><a href="<?php echo url('index/index/about'); ?>" <?php if($action == 'about'): ?>class="active"<?php endif; ?>><i class="lnr lnr-diamond"></i> <span>关于SIST</span></a></li>
                     <li><a href="javascript:;" class="login-out" onclick="logout()"><i class="lnr lnr-exit"></i> <span>退出登录</span></a></li>
-
-
-                    <!--<li>
-                        <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>个人中心</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-                        <div id="subPages" class="collapse ">
-                            <ul class="nav">
-                                <li><a href="javascript:;" onclick="editPassword();">修改密码</a></li>
-                                <li><a href="<?php echo url('login/logout'); ?>" class="">退出登录</a></li>
-                            </ul>
-                        </div>
-                    </li>-->
                 </ul>
             </nav>
         </div>

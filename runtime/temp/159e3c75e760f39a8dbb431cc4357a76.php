@@ -1,4 +1,4 @@
-<?php /*a:2:{s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\project\all.html";i:1585886692;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layout.html";i:1585275795;}*/ ?>
+<?php /*a:2:{s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\project\all.html";i:1585905027;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layout.html";i:1585275795;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +43,7 @@
             class="iconfont">&#xe7e0;</i>查看</a>
     <a href="javascript:;" lay-event="edit" class="layui-btn layui-btn-xs"><i class="iconfont">&#xe7e0;</i> 编辑</a>
     {{# }else{ }}
-    <button class="layui-btn layui-btn-xs layui-btn-warm" onclick="setStatus('{{d.id}}')">审核</button>
+    <button class="layui-btn layui-btn-xs layui-btn-warm" onclick="setStatus('{{d.id}}')"><i class="layui-icon-ok"></i> 审核</button>
     {{# } }}
 </script>
 

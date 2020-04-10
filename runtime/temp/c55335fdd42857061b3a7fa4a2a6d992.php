@@ -1,4 +1,4 @@
-<?php /*a:2:{s:78:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\project\detail.html";i:1585807911;s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\base.html";i:1585903555;}*/ ?>
+<?php /*a:2:{s:78:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\project\detail.html";i:1585907363;s:75:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\index\view\public\base.html";i:1585903555;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -291,6 +291,7 @@
                     });
                 });
                 $('#queren').on('click', function () {
+
                     var index = layer.confirm('点击确认后将进行下一步！', {
                         icon: 3
                     }, function (index) {

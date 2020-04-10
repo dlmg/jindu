@@ -22,7 +22,7 @@
         <td></td>
         <td>
             <div style="margin-top:40px;">
-                <button type="button" class="layui-btn" id="action">提交</button>
+                <button type="button" class="layui-btn tijiao" id="action">提交</button>
             </div>
         </td>
     </tr>
@@ -67,6 +67,11 @@
                         }
                     }
                 })
+                var DISABLED = 'layui-btn-disabled';
+                // 增加样式
+                $('.tijiao').addClass(DISABLED);
+                // 增加属性
+                $('.tijiao').attr('disabled', 'disabled');
             }
         });
 

@@ -1,4 +1,4 @@
-<?php /*a:2:{s:76:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\project\done.html";i:1585899645;s:83:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layer_layout.html";i:1584093394;}*/ ?>
+<?php /*a:2:{s:76:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\project\done.html";i:1585907609;s:83:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layer_layout.html";i:1584093394;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,19 +25,29 @@
                 <div class="layui-card-body">
                     
 <table width="70%">
-    <tr><td width="20%" align="center">查看链接:</td>
+    <tr>
+        <td width="20%" align="center">查看链接:</td>
         <td width="80%">
-            <input type="text" name="url" id="url" style="text-decoration:underline;width:300px;" placeholder="请点击此处输入链接，若无则忽略">
+            <input type="text" name="url" id="url" style="text-decoration:underline;width:300px;"
+                   placeholder="请点击此处输入链接，若无则忽略">
             <br/>说明：请填写完整链接：如http(s)://www.XXX.com
         </td>
     </tr>
-                <input type="hidden" value="<?php echo htmlentities($buzhou); ?>" id="buzhou">
-                <input type="hidden" value="<?php echo htmlentities($pro_id); ?>" id="pro_id">
-    <tr><td width="30%" align="center">完成说明：</td><td width="70%"><textarea name="description" style="margin-top:80px;resize: none;" maxlength="200" width="60%" required lay-verify="required" rows="10" placeholder="请输入上传备注,限制在200字以内" class="layui-textarea" id="description"></textarea></tr>
-    <tr><td></td>
-        <td><div style="margin-top:40px;">
-            <button type="button" class="layui-btn" id="action">提交</button>
-        </div></td>
+    <input type="hidden" value="<?php echo htmlentities($buzhou); ?>" id="buzhou">
+    <input type="hidden" value="<?php echo htmlentities($pro_id); ?>" id="pro_id">
+    <tr>
+        <td width="30%" align="center">完成说明：</td>
+        <td width="70%"><textarea name="description" style="margin-top:80px;resize: none;" maxlength="200" width="60%"
+                                  required lay-verify="required" rows="10" placeholder="请输入上传备注,限制在200字以内"
+                                  class="layui-textarea" id="description"></textarea>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <div style="margin-top:40px;">
+                <button type="button" class="layui-btn tijiao" id="action">提交</button>
+            </div>
+        </td>
     </tr>
 </table>
 
@@ -75,43 +85,47 @@
     
     
 <script>
-    layui.use('upload', function(){
+    layui.use('upload', function () {
         var element = layui.element,
             layer = layui.layer,
             $ = layui.jquery;
 
 
-        $('#action').on('click',function () {
+        $('#action').on('click', function () {
             var pro_id = document.getElementById("pro_id").value;
             var buzhou = document.getElementById("buzhou").value;
             var description = document.getElementById('description').value;
             var url = document.getElementById('url').value;
-            if(isnull(description)){
-            $.ajax({
-                url:"<?php echo url('done'); ?>",
-                data:{pro_id:pro_id,buzhou:buzhou,description:description,url:url},
-                type:'post',
-                success: function(res){
-                    //layer.close(loading);
-                    if (res.status == 1) {
-                        layer.msg(res.message, {
-                            time: 1000
-                        },function(){
-                            parent.window.location.reload();
-                            var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
-                            parent.layer.close(index);
-                        });
-                    } else if (res.status == 0) {
-                        layer.alert(res.message, {
-                            icon: 2,
-                            skin: 'layer-ext-moon'
-                        },function(){
-                            window.location.reload();
-
-                        });
+            if (isnull(description)) {
+                $.ajax({
+                    url: "<?php echo url('done'); ?>",
+                    data: {pro_id: pro_id, buzhou: buzhou, description: description, url: url},
+                    type: 'post',
+                    success: function (res) {
+                        //layer.close(loading);
+                        if (res.status == 1) {
+                            layer.msg(res.message, {
+                                time: 1000
+                            }, function () {
+                                parent.window.location.reload();
+                                var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                                parent.layer.close(index);
+                            });
+                        } else if (res.status == 0) {
+                            layer.alert(res.message, {
+                                icon: 2,
+                                skin: 'layer-ext-moon'
+                            }, function () {
+                                window.location.reload();
+                            });
+                        }
                     }
-                }
-            })
+                })
+                var DISABLED = 'layui-btn-disabled';
+                // 增加样式
+                $('.tijiao').addClass(DISABLED);
+                // 增加属性
+                $('.tijiao').attr('disabled', 'disabled');
             }
         });
 

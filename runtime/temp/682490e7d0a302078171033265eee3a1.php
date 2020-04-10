@@ -1,4 +1,4 @@
-<?php /*a:2:{s:78:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\project\detail.html";i:1585809217;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layout.html";i:1585275795;}*/ ?>
+<?php /*a:2:{s:78:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\project\detail.html";i:1585907051;s:77:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layout.html";i:1585275795;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,7 +75,7 @@
                             <input type="hidden" value="<?php echo htmlentities($result['project_id']); ?>" id="pro_id">
                             <input type="hidden" value="<?php echo htmlentities($result['statusName']); ?>" id="statusName">
                         <?php if($result['is_goto'] == 0): ?>
-                            <button  class="layui-btn layui-btn-normal" id="goto">进入此步骤</button>
+                            <button  class="layui-btn tijiao layui-btn-normal" id="goto">进入此步骤</button>
                             <?php endif; ?>
 
                         </div>
@@ -168,6 +168,7 @@
         });
 
         $('#yes').on('click', function () {
+
             var index = layer.open({
                 type: 2,
                 title: '<i class=iconfont>&#xe7c7;</i> 完成说明',
@@ -190,6 +191,11 @@
         });
 
         $('#goto').on('click',function () {
+            var DISABLED = 'layui-btn-disabled';
+            // 增加样式
+            $('.tijiao').addClass(DISABLED);
+            // 增加属性
+            $('.tijiao').attr('disabled', 'disabled');
             var pro_id = document.getElementById("pro_id").value;
             var buzhou = document.getElementById("buzhou").value;
             var statusName = document.getElementById("statusName").value;

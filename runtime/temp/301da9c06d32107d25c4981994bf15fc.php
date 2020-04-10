@@ -1,4 +1,4 @@
-<?php /*a:2:{s:73:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\admin\add.html";i:1584943411;s:83:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layer_layout.html";i:1584093394;}*/ ?>
+<?php /*a:2:{s:73:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\admin\add.html";i:1585906687;s:83:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layer_layout.html";i:1584093394;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,7 +66,7 @@
         </div>
         <div class="layui-form-item layui-hide">
             <div class="layui-input-block">
-                <button type="submit" class="layui-btn" id="submit" lay-submit lay-filter="submit">立即提交</button>
+                <button type="submit" class="layui-btn tijiao" id="submit" lay-submit lay-filter="submit">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary" id="reset">重置</button>
             </div>
         </div>
@@ -116,6 +116,12 @@
                 icon: 16,
                 shade: 0.2
             });
+            var DISABLED = 'layui-btn-disabled';
+            // 增加样式
+            $('.tijiao').addClass(DISABLED);
+            // 增加属性
+            $('.tijiao').attr('disabled', 'disabled');
+
             $.ajax({
                 url: '<?php echo url("doAdd"); ?>',
                 type: 'POST',

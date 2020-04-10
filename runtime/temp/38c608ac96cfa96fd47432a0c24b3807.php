@@ -1,4 +1,4 @@
-<?php /*a:2:{s:85:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\project\communication.html";i:1585214887;s:83:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layer_layout.html";i:1584093394;}*/ ?>
+<?php /*a:2:{s:85:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\project\communication.html";i:1585907230;s:83:"D:\phpstudy_pro\WWW\ThinkPHP5.1RBAC\application\admin\view\public\layer_layout.html";i:1584093394;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +45,7 @@
         <tr>
             <td></td>
         <td><div style="margin-top:40px;">
-            <button type="button" class="layui-btn" id="action">开始上传</button>
+            <button type="button" class="layui-btn tijiao" id="action">开始上传</button>
         </div></td>
         </tr>
     </table>
@@ -109,6 +109,11 @@
             ,auto:false
             ,bindAction:'#action'
             ,before: function(obj){
+                var DISABLED = 'layui-btn-disabled';
+                // 增加样式
+                $('.tijiao').addClass(DISABLED);
+                // 增加属性
+                $('.tijiao').attr('disabled', 'disabled');
                 //预读本地文件示例，不支持ie8
                 obj.preview(function(index, file, result){
                     $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
