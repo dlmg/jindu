@@ -134,7 +134,54 @@
                             keywords: keywords
                         },
                         done(){
+                            $('.search-btn').on('click', function(){
+                                var keywords = $('input[name="keywords"]').val();
+                                $.ajax({
+                                    type: "post",
+                                    url: "{:url('node/nodeList')}",
+                                    data: {keywords : keywords},
+                                    dataType: 'json',
+                                    beforeSend: function(){},
+                                    success: function () {
+                                        treeTable = treeGrid.reload('treeTable',{
+                                            treeId: 'id', //树形id字段名称
+                                            treeUpId: 'pid', //树形父id字段名称
+                                            treeShowName: 'title', //以树形式显示的字段
+                                            height: 'full-140',
+                                            isFilter: false,
+                                            iconOpen: false, //是否显示图标【默认显示】
+                                            isOpenDefault: true, //节点默认是展开还是折叠【默认展开】
+                                            where: {
+                                                keywords: keywords
+                                            }
+                                        });
+                                    }
+                                });
+                                return false;
+                            });
 
+                            $('#add').on('click', function () {
+                                var pid = $(this).attr('data-pid');
+                                var index = layer.open({
+                                    type: 2,
+                                    title: '<i class=iconfont>&#xe7c7;</i> 添加顶级节点',
+                                    area: ['600px', '475px'],
+                                    content: ['{:url("node/add", ["pid" => 0, "parentNode" => "顶级节点"])}', 'yes'],
+                                    skin: 'layui-layer-molv',
+                                    btn: ['立即提交', '重置'],
+                                    btnAlign: 'c',
+                                    yes: function(index, layero){
+                                        var submit = layero.find('iframe').contents().find("#submit");// #subBtn为页面层提交按钮ID
+                                        submit.click();// 触发提交监听
+                                        return false;
+                                    },
+                                    btn2:function (index,layero) {
+                                        var reset = layero.find('iframe').contents().find("#reset");// #subBtn为页面层提交按钮ID
+                                        reset.click();// 触发重置按钮
+                                        return false;
+                                    }
+                                });
+                            });
                         }
                     });
                 }
