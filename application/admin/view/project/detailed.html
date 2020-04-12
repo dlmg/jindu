@@ -1,7 +1,7 @@
 {extend name="public:layout"/}
 
 {block name="main"}
-<div class="layui-collapse" style="width:98%;">
+<div class="layui-collapse" style="width:98%;" id="photo-list">
     <input type="hidden" value="{$buzhou}" id="buzhou">
     <input type="hidden" value="{$pro_id}" id="pro_id">
 
@@ -16,7 +16,7 @@
                     {volist name="data" id="vo"}
                     {if condition="$v.create_time eq $vo.create_time"}
                     {if condition="$vo.is_image eq 1"}
-                    <span><img src="/upload/{$vo.file_url}" width="216" title="可右键另存为" alt="上传的图片被意大利炮轰走了"></span>
+                    <span><img src="/upload/{$vo.file_url}" width="216" title="可右键另存为" alt="图片"></span>
                     {else}
                     <span><a href="{:url('admin/project/downloadDt')}?id={$vo.id}">点击此处下载文档</a></span>
                     {/if}
@@ -71,6 +71,15 @@
             });
         });
     });
+
+    $('#photo-list img').on('click', function () {
+        layer.photos({
+            photos: '#photo-list',
+            shadeClose: false,
+            closeBtn: 1,
+            anim: 0
+        });
+    })
 </script>
 
 {/block}

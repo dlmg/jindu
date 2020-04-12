@@ -4,10 +4,7 @@
 <div class="main-content" style="background-color: #fff">
     <div class="container-fluid">
         <div class="panel" style="box-shadow: rgba(0,0,0,0)">
-            <div class="layui-collapse" style="width:98%;">
-
-                <div class="layui-collapse" style="width:98%;">
-
+            <div class="layui-collapse" style="width:98%;" id="photo-list">
                     <input type="hidden" value="{$buzhou}" id="buzhou">
                     <input type="hidden" value="{$pro_id}" id="pro_id">
 
@@ -19,9 +16,11 @@
                                 <h3 class="layui-timeline-title">{$v.create_time}&nbsp;&nbsp;<span>{$v.operation}</span>
                                 </h3>
                                 <p>
+
                                     {volist name="data" id="vo"}
                                     {if condition="$v.create_time eq $vo.create_time"}
                                     {if condition="$vo.is_image eq 1"}
+
                                     <span><img src="/upload/{$vo.file_url}" width="216" title="可右键另存为"
                                                alt="上传的图片被意大利炮轰走了"></span>
                                     {elseif condition="$vo.file_url neq null"}
@@ -29,6 +28,7 @@
                                     {/if}
                                     {/if}
                                     {/volist}
+
                                     {if $v.upload_desc neq null}
                                     <br><br>上传描述：
                                 <div style="background-color: darkgrey;font-size: 15px;width:70%"><span
@@ -43,7 +43,6 @@
                         {/volist}
 
                     </ul>
-                </div>
             </div>
             {if condition="$is_right === 0"}
             <div style="margin:0 auto;width:100px;">
@@ -82,5 +81,14 @@
                 });
             });
         });
+
+        $('#photo-list img').on('click', function () {
+            layer.photos({
+                photos: '#photo-list',
+                shadeClose: false,
+                closeBtn: 1,
+                anim: 0
+            });
+        })
     </script>
     {/block}

@@ -35,7 +35,7 @@
                         {if condition="$result.buzhou eq $ope.buzhou"}
                         <li style="margin-top:10px;"><span class="layui-badge-dot layui-bg-blue"></span>&nbsp;<span style="margin-left:10px;">{$ope.create_time}&nbsp;&nbsp;&nbsp;&nbsp;{$ope.operation}</span>
                             {if condition="$ope.url neq null"}
-                            <br><div style="background-color: lightgrey;width:auto;margin-left:20px;"><span style="color:#25cee6;font-size: 18px;">{$ope.url}</span></div>
+                            <br><div style="background-color: lightgrey;width:auto;margin-left:20px;"><a href="{$ope.url}" target="_blank"><span style="color:#25cee6;font-size: 18px;">{$ope.url}</span></a></div>
                             <div style="margin-top:5px;">上传描述：<span style="color:black;">{$ope.description}</span></div>
                             {/if}
                             {if condition="$ope.file_url neq null"}
