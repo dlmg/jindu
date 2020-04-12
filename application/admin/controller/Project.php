@@ -151,7 +151,6 @@ class Project extends Base
         $id = input('id');
         $project = new Pro;
         $result = Pro::get($id);
-        //dump($result);
         $this->assign('result', $result);
         $this->assign('prolist', $prolist);
         $this->assign('title', '编辑项目');
@@ -175,18 +174,67 @@ class Project extends Base
     public function download()
     {
         $id = input('id');
-        $url = Fenbu::where('id', $id)->value('file_url');
-        $download = new \think\response\Download(config('app.down_url'). $url);
-        return $download->name('客户需求');
+        $url = Detail::where('id',$id)->value('file_url');
+        $filename = config('app.down_url').$url;
+        $arr = explode('.',$filename);
+        $hz = array_pop($arr);
+        header('content-type:application/octet-stream');
+        //告诉浏览器返回的文件大小类型是字节
+        header('Accept-Ranges:bytes');
+        //获得文件大小
+        $filesize = filesize($filename);//(此方法无法获取到远程文件大小)
+        /*$header_array = get_headers($filename, true);
+        $filesize = $header_array['Content-Length'];*/
+        //告诉浏览器返回的文件大小
+        header('Accept-Length:'.$filesize);
+        //告诉浏览器文件作为附件处理并且设定最终下载完成的文件名称
+        header("Content-Disposition: attachment; filename=文件.$hz");
+        //针对大文件，规定每次读取文件的字节数为4096字节，直接输出数据
+        $read_buffer = 4096;
+        $handle = fopen($filename, 'rb');
+        //总的缓冲的字节数
+        $sum_buffer = 0;
+        //只要没到文件尾，就一直读取
+        while(!feof($handle) && $sum_buffer<$filesize) {
+            echo fread($handle,$read_buffer);
+            $sum_buffer += $read_buffer;
+        }
+        //关闭句柄
+        fclose($handle);
+        exit;
     }
 
     public function downloadDt()
     {
         $id = input('id');
-        $url = Detail::where('id', $id)->value('file_url');
-        $download = new \think\response\Download(config('app.down_url') . $url);
-        return $download->name('文件');
-
+        $url = Detail::where('id',$id)->value('file_url');
+        $filename = config('app.down_url').$url;
+        $arr = explode('.',$filename);
+        $hz = array_pop($arr);
+        header('content-type:application/octet-stream');
+        //告诉浏览器返回的文件大小类型是字节
+        header('Accept-Ranges:bytes');
+        //获得文件大小
+        $filesize = filesize($filename);//(此方法无法获取到远程文件大小)
+        /*$header_array = get_headers($filename, true);
+        $filesize = $header_array['Content-Length'];*/
+        //告诉浏览器返回的文件大小
+        header('Accept-Length:'.$filesize);
+        //告诉浏览器文件作为附件处理并且设定最终下载完成的文件名称
+        header("Content-Disposition: attachment; filename=文件.$hz");
+        //针对大文件，规定每次读取文件的字节数为4096字节，直接输出数据
+        $read_buffer = 4096;
+        $handle = fopen($filename, 'rb');
+        //总的缓冲的字节数
+        $sum_buffer = 0;
+        //只要没到文件尾，就一直读取
+        while(!feof($handle) && $sum_buffer<$filesize) {
+            echo fread($handle,$read_buffer);
+            $sum_buffer += $read_buffer;
+        }
+        //关闭句柄
+        fclose($handle);
+        exit;
     }
 
     public function communication()

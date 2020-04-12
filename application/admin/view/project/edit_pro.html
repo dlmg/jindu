@@ -15,7 +15,9 @@
             <label class="layui-form-label">参与开发人员</label>
             <div class="layui-input-block">
                 {volist name='prolist' id='prolist'}
-                <input type="checkbox" name="renyuan[]" value="{$prolist.id}" title="{$prolist.truename}" lay-skin="primary">
+
+                <input type="checkbox" name="renyuan[]" value="{$prolist.id}" title="{$prolist.truename}" lay-skin="primary" {in name="$prolist.id" value="$result.user_id"}checked{/in}>
+
                 {/volist}
             </div>
         </div>

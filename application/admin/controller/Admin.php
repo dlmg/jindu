@@ -51,15 +51,9 @@ class Admin extends Base
         // 定义分页参数
         $limit = isset($_GET['limit']) ? $_GET['limit'] : 10;
         $page = isset($_GET['page']) ? $_GET['page'] : 1;
-
+        $sql = "select a.id, a.username, a.role_id, a.status, a.create_time, a.update_time, a.last_login_time, c.truename,r.name from think_admin a join think_role r on a.role_id = r.id join think_profile c on a.id=c.admin_id where a.status=1";
         // 获取到所有的管理员
-        $adminList = AdminModel::where($map)
-            ->alias('a')
-            ->join(['think_role' => 'r'], 'a.role_id = r.id')
-            ->order('a.id', 'desc')
-            ->field('a.id, a.username, a.role_id, a.status, a.create_time, a.update_time, a.last_login_time, r.name')
-            ->select();
-
+        $adminList = Db::query($sql);
         $total = count(AdminModel::where($map)->select());
         $result = array("code" => 0, "msg" => "查询成功", "count" => $total, "data" => $adminList);
         return json($result);

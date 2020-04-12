@@ -30,7 +30,7 @@ class Role extends Model
     public function getRoleInfoById($id)
     {
         try {
-            $info = $this -> where('id', $id) -> findOrEmpty() -> toArray();
+            $info = $this -> where(['id'=>$id,'status'=>1]) -> findOrEmpty() -> toArray();
         }catch (\Exception $e) {
             return modelReMsg(-1, '', $e->getMessage());
         }
@@ -48,7 +48,7 @@ class Role extends Model
 
         if (empty($map)) {
             try {
-                $res = $this -> where('id', $roleId) -> find();
+                $res = $this -> where(['id'=>$roleId,'status'=>1]) -> find();
 //                dump($res);exit;
                 if (!empty($res)) {
                     $map = $this -> cacheRoleNodeMap($res['rules'], $roleId);
@@ -71,7 +71,6 @@ class Role extends Model
         // 获取节点信息
         $nodeModel = new Node();
         $nodeInfo = $nodeModel -> getNodeInfoByIds($roleNode);
-
         $map = [];
         if ( !empty($nodeInfo['data']) ) {
             foreach ( $nodeInfo['data'] as $node ) {

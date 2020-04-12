@@ -33,9 +33,44 @@ class Project extends Base
     public function downloadDt(){
         $id = input('id');
         $url = Detail::where('id',$id)->value('file_url');
-        $download = new \think\response\Download(config('app.down_url').$url);
-        return $download->name('文件');
-
+        $filename = config('app.down_url').$url;
+        $arr = explode('.',$filename);
+        $hz = array_pop($arr);
+        header('content-type:application/octet-stream');
+        //告诉浏览器返回的文件大小类型是字节
+        header('Accept-Ranges:bytes');
+        //获得文件大小
+        $filesize = filesize($filename);//(此方法无法获取到远程文件大小)
+        /*$header_array = get_headers($filename, true);
+        $filesize = $header_array['Content-Length'];*/
+        //告诉浏览器返回的文件大小
+        header('Accept-Length:'.$filesize);
+        //告诉浏览器文件作为附件处理并且设定最终下载完成的文件名称
+        header("Content-Disposition: attachment; filename=文件.$hz");
+        //针对大文件，规定每次读取文件的字节数为4096字节，直接输出数据
+        $read_buffer = 4096;
+        $handle = fopen($filename, 'rb');
+        //总的缓冲的字节数
+        $sum_buffer = 0;
+        //只要没到文件尾，就一直读取
+        while(!feof($handle) && $sum_buffer<$filesize) {
+            echo fread($handle,$read_buffer);
+            $sum_buffer += $read_buffer;
+        }
+        //关闭句柄
+        fclose($handle);
+        exit;
+        /*$id = input('id');
+        $url = Detail::where('id',$id)->value('file_url');
+        $filename = config('app.down_url').$url;
+        $arr = explode('.',$filename);
+        $hz = array_pop($arr);
+//文件的类型
+        header('Content-type: application/octet-stream');
+//下载显示的名字
+        header("Content-Disposition: attachment; filename=文件.$hz");
+        readfile("$filename");
+        exit();*/
     }
 
     public function detail()
@@ -209,7 +244,8 @@ class Project extends Base
     {
         $img = request()->file('file');
         // 移动到框架应用根目录/public/uploads/ 目录下
-        $info = $img->move(env('ROOT_PATH') . 'public/upload');
+        $date = Date('Ymd',time());
+        $info = $img->move(env('ROOT_PATH') . 'public/upload/');
         $pro_id = input('pro_id');
         $buzhou = input('buzhou');
         $desc = input('description');
