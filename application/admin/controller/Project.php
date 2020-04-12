@@ -174,7 +174,7 @@ class Project extends Base
     public function download()
     {
         $id = input('id');
-        $url = Detail::where('id',$id)->value('file_url');
+        $url = Fenbu::where('id',$id)->value('file_url');
         $filename = config('app.down_url').$url;
         $arr = explode('.',$filename);
         $hz = array_pop($arr);
