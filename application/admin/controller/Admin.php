@@ -44,14 +44,11 @@ class Admin extends Base
 
         // 搜索功能
         $keywords = Request::param('keywords');
-        if (!empty($keywords)) {
-            $map[] = ['username', 'like', '%' . $keywords . '%'];
-        }
-
+        $map[] = ['username','like','%'.$keywords.'%'];
         // 定义分页参数
-        $limit = isset($_GET['limit']) ? $_GET['limit'] : 10;
-        $page = isset($_GET['page']) ? $_GET['page'] : 1;
-        $sql = "select a.id, a.username, a.role_id, a.status, a.create_time, a.update_time, a.last_login_time, c.truename,r.name from think_admin a join think_role r on a.role_id = r.id join think_profile c on a.id=c.admin_id where a.status=1";
+        $limit = input('limit');
+        $page = input('page');
+        $sql = "select a.id, a.username, a.role_id, a.status, a.create_time, a.update_time, a.last_login_time, c.truename,r.name from think_admin a join think_role r on a.role_id = r.id join think_profile c on a.id=c.admin_id where username like '%$keywords%' and a.status=1 limit ".($page-1)*$limit.",$limit";
         // 获取到所有的管理员
         $adminList = Db::query($sql);
         $total = count(AdminModel::where($map)->select());

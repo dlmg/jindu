@@ -27,7 +27,6 @@ class Index extends Base
         // 设置模板变量
         $this -> view -> assign('title', '项目进度管理系统');
         $this -> view -> assign('menu', $menu);
-
         // 渲染模板
         return $this -> fetch('index');
     }

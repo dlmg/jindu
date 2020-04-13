@@ -16,6 +16,7 @@ use app\admin\common\model\Detail;
 use think\Db;
 use think\facade\Request;
 use app\admin\common\model\Fenbu;
+use think\Validate;
 
 
 /**
@@ -50,14 +51,14 @@ class Project extends Base
     public function allList()
     {
         $map = []; // 将所有的查询条件封装到这个数组中
-
+        $pro = new Pro;
         // 搜索功能
         $keywords = Request::param('keywords');
         if (!empty($keywords)) {
             $map[] = ['proName', 'like', '%' . $keywords . '%'];
         }
-        $data = Pro::where($map)->select();
-        $count = count($data);
+        $data = $pro->paginate(input("get.limit"), input("get.page"),$map);
+        $count = $pro->all($map);
         $result = array("code" => 0, "msg" => '查询成功', "count" => $count, "data" => $data);
         return json($result);
     }
@@ -71,10 +72,15 @@ class Project extends Base
     {
         // 定义分页参数
         $id = session('admin_id');
-        $sql = "select a.id,a.proName,a.description,a.create_time,a.status,b.truename from think_project a join think_client b on a.client_id=b.client_id where find_in_set($id,user_id) and 'status'=0";
+        $keywords = Request::param('keywords');
+        $map[] = ['proName','like','%'.$keywords.'%'];
+        // 定义分页参数
+        $limit = input('limit');
+        $page = input('page');
+        $sql = "select a.id,a.proName,a.description,a.create_time,a.status,b.truename from think_project a join think_client b on a.client_id=b.client_id where find_in_set($id,user_id) and 'status'=0 and a.proName like '%$keywords%' limit ".($page-1)*$limit.",$limit";
         $proList = Db::query($sql);
         //dump($data);
-        $count = count($proList);
+        $count = count(Pro::where($map)->select());
         $result = array("code" => 0, "msg" => "查询成功", "count" => $count, "data" => $proList);
         return json($result);
     }
@@ -106,7 +112,7 @@ class Project extends Base
 
     public function bz()
     {
-        $this->assign('title', '项目进度步骤管理');
+        $this->assign('title', '步骤管理');
         return $this->fetch();
     }
 
@@ -174,9 +180,9 @@ class Project extends Base
     public function download()
     {
         $id = input('id');
-        $url = Fenbu::where('id',$id)->value('file_url');
-        $filename = config('app.down_url').$url;
-        $arr = explode('.',$filename);
+        $url = Fenbu::where('id', $id)->value('file_url');
+        $filename = config('app.down_url') . $url;
+        $arr = explode('.', $filename);
         $hz = array_pop($arr);
         header('content-type:application/octet-stream');
         //告诉浏览器返回的文件大小类型是字节
@@ -186,7 +192,7 @@ class Project extends Base
         /*$header_array = get_headers($filename, true);
         $filesize = $header_array['Content-Length'];*/
         //告诉浏览器返回的文件大小
-        header('Accept-Length:'.$filesize);
+        header('Accept-Length:' . $filesize);
         //告诉浏览器文件作为附件处理并且设定最终下载完成的文件名称
         header("Content-Disposition: attachment; filename=文件.$hz");
         //针对大文件，规定每次读取文件的字节数为4096字节，直接输出数据
@@ -195,8 +201,8 @@ class Project extends Base
         //总的缓冲的字节数
         $sum_buffer = 0;
         //只要没到文件尾，就一直读取
-        while(!feof($handle) && $sum_buffer<$filesize) {
-            echo fread($handle,$read_buffer);
+        while (!feof($handle) && $sum_buffer < $filesize) {
+            echo fread($handle, $read_buffer);
             $sum_buffer += $read_buffer;
         }
         //关闭句柄
@@ -207,9 +213,9 @@ class Project extends Base
     public function downloadDt()
     {
         $id = input('id');
-        $url = Detail::where('id',$id)->value('file_url');
-        $filename = config('app.down_url').$url;
-        $arr = explode('.',$filename);
+        $url = Detail::where('id', $id)->value('file_url');
+        $filename = config('app.down_url') . $url;
+        $arr = explode('.', $filename);
         $hz = array_pop($arr);
         header('content-type:application/octet-stream');
         //告诉浏览器返回的文件大小类型是字节
@@ -219,7 +225,7 @@ class Project extends Base
         /*$header_array = get_headers($filename, true);
         $filesize = $header_array['Content-Length'];*/
         //告诉浏览器返回的文件大小
-        header('Accept-Length:'.$filesize);
+        header('Accept-Length:' . $filesize);
         //告诉浏览器文件作为附件处理并且设定最终下载完成的文件名称
         header("Content-Disposition: attachment; filename=文件.$hz");
         //针对大文件，规定每次读取文件的字节数为4096字节，直接输出数据
@@ -228,8 +234,8 @@ class Project extends Base
         //总的缓冲的字节数
         $sum_buffer = 0;
         //只要没到文件尾，就一直读取
-        while(!feof($handle) && $sum_buffer<$filesize) {
-            echo fread($handle,$read_buffer);
+        while (!feof($handle) && $sum_buffer < $filesize) {
+            echo fread($handle, $read_buffer);
             $sum_buffer += $read_buffer;
         }
         //关闭句柄
@@ -424,12 +430,13 @@ class Project extends Base
         }
     }
 
-    public function delete(){
+    public function delete()
+    {
         if (Request::isAjax()) {
             $id = Request::param('id');
-            $status = Pro::where('id',$id)->value('status');
+            $status = Pro::where('id', $id)->value('status');
             // 执行删除操作
-            if($status != 2) {
+            if ($status != 2) {
                 try {
                     $sql = "delete t1,t2,t3 from think_project as t1 join think_fenbu as t2 on t1.id=t2.pro_id join think_schedule as t3 on t1.id=t3.project_id where t1.id = $id";
                     $result = Db::query($sql);
@@ -437,11 +444,75 @@ class Project extends Base
                     return resMsg(0, '项目删除失败' . '<br>' . $e->getMessage(), 'index');
                 }
                 return resMsg(1, '项目删除成功', 'index');
-            }else{
-                return resMsg(0,'项目正在进行中，不能删除','index');
+            } else {
+                return resMsg(0, '项目正在进行中，不能删除', 'index');
             }
         } else {
             return resMsg(-1, '请求类型错误', 'index');
+        }
+    }
+
+    public function deleteBz()
+    {
+        if (Request::isAjax()) {
+            $id = Request::param('id');
+            // 执行删除操作
+            try {
+                $sql = "delete from think_buzhou where id = $id";
+                $result = Db::query($sql);
+            } catch (\Exception $e) {
+                return resMsg(0, '步骤删除失败' . '<br>' . $e->getMessage(), 'index');
+            }
+            return resMsg(1, '步骤删除成功', 'index');
+        } else {
+            return resMsg(-1, '请求类型错误', 'index');
+        }
+    }
+
+    public function addBz()
+    {
+        if (request()->isGet()) {
+            return $this->fetch();
+        } elseif (request()->isPost()) {
+            $rule = [
+                'id' => 'require|number',
+                'name' => 'require',
+            ];
+
+            $message = [
+                'id.require' => '步骤必填',
+                'id.number' => '步骤必须为阿拉伯数字',
+                'name.require' => '步骤名称必填',
+            ];
+
+            $id = input('id');
+            $name = input('name');
+            $data = [
+                'id' => $id,
+                'name' => $name,
+            ];
+
+            $validate = Validate::make($rule, $message);
+            $result = $validate->check($data);
+
+            if (!$result) {
+                $info = $validate->getError();
+                return resMsg(-1, $info, 'index');
+            }
+
+            $buzhou = Db::name('buzhou')->where('id', $id)->find();
+            if ($buzhou) {
+                return resMsg(-1, '该步骤已经存在', 'index');
+            }
+            $insertData = [
+                'id' => $id,
+                'statusName' => $name,
+            ];
+            $result = Db::name('buzhou')->insert($insertData);
+            if ($result)
+                return resMsg(1, '步骤添加成功', 'index');
+            else
+                return resMsg(-1, '步骤添加失败', 'index');
         }
     }
 }

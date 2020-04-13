@@ -48,15 +48,14 @@ class Client extends Base
         }
 
         // 定义分页参数
-        $limit = isset($_GET['limit']) ? $_GET['limit'] : 10;
-        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $client = new ClientModel;
 
-        // 获取到所有的用户
+        $clientList = $client->paginate(input("get.limit"), input("get.page"),$map);
+        /*
         $clientList = ClientModel::where($map)
             ->order('client_id', 'desc')
             ->field('client_id, khName, truename, mobile, create_time, update_time, status')
-            ->select();
-
+            ->select();*/
         $total = count(ClientModel::where($map)->select());
         $result = array("code" => 0, "msg" => "查询成功", "count" => $total, "data" => $clientList);
         return json($result);

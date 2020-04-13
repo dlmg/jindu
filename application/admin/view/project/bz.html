@@ -7,16 +7,15 @@
 <script type="text/html" id="toolbar">
     <div class="dataToolbar">
         <div class="layui-inline">
-            <input class="layui-input" name="keywords" id="keywords" value="{:input('keywords')}" autocomplete="on" placeholder="请输入项目名称">
+            <button class="layui-btn" id="add"><i class="iconfont">&#xe692;</i> 添加步骤</button>
         </div>
-        <button class="layui-btn search-btn" data-type="reload"><i class="iconfont">&#xe679;</i> 查询</button>
     </div>
 </script>
 
 {// 行内工具栏}
 <script type="text/html" id="barTool">
-
     <a href="javascript:;" lay-event="edit" class="layui-btn layui-btn-xs"><i class="iconfont">&#xe7e0;</i>编辑</a>
+    <a href='javascript:;' lay-event="del" class="layui-btn layui-btn-danger layui-btn-xs"><i class="iconfont">&#xe6b4;</i> 删除</a>
     <!--<a href='javascript:;' lay-event="del" class="layui-btn layui-btn-danger layui-btn-xs"><i class="iconfont">&#xe6b4;</i> 编辑</a>-->
 </script>
 
@@ -151,8 +150,67 @@
                         layer.close(index);
                     }
                 })
+            } else if ( e === 'del') {
+                layer.confirm('您确定要删除吗？', {
+                    icon: 3
+                },function(index){
+                    // 加载层
+                    var loading = layer.msg('处理中，请稍后...', {
+                        icon: 16,
+                        shade: 0.5
+                    });
+                    $.ajax({
+                        url: '{:url("project/deleteBz")}',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            id : data.id
+                        },
+                        beforeSend: function(){},
+                        success: function(res){
+                            layer.close(loading);
+                            if (res.status == 1) {
+                                layer.msg(res.message, {
+                                    time: 1000
+                                },function(){
+                                    window.location.reload();
+                                });
+                            } else if (res.status == 0) {
+                                layer.alert(res.message, {
+                                    icon: 2,
+                                    skin: 'layer-ext-moon'
+                                },function(){
+                                    parent.window.location.reload();
+                                    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                                    parent.layer.close(index);
+                                });
+                            }
+                        }
+                    });
+                });
             }
 
+        });
+        $('#add').on('click', function () {
+            var index = layer.open({
+                type: 2,
+                title: '<i class=iconfont>&#xe7c7;</i> 添加步骤',
+                area: ['500px', '420px'],
+                content: ['{:url("project/addBz")}', 'yes'],
+                skin: 'layui-layer-molv',
+                btn: ['立即提交', '重置'],
+                btnAlign: 'c',
+                yes: function(index, layero){
+                    var submit = layero.find('iframe').contents().find("#submit");// #subBtn为页面层提交按钮ID
+                    submit.click();// 触发提交监听
+                    return false;
+                },
+                btn2:function (index,layero) {
+                    var reset = layero.find('iframe').contents().find("#reset");// #subBtn为页面层提交按钮ID
+                    reset.click();// 触发重置按钮
+                    return false;
+                }
+            });
         });
     });
 </script>

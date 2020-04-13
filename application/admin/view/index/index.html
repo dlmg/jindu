@@ -67,6 +67,9 @@
                         <a href="javascript:;" onclick="editPassword();" data-title="修改密码" data-icon="fa fa-gears">修改密码</a>
                     </dd>
                     <dd>
+                        <a href="javascript:;" onclick="myProfile();" lay-filter="profile" data-title="个人资料" data-icon="fa fa-gears">个人资料</a>
+                    </dd>
+                    <dd>
                         <a href="javascript:;" class="login-out" onclick="logout()">退出登录</a>
                     </dd>
                 </dl>
@@ -173,7 +176,13 @@
             }
         });
     }
-    
+
+    function myProfile() {
+        element.tabAdd('profile',{
+            title:'个人资料',
+            content:"{:url('adminn')}"
+        })
+    }
     // 退出登录
     function logout() {
         layer.confirm('您确定要退出吗？',{
